@@ -1,9 +1,14 @@
-import React from 'react'
+import { Router, Route, Routes } from "react-router-dom";
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 
 const App = () => {
   return (
-    <div className='text-blue-600'>Flaury</div>
-  )
-}
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
