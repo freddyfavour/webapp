@@ -1,21 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+const Forgot3 = () => {
   const [password, setPassword] = useState("");
-  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   // Function to check if all fields are filled
   const handleFormValidation = () => {
     if (
-      name.trim() !== "" &&
-      email.trim() !== "" &&
-      mobileNumber.trim() !== "" &&
-      password.trim() !== "" &&
+      (password.trim() !== "" && confirmPassword.trim() !== "") ||
       checkboxChecked
     ) {
       setDisabled(false);
@@ -28,17 +23,11 @@ const SignUp = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "mobileNumber":
-        setMobileNumber(value);
-        break;
       case "password":
         setPassword(value);
+        break;
+      case "confirmPassword":
+        setConfirmPassword(value);
         break;
       default:
         break;
@@ -48,7 +37,7 @@ const SignUp = () => {
 
   // Function to handle changes in the checkbox
   const handleCheckboxChange = () => {
-    setCheckboxChecked(!checkboxChecked);
+    setRememberMe(!rememberMe);
     handleFormValidation(); // Check form validation on checkbox change
   };
 
@@ -65,47 +54,15 @@ const SignUp = () => {
     <div className="h-screen lg:h-full w-full flex justify-center items-center bg-primaryColor">
       <div className="gradient-overlay-signup h-[100%] md:h-[120%]"></div>
       <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 bg-[#fff] rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
-        <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
+        <h3 className="text-primaryColor font-bold text-2xl py-2">
+          Create Password
+        </h3>
         <p className="text-primaryColor text-sm pb-2">
           Register using your correct details
         </p>
         <form className="w-full" onSubmit={handleSubmit}>
-          <label htmlFor="name" className="">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          <label htmlFor="email" className="">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          <label htmlFor="mobile-number" className="">
-            Mobile Number
-          </label>
-          <input
-            type="number"
-            name="mobileNumber"
-            value={mobileNumber}
-            inputMode="numeric"
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
           <label htmlFor="password" className="">
-            Password
+            New Password
           </label>
           <input
             type="password"
@@ -115,6 +72,29 @@ const SignUp = () => {
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
             required
           />
+          <label htmlFor="password" className="">
+            Confirm Password
+          </label>
+          <input
+            type="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleInputChange}
+            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
+            required
+          />
+
+          <div className="flex gap-4 items-center justify-center">
+            <input
+              type="checkbox"
+              name="t&c"
+              id="tc"
+              checked={rememberMe}
+              onChange={handleCheckboxChange}
+              className="w-[1.5rem] h-[1.5rem]"
+            />
+            <p className="text-primaryColor text-sm">Remember me</p>
+          </div>
 
           <button
             type="submit"
@@ -135,22 +115,9 @@ const SignUp = () => {
             Log in
           </Link>
         </p>
-        <div className="flex gap-4 items-center justify-center mt-6">
-          <input
-            type="checkbox"
-            id="tc"
-            checked={checkboxChecked}
-            onChange={handleCheckboxChange}
-            className="w-[1rem] h-[1rem]"
-          />
-          <p className="text-primaryColor text-sm w-2/3">
-            Clicking the "continue" button means I agree to the terms and
-            conditions of <b>FLAURY</b>
-          </p>
-        </div>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Forgot3;
