@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Radial gradient overlay */
+.gradient-overlay-login {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: radial-gradient(circle, #ce5e02, transparent);
+  pointer-events: none;
+}
+
+.gradient-overlay-signup {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  background-image: radial-gradient(circle, #ce5e02, transparent);
+  pointer-events: none;
+}
