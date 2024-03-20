@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 * {
-  overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
+}
+
+.hero-bg {
+  background-image: linear-gradient(to right bottom, #8b3e00e6, #8b3e00e6),
+    url(./hero-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Radial gradient overlay */
