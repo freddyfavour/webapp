@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import forgotPassword from "/forgotpassword.svg";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [disabled, setDisabled] = useState(true);
@@ -34,6 +34,7 @@ const ForgotPassword = () => {
         <h3 className="text-primaryColor font-bold text-2xl pb-20">
           Forgot Password
         </h3>
+        <img src={forgotPassword} alt="" />
         <form className="w-full" onSubmit={handleSubmit}>
           <label htmlFor="email" className="">
             Enter your registered email address
