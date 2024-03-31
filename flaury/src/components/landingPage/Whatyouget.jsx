@@ -11,7 +11,7 @@ import Consultation from "/Ellipse 19 (1).png";
 
 const Whatyouget = () => {
   return (
-    <section className="px-4 md:px-20 py-10 text-center">
+    <section className="mt-10 px-4 md:px-20 py-10 text-center">
       <h4 className="text-primaryColor text-2xl ">
         Have Beauty Needs?, Get It Here
       </h4>

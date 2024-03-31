@@ -6,7 +6,7 @@ import handshakeoutline from "/handshake-outline.svg";
 
 const Features = () => {
   return (
-    <section className="px-4 md:px-20 py-10 text-center bg-secondaryColor">
+    <section className="mt-20 px-4 md:px-20 py-10 text-center bg-secondaryColor">
       <h3 className="text-primaryColor text-2xl font-bold py-4">At FLAURY,</h3>
       <div className="mx-auto grid grid-cols-2 md:grid-cols-3 justify-center">
         {/* First row */}
