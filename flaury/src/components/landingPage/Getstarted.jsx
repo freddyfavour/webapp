@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import globe from "/globe-white.svg";
 
 const Getstarted = () => {
   return (
-    <section className="py-10">
+    <section className="mt-10 py-10">
       <div className="relative md:flex items-center gap-14">
-        <div className="md:w-1/2 pb-10 bg-primaryColor">
+        <div className="md:w-1/2 p-10 bg-primaryColor">
           <img
             src={globe}
             alt=""
@@ -24,9 +25,11 @@ const Getstarted = () => {
             <li className="mb-2 text-sm">Far from you</li>
             <li className="mb-2 text-sm">Across borders (Overseas)</li>
           </ul>
-          <button className="bg-secondaryColor text-primaryColor py-1 px-8 text-xs">
-            Get Started
-          </button>
+          <Link to="/signup">
+            <button className="bg-secondaryColor text-primaryColor py-1 px-8 text-xs">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
     </section>

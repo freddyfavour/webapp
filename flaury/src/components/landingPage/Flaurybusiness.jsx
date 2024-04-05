@@ -2,7 +2,7 @@ import flauryBusiness from "/Group 37.png";
 
 const Flaurybusiness = () => {
   return (
-    <section className="md:flex items-center px-4 md:px-20 py-10 bg-primaryColor text-white">
+    <section className="mt-10 md:flex items-center px-4 md:px-20 py-10 bg-primaryColor text-white">
       <div className="md:w-1/2">
         <h3 className="py-4 relative">
           <b>FLAURY</b> Business
