@@ -15,6 +15,8 @@ import Favorites from "./page/dashboard/Favorites";
 import Profile from "./page/dashboard/Profile";
 import Bookings from "./page/dashboard/Bookings";
 import Chat from "./page/dashboard/Chat";
+import Search from "./page/dashboard/Search";
+import SalonProfile from "./page/dashboard/SalonProfile";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -59,6 +61,8 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/salon/:id" element={<SalonProfile />} />
       </Routes>
     </>
   );

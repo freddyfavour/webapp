@@ -51,14 +51,14 @@ const Nav = () => {
                 </li>
                 <li>
                   <Link to="/signup">
-                    <button className="transition bg-primaryColor text-white border hover:border-lightPrimaryColor hover:bg-transparent hover:text-primaryColor text-xs px-8 py-2 rounded-lg font-semibold">
+                    <button className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold">
                       Sign Up
                     </button>
                   </Link>
                 </li>
                 <li>
                   <Link to="/login">
-                    <button className="transition border border-lightPrimaryColor text-primaryColor hover:bg-primaryColor hover:border-primaryColor hover:text-white text-xs px-8 py-2 rounded-lg font-semibold">
+                    <button className="transition border border-lightPrimaryColor text-primaryColor text-xs px-8 py-2 rounded-lg font-semibold">
                       Login
                     </button>
                   </Link>
@@ -93,14 +93,14 @@ const Nav = () => {
                 </li>
                 <li>
                   <Link to="/signup" onClick={() => setShowNav(false)}>
-                    <button className="transition bg-primaryColor text-white border hover:border-lightPrimaryColor hover:bg-transparent hover:text-primaryColor text-sm px-4 py-2 rounded-lg my-4">
+                    <button className="transition bg-primaryColor text-white border text-sm px-4 py-2 rounded-lg my-4">
                       Sign Up
                     </button>
                   </Link>
                 </li>
                 <li>
                   <Link to="/login" onClick={() => setShowNav(false)}>
-                    <button className="transition border border-lightPrimaryColor text-primaryColor hover:bg-primaryColor hover:border-primaryColor hover:text-white text-sm px-4 py-2 rounded-lg">
+                    <button className="transition border border-lightPrimaryColor text-primaryColor text-sm px-4 py-2 rounded-lg">
                       Login
                     </button>
                   </Link>

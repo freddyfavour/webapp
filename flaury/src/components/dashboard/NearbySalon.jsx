@@ -4,6 +4,7 @@ import hairstyling from "/hairstyling.png";
 import haircut from "/haircut.png";
 import massage from "/massage.png";
 import perfume from "/perfume.png";
+import { Link } from "react-router-dom";
 
 // Simulated backend data
 const nearbySalons = [
@@ -52,20 +53,25 @@ const NearbySalon = () => {
       <div className="w-[100%] md:w-full overflow-x-scroll md:overflow-x-hidden">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 ">
           {nearbySalons.map((salon) => (
-            <div key={salon.id}>
-              <img src={salon.image} alt="" className="w-full" />
-              <h4 className="font-semibold">{salon.name}</h4>
-              <p className="flex text-xs text-[#000]">
-                {salon.services.join(", ")}{" "}
-                <img src={dot} alt="" className="mx-2" />
-                <img src={star} alt="" />
-                {salon.rating}
-              </p>
-              <p className="flex text-xs text-[#000]">
-                {salon.location} <img src={dot} alt="" className="mx-2" />
-                {salon.distance}
-              </p>
-            </div>
+            <Link
+              key={salon.id}
+              // to={`/salon/${salon.id}`}
+              className="salon-link"
+            >
+              <div>
+                <img src={salon.image} alt="" className="w-full" />
+                <h4 className="font-semibold">{salon.name}</h4>
+                <p className="flex text-xs text-[#000]">
+                  {salon.services.join(", ")}{" "}
+                  <img src={dot} alt="" className="mx-2" />
+                  <img src={star} alt="" /> {salon.rating}
+                </p>
+                <p className="flex text-xs text-[#000]">
+                  {salon.location} <img src={dot} alt="" className="mx-2" />
+                  {salon.distance}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
