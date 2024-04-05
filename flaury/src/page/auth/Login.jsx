@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ isAuth, onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [disabled, setDisabled] = useState(true);
+
+  const navigate = useNavigate();
 
   // Function to check if all fields are filled
   const handleFormValidation = () => {
@@ -33,7 +35,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Your form submission logic here
+    navigate("/dashboard");
+    onLogin();
   };
 
   return (
@@ -44,7 +47,7 @@ const Login = () => {
         <p className="text-primaryColor text-sm pb-2">
           Log in to your finneseHUB account
         </p>
-        <form className="w-full" onSubmit={handleSubmit}>
+        <form className="w-full">
           <label htmlFor="email" className="">
             Email
           </label>
@@ -94,6 +97,7 @@ const Login = () => {
                 : "bg-primaryColor text-[#fff]"
             }`}
             disabled={disabled}
+            onClick={handleSubmit}
           >
             Continue
           </button>

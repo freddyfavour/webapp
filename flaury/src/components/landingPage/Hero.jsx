@@ -1,29 +1,35 @@
 import vector from "/Vector.svg";
 import image4 from "/image 4.png";
 import intersect from "/Intersect.png";
+import search from "/search.svg";
 
 const Hero = () => {
   return (
-    <div className="h-full lg:h-screen w-full flex justify-between items-center hero-bg px-4 py-4 md:px-20 md:pt-28">
-      <div className="w-1/2">
+    <div className="h-full w-full flex justify-between items-center hero-bg px-4 py-4 md:px-28 lg:px-32 md:pt-32">
+      <div className="w-4/5 md:w-1/2 mt-20 md:mt-0">
         <h3 className="text-sm md:text-lg text-white p-2">
           "GREAT LOOK IS NOT BY <br />
           <span className="text-4xl md:text-6xl font-bold">ACCIDENT</span>{" "}
           <br /> IT'S BY <br />
           <span className="text-4xl md:text-6xl font-bold">APPOINTMENT"</span>
         </h3>
-        <p className="textsm md:text-lg font-semibold text-left text-white">
+        <p className="hidden md:block text-sm md:text-lg font-semibold text-right text-white">
           _FLAURY
         </p>
 
-        <form>
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search for a service"
-            className="border w-full px-4 py-2 rounded-lg mt-10 mb-2 text-sm text-lightPrimaryColor"
-          />
+        <form className="relative mt-4">
+          <div className="flex items-center border rounded-lg overflow-hidden bg-white">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search for a service"
+              className="border-r border-r-lightPrimaryColor w-full px-4 py-2 text-sm text-lightPrimaryColor placeholder-lightPrimaryColor"
+            />
+            <div className="px-3">
+              <img src={search} alt="" />
+            </div>
+          </div>
         </form>
 
         <div className="flex gap-4 items-center mt-6">

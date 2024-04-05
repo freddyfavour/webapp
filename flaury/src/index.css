@@ -31,3 +31,7 @@
   background-image: radial-gradient(circle, #ce5e02, transparent);
   pointer-events: none;
 }
+
+.placeholder-lightPrimaryColor::placeholder {
+  color: var(--lightPrimaryColor);
+}

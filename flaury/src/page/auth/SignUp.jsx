@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({ onLogin }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [disabled, setDisabled] = useState(true);
+
+  const navigate = useNavigate();
 
   // Function to check if all fields are filled
   const handleFormValidation = () => {
@@ -54,6 +56,8 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/dashboard");
+    onLogin();
     if (disabled) {
       // Prevent form submission if button is disabled
       return;
@@ -69,7 +73,7 @@ const SignUp = () => {
         <p className="text-primaryColor text-sm pb-2">
           Register using your correct details
         </p>
-        <form className="w-full" onSubmit={handleSubmit}>
+        <form className="w-full">
           <label htmlFor="name" className="">
             Name
           </label>
@@ -124,6 +128,7 @@ const SignUp = () => {
                 : "bg-primaryColor text-[#fff]"
             }`}
             disabled={disabled}
+            onClick={handleSubmit}
           >
             Continue
           </button>
