@@ -6,7 +6,6 @@ import customersupport from "/customersupport.svg";
 import handshakeoutline from "/handshake-outline.svg";
 
 const Features = () => {
-  // Simulated data from backend
   const featuresData = [
     {
       icon: handshakefill,
@@ -34,7 +33,6 @@ const Features = () => {
     <section className="mt-20 px-4 md:px-20 py-10 text-center bg-secondaryColor">
       <h3 className="text-primaryColor text-2xl font-bold py-4">At FLAURY,</h3>
       <div className="mx-auto grid grid-cols-2 md:grid-cols-3 justify-center">
-        {/* Map over featuresData to render features */}
         {featuresData.map((feature, index) => (
           <div key={index} className="flex flex-col items-center mx-4 my-4">
             <img src={feature.icon} alt="" />
