@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import arrowLeft from "/arrowLeft.svg";
 import arrowRight from "/arrowRight.svg";
 
-// Simulated data from backend
 const servicesData = [
   {
     id: 1,

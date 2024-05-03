@@ -3,6 +3,7 @@ import Facebook from "/facebook.svg";
 import Twitter from "/twitter.svg";
 import Instagram from "/instagram.svg";
 import Tiktok from "/tiktok.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -35,7 +36,12 @@ const Footer = () => {
         <div>
           <h3 className="pb-6">About Us</h3>
           <ul>
-            <li className="text-sm">Blog</li>
+            <li className="text-sm">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="text-sm">
+              <Link to="/blog">Blog</Link>
+            </li>
             <li className="text-sm">Social Media</li>
           </ul>
         </div>{" "}
