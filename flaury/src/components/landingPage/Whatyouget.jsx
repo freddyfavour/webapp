@@ -31,10 +31,9 @@ const Whatyouget = () => {
         Have Beauty Needs?, Get It Here
       </h4>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 gap-4">
-        {/* Map over itemsData to render items */}
         {itemsData.map((item, index) => (
           <div key={index}>
-            <img src={item.image} alt="" />
+            <img src={item.image} alt="" className="w-4/5 mx-auto" />
             <p className="text-primaryColor pt-4">{item.text}</p>
           </div>
         ))}
