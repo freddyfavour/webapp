@@ -28,24 +28,17 @@ const Dashboard = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          // Here, you can use latitude and longitude to do something, e.g., send it to your server
-          console.log("Latitude:", latitude);
-          console.log("Longitude:", longitude);
-          setLocationObtained(true); // Set location obtained to true
-          setShowPopup(false); // Close the popup after using current location
+          sessionStorage.setItem("location", `${latitude} ${longitude}`);
+
+          setLocationObtained(true);
+          setShowPopup(false);
         },
         (error) => {
-          // Handle errors
           console.error("Error getting current location:", error);
-          // You may want to show an error message to the user
-          // and give them the option to try again or set their location manually
         }
       );
     } else {
-      // Geolocation is not supported by the browser
       console.error("Geolocation is not supported by this browser.");
-      // You may want to show an error message to the user
-      // and give them the option to set their location manually
     }
   };
 
@@ -55,7 +48,7 @@ const Dashboard = () => {
 
   // Check if location is already obtained, if so, hide the popup
   useEffect(() => {
-    if (locationObtained) {
+    if (sessionStorage.getItem("location")) {
       setShowPopup(false);
     }
   }, [locationObtained]);

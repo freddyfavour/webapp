@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import forgotPassword from "/forgotpassword.svg";
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [disabled, setDisabled] = useState(true);

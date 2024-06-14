@@ -34,23 +34,23 @@ const Footer = () => {
         </div>{" "}
         <hr className="md:hidden border-primaryColor my-6" />
         <div>
-          <h3 className="pb-6">About Us</h3>
+          <h3 className="pb-6">Company</h3>
           <ul>
-            <li className="text-sm">
+            <li className="text-sm mb-2">
               <Link to="/about">About</Link>
             </li>
-            <li className="text-sm">
+            <li className="text-sm mb-2">
               <Link to="/blog">Blog</Link>
             </li>
-            <li className="text-sm">Social Media</li>
+            <li className="text-sm mb-2">Social Media</li>
           </ul>
         </div>{" "}
         <hr className="md:hidden border-primaryColor my-6" />
         <div>
           <h3 className="pb-6">Others</h3>
           <ul>
-            <li className="text-sm">Partners</li>
-            <li className="text-sm">Feedback</li>
+            <li className="text-sm mb-2">Partners</li>
+            <li className="text-sm mb-2">Feedback</li>
           </ul>
         </div>{" "}
         <hr className="md:hidden border-primaryColor my-6" />

@@ -14,7 +14,7 @@ const beautyTipsData = [
 
 const BeautyTips = () => {
   return (
-    <div>
+    <div className="my-10">
       <div className="text-center">
         <h3 className="font-bold text-lg">Beauty tips with Flaury</h3>
         <p>Get updated on the latest beauty trends</p>

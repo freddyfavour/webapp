@@ -1,6 +1,5 @@
 import vector from "/Vector.svg";
-import image4 from "/image 4.png";
-import intersect from "/Intersect.png";
+import heroImg1 from "/hero-img1.png";
 import search from "/search.svg";
 
 const Hero = () => {
@@ -73,17 +72,10 @@ const Hero = () => {
             className="w-[10rem] h-[10rem] absolute bottom-0 right-0"
           />
           <div className="absolute rounded-full w-[20rem] h-[20rem] bg-white">
-            {/* Protruding image */}
             <img
-              src={image4}
+              src={heroImg1}
               alt=""
-              className="absolute -top-16 -left-[0.35rem] rotate-[0.5deg] transform z-9"
-            />
-            {/* Image within ellipse */}
-            <img
-              src={intersect}
-              alt=""
-              className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+              className="absolute -top-10 -left-[0.35rem] rotate-[0.5deg] transform z-10"
             />
           </div>
         </div>

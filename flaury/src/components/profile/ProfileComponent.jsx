@@ -1,36 +1,32 @@
 import { useState, useEffect } from "react";
 import ProfileDetailsItem from "./ProfileDetailsItem";
+import HelpComponent from "./HelpComponent";
 import helpchat from "/helpchat.svg";
+import forgotPassword from "/forgotpassword.svg";
 
 const ProfileComponent = () => {
-  // Simulated state variables for profile data
   const [profileData, setProfileData] = useState({
     profileimg: "",
     name: "",
     email: "",
   });
+  const [showPopup, setShowPopup] = useState(false);
+  const [help, setHelp] = useState(false);
 
-  // Simulated state variable for profile details
   const [profileDetails, setProfileDetails] = useState([]);
 
-  // Simulating fetching profile data from backend
   useEffect(() => {
-    // Simulate fetching profile data from backend
     const fetchProfileData = () => {
-      // Simulated data received from backend
       const profileData = {
         profileimg: "/profileimg.png",
         name: "Becca Adom",
         email: "beccadom@gmail.com",
       };
-
-      // Update profileData state with data from backend
       setProfileData(profileData);
     };
 
     fetchProfileData();
 
-    // Simulated profile details data
     const simulatedProfileDetails = [
       {
         id: 1,
@@ -71,9 +67,12 @@ const ProfileComponent = () => {
       },
     ];
 
-    // Update profileDetails state with simulated data
     setProfileDetails(simulatedProfileDetails);
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
+
+  const logout = () => {
+    setShowPopup(true);
+  };
 
   return (
     <div className="mb-10">
@@ -81,20 +80,51 @@ const ProfileComponent = () => {
         <img src={profileData.profileimg} alt="" className="w-[5rem]" />
         <h3 className="text-xl font-bold">{profileData.name}</h3>
         <p className="text-xs">{profileData.email}</p>
-        <button className="absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold">
-          <img src={helpchat} alt="" />
-          Help
-        </button>
+        {help ? (
+          <p className="font-bold">How can we help you?</p>
+        ) : (
+          <button
+            className="absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
+            onClick={() => setHelp(true)}
+          >
+            <img src={helpchat} alt="" />
+            Help
+          </button>
+        )}
       </div>
       <hr className="border-primaryColor" />
-      {profileDetails.map((profileDetail) => (
-        <ProfileDetailsItem
-          key={profileDetail.id}
-          name={profileDetail.name}
-          details={profileDetail.details}
-          icon={profileDetail.icon}
-        />
-      ))}
+      {help ? (
+        <HelpComponent />
+      ) : (
+        profileDetails.map((profileDetail) => (
+          <ProfileDetailsItem
+            key={profileDetail.id}
+            name={profileDetail.name}
+            details={profileDetail.details}
+            icon={profileDetail.icon}
+            logout={logout}
+          />
+        ))
+      )}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
+          <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+            <img src={forgotPassword} alt="" className="mx-auto mb-4" />
+            <h3 className="font-bold text-black">
+              Are you sure you want to log-out?
+            </h3>
+            <button className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4">
+              Yes, log me out
+            </button>
+            <button
+              className="transition bg-lightPrimaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
+              onClick={() => setShowPopup(false)}
+            >
+              Login with another account
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
