@@ -2,29 +2,28 @@ import React, { useRef } from "react";
 import arrowLeft from "/arrowLeft.svg";
 import arrowRight from "/arrowRight.svg";
 
-// Simulated data from backend
 const servicesData = [
   {
     id: 1,
-    image: "/image 6.png",
+    image: "/service1.png",
     title: "Skin Retouch",
     description: "Get your skin done in top notch styles...",
   },
   {
     id: 2,
-    image: "/image 10.png",
+    image: "service2.png",
     title: "Make-Over",
     description: "Experience Make-overs in a whole new level",
   },
   {
     id: 3,
-    image: "/image 9.png",
+    image: "/service3.png",
     title: "Hair Treatment",
     description: "Give your hair a whole new dazzling feel",
   },
   {
     id: 4,
-    image: "/image 7.png",
+    image: "/service4.png",
     title: "Spa",
     description: "Give your skin a whole new dazzling feel",
   },
@@ -70,12 +69,12 @@ const Services = () => {
         </h3>
         <div className="w-full overflow-hidden" ref={containerRef}>
           <div
-            className="w-[150%] md:w-full grid grid-cols-4 md:flex gap-6 justify-between"
+            className="w-[150%] md:w-full grid grid-cols-4 md:flex justify-between"
             style={{ scrollSnapType: "x mandatory" }}
           >
             {servicesData.map((service) => (
-              <div key={service.id}>
-                <img src={service.image} alt="" className="w-full" />
+              <div key={service.id} className="w-full">
+                <img src={service.image} alt="" className="w-[95%]" />
                 <h4 className="text-primaryColor text-xl font-bold py-2">
                   {service.title}
                 </h4>

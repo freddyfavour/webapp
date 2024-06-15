@@ -72,7 +72,7 @@ const specialOffers = [
 
 const SpecialOffers = () => {
   return (
-    <div className="my-6 ">
+    <div className="my-10">
       <h3 className="font-bold text-lg py-2">Special Offers</h3>
       <div className="w-[100%] md:w-full overflow-x-scroll md:overflow-x-hidden">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">

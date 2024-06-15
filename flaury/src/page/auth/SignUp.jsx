@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import success from "/success.svg";
 
 const SignUp = ({ onLogin }) => {
   const [name, setName] = useState("");
@@ -8,6 +9,7 @@ const SignUp = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,10 +61,9 @@ const SignUp = ({ onLogin }) => {
     navigate("/dashboard");
     onLogin();
     if (disabled) {
-      // Prevent form submission if button is disabled
       return;
     }
-    // Your form submission logic here
+    setShowPopup(true);
   };
 
   return (
@@ -154,6 +155,20 @@ const SignUp = ({ onLogin }) => {
           </p>
         </div>
       </div>
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-10">
+          <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+            <img src={success} alt="" className="mx-auto mb-4" />
+            <h3 className="font-bold mb-4 text-primaryColor">
+              Congratulations
+            </h3>
+            <p className="mb-4 text-xs text-black">
+              Your account is now ready to use. You will be redirected to your
+              homepage shortly.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

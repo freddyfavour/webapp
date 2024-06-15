@@ -55,7 +55,7 @@ const NearbySalon = () => {
           {nearbySalons.map((salon) => (
             <Link
               key={salon.id}
-              // to={`/salon/${salon.id}`}
+              to={`/salon/${salon.id}`}
               className="salon-link"
             >
               <div>

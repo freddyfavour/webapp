@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,9 +9,13 @@
 
 .hero-bg {
   background-image: linear-gradient(to right bottom, #8b3e00e6, #8b3e00e6),
-    url(./hero-bg.png);
+    url(./hero-img.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.izIndex {
+  z-index: 1;
 }
 
 /* Radial gradient overlay */
@@ -34,4 +39,37 @@
 
 .placeholder-lightPrimaryColor::placeholder {
   color: var(--lightPrimaryColor);
+}
+
+/* styles.css or CustomDateSelector.module.css */
+.react-calendar__navigation__label {
+  background-color: #fff !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__month-view__weekdays {
+  color: #000;
+  text-transform: capitalize;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__month-view__days button {
+  height: 3rem;
+  border-radius: 100%;
+}
+
+.react-calendar__month-view__days__day {
+  color: #222;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #bbb;
+}
+
+.react-calendar__tile--active {
+  background-color: #8b3e00;
+  color: #fff;
 }

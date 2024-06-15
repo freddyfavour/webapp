@@ -17,6 +17,9 @@ import Bookings from "./page/dashboard/Bookings";
 import Chat from "./page/dashboard/Chat";
 import Search from "./page/dashboard/Search";
 import SalonProfile from "./page/dashboard/SalonProfile";
+import About from "./page/About";
+import Blog from "./page/Blog";
+import ChooseRole from "./page/auth/ChooseRole";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -49,6 +52,9 @@ const App = () => {
       )}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/choose-role" element={<ChooseRole />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp onLogin={handleLogin} />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
