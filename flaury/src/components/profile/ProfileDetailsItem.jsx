@@ -1,9 +1,12 @@
 import backarrow from "/backarrow.svg";
 import forwardarrow from "/forwardarrow.svg";
 
-const ProfileDetailsItem = ({ name, details, icon, logout }) => {
+const ProfileDetailsItem = ({ name, details, icon, logout, onClick }) => {
   return (
-    <div className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4">
+    <div
+      className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+      onClick={onClick}
+    >
       <div className="flex items-center gap-4">
         <img src={icon} alt="" className="rounded-md" />
         <div>

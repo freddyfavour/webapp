@@ -3,6 +3,9 @@ import ProfileDetailsItem from "./ProfileDetailsItem";
 import HelpComponent from "./HelpComponent";
 import helpchat from "/helpchat.svg";
 import forgotPassword from "/forgotpassword.svg";
+import FaqsComponent from "./FaqsComponent";
+import SettingsComponent from "./SettingsComponent";
+import PaymentComponent from "./PaymentComponent";
 
 const ProfileComponent = () => {
   const [profileData, setProfileData] = useState({
@@ -11,8 +14,7 @@ const ProfileComponent = () => {
     email: "",
   });
   const [showPopup, setShowPopup] = useState(false);
-  const [help, setHelp] = useState(false);
-
+  const [page, setPage] = useState("");
   const [profileDetails, setProfileDetails] = useState([]);
 
   useEffect(() => {
@@ -74,27 +76,78 @@ const ProfileComponent = () => {
     setShowPopup(true);
   };
 
+  const handleAboutClick = () => {
+    setPage("faqs");
+  };
+
+  const handleHelpClick = () => {
+    setPage("help");
+  };
+
+  const handleSettingsClick = () => {
+    setPage("settings");
+  };
+
+  const handlePaymentClick = () => {
+    setPage("payment");
+  };
+
   return (
     <div className="mb-10">
       <div className="relative w-full flex flex-col items-center text-center text-black py-10">
-        <img src={profileData.profileimg} alt="" className="w-[5rem]" />
-        <h3 className="text-xl font-bold">{profileData.name}</h3>
-        <p className="text-xs">{profileData.email}</p>
-        {help ? (
-          <p className="font-bold">How can we help you?</p>
+        {page === "faqs" ? (
+          <>
+            <h3 className="font-bold">FAQs</h3>
+            <p className="font-bold">Top questions can we help you today?</p>
+            <div className="flex gap-3 mt-10">
+              {["Payment", "Coupons", "Bookings"].map((label) => (
+                <button
+                  key={label}
+                  className={`border text-xs px-4 py-1 rounded-full ${
+                    label === "All"
+                      ? "bg-primaryColor text-white border-primaryColor"
+                      : "text-primaryColor border-primaryColor"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </>
+        ) : page === "settings" ? (
+          <>
+            <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+            <h3 className="text-xl font-bold">{profileData.name}</h3>
+            <p className="text-xs">{profileData.email}</p>
+          </>
         ) : (
-          <button
-            className="absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
-            onClick={() => setHelp(true)}
-          >
-            <img src={helpchat} alt="" />
-            Help
-          </button>
+          <>
+            <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+            <h3 className="text-xl font-bold">{profileData.name}</h3>
+            <p className="text-xs">{profileData.email}</p>
+            {page === "help" ? (
+              <p className="font-bold">How can we help you?</p>
+            ) : (
+              <button
+                className="absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
+                onClick={handleHelpClick}
+              >
+                <img src={helpchat} alt="Help chat" />
+                Help
+              </button>
+            )}
+          </>
         )}
       </div>
       <hr className="border-primaryColor" />
-      {help ? (
+      {page === "help" ? (
         <HelpComponent />
+      ) : page === "faqs" ? (
+        <FaqsComponent />
+      ) : page === "settings" ? (
+        <SettingsComponent />
+      ) : page === "payment" ? (
+        <PaymentComponent />
       ) : (
         profileDetails.map((profileDetail) => (
           <ProfileDetailsItem
@@ -103,13 +156,28 @@ const ProfileComponent = () => {
             details={profileDetail.details}
             icon={profileDetail.icon}
             logout={logout}
+            onClick={
+              profileDetail.name === "About"
+                ? handleAboutClick
+                : profileDetail.name === "Help"
+                ? handleHelpClick
+                : profileDetail.name === "Settings"
+                ? handleSettingsClick
+                : profileDetail.name === "Payment"
+                ? handlePaymentClick
+                : null
+            }
           />
         ))
       )}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
-            <img src={forgotPassword} alt="" className="mx-auto mb-4" />
+            <img
+              src={forgotPassword}
+              alt="Forgot password"
+              className="mx-auto mb-4"
+            />
             <h3 className="font-bold text-black">
               Are you sure you want to log-out?
             </h3>

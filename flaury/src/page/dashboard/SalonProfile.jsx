@@ -155,7 +155,7 @@ const SalonProfile = () => {
         </div>
         <hr />
         <div className="flex justify-between items-center mt-8">
-          <div className="">
+          <div>
             <div className="flex gap-4 items-center">
               <img
                 src={salonData.image}
