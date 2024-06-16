@@ -11,7 +11,8 @@ const Flaurybusiness = () => {
           </span>
         </h3>
         <p className="text-sm mb-4">
-          An <b>opportunities</b> for professionals to make <b>money</b>
+          An <b>opportunities</b> for beauty service providers to increase their
+          revenue
         </p>
         <p className="text-sm mb-4">
           Get <b>hired</b> and earn extra <b>money</b>
@@ -20,7 +21,7 @@ const Flaurybusiness = () => {
           <li className="mb-2">Register an account as a service provider</li>
           <li className="mb-2">Set up your profile and you'll get listed</li>
           <li className="mb-2">Accept customer service requests</li>
-          <li className="mb-2">Get paid up on completion</li>
+          <li className="mb-2">Get paid upon service completion</li>
         </ul>
         <button className="text-xs bg-white text-primaryColor px-4 py-2 rounded-lg">
           Start <b>FLAURY</b> Business

@@ -67,14 +67,14 @@ const Services = () => {
         <h3 className="text-primaryColor text-4xl font-bold py-4">
           Popular Services
         </h3>
-        <div className="w-full overflow-hidden" ref={containerRef}>
+        <div className="w-[95%] mx-auto overflow-hidden" ref={containerRef}>
           <div
             className="w-[150%] md:w-full grid grid-cols-4 md:flex justify-between"
             style={{ scrollSnapType: "x mandatory" }}
           >
             {servicesData.map((service) => (
               <div key={service.id} className="w-full">
-                <img src={service.image} alt="" className="w-[95%]" />
+                <img src={service.image} alt="" />
                 <h4 className="text-primaryColor text-xl font-bold py-2">
                   {service.title}
                 </h4>
@@ -87,13 +87,13 @@ const Services = () => {
         </div>
         <button
           onClick={scrollLeft}
-          className="absolute -left-6 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pl-3 pr-4 py-2 border border-[#FF7701]"
+          className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pl-3 pr-4 py-2 border border-[#FF7701]"
         >
           <img src={arrowLeft} alt="" />
         </button>
         <button
           onClick={scrollRight}
-          className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pr-3 pl-4 py-2 border border-[#FF7701]"
+          className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pr-3 pl-4 py-2 border border-[#FF7701]"
         >
           <img src={arrowRight} alt="" />
         </button>

@@ -66,13 +66,13 @@ const Testimonials = () => {
         ))}
         <button
           onClick={scrollLeft}
-          className="absolute -left-6 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full px-4 py-[0.8rem] border border-primaryColor"
+          className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full px-4 py-[0.8rem] border border-primaryColor"
         >
           <img src={arrowLeft} alt="" />
         </button>
         <button
           onClick={scrollRight}
-          className="absolute -right-6 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full px-4 py-[0.8rem] border border-primaryColor"
+          className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full px-4 py-[0.8rem] border border-primaryColor"
         >
           <img src={arrowRight} alt="" />
         </button>

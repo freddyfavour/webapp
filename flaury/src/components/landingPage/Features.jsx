@@ -9,23 +9,19 @@ const Features = () => {
   const featuresData = [
     {
       icon: handshakefill,
-      text: "You get a variety of top-notch professionals at your advantage",
+      text: "You get access to a wide range of professional service providers.",
     },
     {
       icon: money,
-      text: "You get services at your comfort without breaking the bank",
+      text: "Access affordable services at your comfort within your budget.",
     },
     {
       icon: globe,
-      text: "You get geo-diversified professionals from anywhere in the world",
+      text: "Get linked to services providers around you or preferred location",
     },
     {
       icon: customersupport,
-      text: "You get a reliable customer support service 24/7 without fail",
-    },
-    {
-      icon: handshakeoutline,
-      text: "You get quality escrow services to ensure you pay when you're satisfied with the services rendered",
+      text: "You get access to 24/7 customer support service to answer your questions.",
     },
   ];
 

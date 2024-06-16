@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ProfileDetailsItem from "./ProfileDetailsItem";
 import HelpComponent from "./HelpComponent";
 import helpchat from "/helpchat.svg";
@@ -94,6 +95,13 @@ const ProfileComponent = () => {
 
   return (
     <div className="mb-10">
+      <Link
+        onClick={() => setPage("")}
+        className="flex gap-2 text-primaryColor font-bold text-left mt-10"
+      >
+        <img src="/backarrow.svg" alt="" onClick={logout} />
+        Back
+      </Link>
       <div className="relative w-full flex flex-col items-center text-center text-black py-10">
         {page === "faqs" ? (
           <>
@@ -129,7 +137,7 @@ const ProfileComponent = () => {
               <p className="font-bold">How can we help you?</p>
             ) : (
               <button
-                className="absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
+                className="mt-4 md:mt-0 md:absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
                 onClick={handleHelpClick}
               >
                 <img src={helpchat} alt="Help chat" />
@@ -172,7 +180,7 @@ const ProfileComponent = () => {
       )}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="bg-white w-4/5 md:w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
             <img
               src={forgotPassword}
               alt="Forgot password"
