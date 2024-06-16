@@ -31,7 +31,7 @@ const PaymentComponent = () => {
       </div>
       {showDeletePopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="bg-white w-4/5 md:w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
             <h3 className="font-bold mb-4 text-black">
               Delete Payment Method?
             </h3>
@@ -56,7 +56,7 @@ const PaymentComponent = () => {
       )}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="bg-white w-4/5 md:w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
             <h3 className="font-semibold mb-4 text-black">
               Add Payment Option
             </h3>

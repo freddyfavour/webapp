@@ -20,7 +20,7 @@ const Whyflaury = () => {
   ];
 
   return (
-    <section className="mt-20 px-4 md:px-20 py-10 text-center bg-[#F8F4D973]">
+    <section className="px-4 md:px-20 py-10 text-center bg-[#F8F4D973]">
       <h3 className="text-primaryColor text-5xl font-bold py-4">Why Flaury?</h3>
       <div className="mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">
         {whyflauryData.map((whyflaury, index) => (

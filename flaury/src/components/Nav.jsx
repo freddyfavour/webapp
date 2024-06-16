@@ -60,14 +60,14 @@ const Nav = () => {
       {authNav ? (
         <div className="fixed top-0 w-full bg-[#fff] flex justify-center items-center z-10 border border-b">
           <Link to="/">
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" className="h-10 md:h-14" />
           </Link>
         </div>
       ) : (
         <>
           <div className="fixed top-0 w-full bg-[#fff] px-4 md:px-20 py-2 flex justify-between items-center z-10 border border-b">
             <Link to="/">
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" className="h-10 md:h-14" />
             </Link>
             <nav className="hidden md:block">
               <ul className="flex gap-4 items-center">
@@ -136,7 +136,7 @@ const Nav = () => {
             </div>
           </div>
           {showNav && (
-            <nav className="mt-20 md:mt-0 block md:hidden">
+            <nav className="mt-14 md:mt-0 block md:hidden">
               <hr />
               <ul className="px-4 py-4">
                 <li className="text-normal pb-4">

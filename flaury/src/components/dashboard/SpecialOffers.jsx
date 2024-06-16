@@ -81,8 +81,8 @@ const SpecialOffers = () => {
               <img src={offer.image} alt="" className="w-full" />
               <div className="flex justify-between mt-2">
                 <h4 className="font-semibold">{offer.name}</h4>
-                <div className="bg-[#1b771b] flex gap-2 text-xs text-[#fff] rounded-lg px-3 py-1">
-                  <img src={verified} alt="" /> Verified
+                <div className="bg-[#1b771b] h-6 flex gap-2 text-xs text-[#fff] rounded-lg px-3 py-1">
+                  <img src={verified} alt="" className="w-4 h-4" /> Verified
                 </div>
               </div>
               <span>{offer.salon}</span>
