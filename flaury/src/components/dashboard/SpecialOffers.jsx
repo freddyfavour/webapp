@@ -72,7 +72,7 @@ const specialOffers = [
 
 const SpecialOffers = () => {
   return (
-    <div className="my-6 ">
+    <div className="my-10">
       <h3 className="font-bold text-lg py-2">Special Offers</h3>
       <div className="w-[100%] md:w-full overflow-x-scroll md:overflow-x-hidden">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">
@@ -81,8 +81,8 @@ const SpecialOffers = () => {
               <img src={offer.image} alt="" className="w-full" />
               <div className="flex justify-between mt-2">
                 <h4 className="font-semibold">{offer.name}</h4>
-                <div className="bg-[#1b771b] flex gap-2 text-xs text-[#fff] rounded-lg px-3 py-1">
-                  <img src={verified} alt="" /> Verified
+                <div className="bg-[#1b771b] h-6 flex gap-2 text-xs text-[#fff] rounded-lg px-3 py-1">
+                  <img src={verified} alt="" className="w-4 h-4" /> Verified
                 </div>
               </div>
               <span>{offer.salon}</span>

@@ -28,24 +28,17 @@ const Dashboard = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          // Here, you can use latitude and longitude to do something, e.g., send it to your server
-          console.log("Latitude:", latitude);
-          console.log("Longitude:", longitude);
-          setLocationObtained(true); // Set location obtained to true
-          setShowPopup(false); // Close the popup after using current location
+          sessionStorage.setItem("location", `${latitude} ${longitude}`);
+
+          setLocationObtained(true);
+          setShowPopup(false);
         },
         (error) => {
-          // Handle errors
           console.error("Error getting current location:", error);
-          // You may want to show an error message to the user
-          // and give them the option to try again or set their location manually
         }
       );
     } else {
-      // Geolocation is not supported by the browser
       console.error("Geolocation is not supported by this browser.");
-      // You may want to show an error message to the user
-      // and give them the option to set their location manually
     }
   };
 
@@ -55,7 +48,7 @@ const Dashboard = () => {
 
   // Check if location is already obtained, if so, hide the popup
   useEffect(() => {
-    if (locationObtained) {
+    if (sessionStorage.getItem("location")) {
       setShowPopup(false);
     }
   }, [locationObtained]);
@@ -66,7 +59,7 @@ const Dashboard = () => {
       <Overview />
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="bg-white w-4/5 md:w-[35%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center">
             <img src={earth} alt="" className="mx-auto mb-4" />
             <h3 className="font-semibold mb-4 text-black">Where are you?</h3>
             <p className="mb-4 text-xs text-black">

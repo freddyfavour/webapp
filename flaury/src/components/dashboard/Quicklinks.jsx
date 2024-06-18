@@ -57,7 +57,9 @@ const Quicklinks = () => {
             <img
               src={service.icon}
               alt=""
-              className="bg-[#FF77014D] w-18 h-18 p-4 rounded-full"
+              className={`bg-[#FF77014D] w-18 h-18 rounded-full ${
+                service.name === "Haircut" ? "p-[0.65rem]" : "p-4"
+              }`}
             />
             <p className="text-xs">{service.name}</p>
           </div>
@@ -164,7 +166,9 @@ const Quicklinks = () => {
               <img
                 src={service.icon}
                 alt=""
-                className="bg-[#FF77014D] w-18 h-18 p-4 rounded-full"
+                className={`bg-[#FF77014D] w-18 h-18 rounded-full ${
+                  service.name === "Haircut" ? "p-[0.65rem]" : "p-4"
+                }`}
               />
               <p className="text-xs text-black">{service.name}</p>
             </div>

@@ -17,7 +17,7 @@ const Hero = () => {
           <input
             type="email"
             placeholder="Your email..."
-            className="w-1/2 border px-4 py-3"
+            className="w-1/2 border px-4 py-3 rounded-lg"
           />
           <button className="transition bg-primaryColor text-white border text-xs px-8 py-4 rounded-lg font-semibold">
             Subscribe

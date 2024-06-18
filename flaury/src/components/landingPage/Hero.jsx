@@ -1,12 +1,11 @@
 import vector from "/Vector.svg";
-import image4 from "/image 4.png";
-import intersect from "/Intersect.png";
+import heroImg1 from "/hero-img1.png";
 import search from "/search.svg";
 
 const Hero = () => {
   return (
     <div className="h-full w-full flex justify-between items-center hero-bg px-4 py-4 md:px-28 lg:px-32 md:pt-32">
-      <div className="w-4/5 md:w-1/2 mt-20 md:mt-0">
+      <div className="w-full md:w-1/2 mt-20 md:mt-0">
         <h3 className="text-sm md:text-lg text-white p-2">
           "GREAT LOOK IS NOT BY <br />
           <span className="text-4xl md:text-6xl font-bold">ACCIDENT</span>{" "}
@@ -34,7 +33,7 @@ const Hero = () => {
 
         <div className="flex gap-4 items-center mt-6">
           <h3 className="text-white text-sm">Popular:</h3>
-          <ul className="flex gap-4">
+          <ul className="w-[20rem] overflow-x-auto flex gap-4">
             <button className="border text-xs px-2 py-1 rounded-lg text-white">
               Skin Retouch
             </button>
@@ -73,17 +72,10 @@ const Hero = () => {
             className="w-[10rem] h-[10rem] absolute bottom-0 right-0"
           />
           <div className="absolute rounded-full w-[20rem] h-[20rem] bg-white">
-            {/* Protruding image */}
             <img
-              src={image4}
+              src={heroImg1}
               alt=""
-              className="absolute -top-16 -left-[0.35rem] rotate-[0.5deg] transform z-9"
-            />
-            {/* Image within ellipse */}
-            <img
-              src={intersect}
-              alt=""
-              className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+              className="absolute -top-10 -left-[0.35rem] rotate-[0.5deg] transform z-1"
             />
           </div>
         </div>
