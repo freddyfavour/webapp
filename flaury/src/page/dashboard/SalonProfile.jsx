@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import SideNav from "../../components/dashboard/SideNav";
-import { Simulate } from "react-dom/test-utils";
 import About from "../../components/salonProfile/About";
 import Reviews from "../../components/salonProfile/Reviews";
 import Team from "../../components/salonProfile/Team";
