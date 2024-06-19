@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Service = ({ salonData }) => {
   return (
@@ -12,9 +12,11 @@ const Service = ({ salonData }) => {
               </p>
               <p className="text-xs text-gray-500">${bookable.price}</p>
             </div>
-            <button className="bg-gray-100 text-xs px-6 py-2 rounded-full">
-              Book
-            </button>
+            <Link to="/bookings">
+              <button className="bg-gray-100 text-xs px-6 py-2 rounded-full">
+                Book
+              </button>
+            </Link>
           </div>
         </div>
       ))}

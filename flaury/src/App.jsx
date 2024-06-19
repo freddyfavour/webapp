@@ -20,6 +20,7 @@ import SalonProfile from "./page/dashboard/SalonProfile";
 import About from "./page/About";
 import Blog from "./page/Blog";
 import ChooseRole from "./page/auth/ChooseRole";
+import BookingsFlow from "./page/dashboard/BookingsFlow";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -69,6 +70,7 @@ const App = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/search" element={<Search />} />
         <Route path="/salon/:id" element={<SalonProfile />} />
+        <Route path="/bookings-flow" element={<BookingsFlow />} />
       </Routes>
     </>
   );

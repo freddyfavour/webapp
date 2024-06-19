@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookingHeader = () => {
+const BookingHeader = ({confirmOrders}) => {
   return (
     <div className="flex w-full gap-4">
       <img src="/timelesssaloncoverimg.png" alt="" className="w-1/2" />
@@ -31,7 +31,7 @@ const BookingHeader = () => {
             5:30pm
           </p>
         </div>
-        <button className="bg-primaryColor text-white w-full rounded-md py-2 mt-4">
+        <button className="bg-primaryColor text-white w-full rounded-md py-2 mt-4" onClick={confirmOrders}>
           Book Now
         </button>
       </div>

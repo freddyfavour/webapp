@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "/logo.png";
+import logo from "/logo.svg";
 import { useState, useEffect } from "react";
 import menu from "/hamburger-menu.svg";
 
