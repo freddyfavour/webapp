@@ -16,8 +16,8 @@ const WhenComponent = ({ onDateChange }) => {
   };
 
   return (
-    <div className="flex justify-between p-4">
-      <div className="flex-1 mr-4">
+    <div className="block md:flex justify-between md:p-4">
+      <div className="flex-1 md:mr-4">
         <h3 className="mb-4 text-lg font-semibold">Select Date</h3>
         <div className="w-full bg-[#8B3E0090] border rounded-md p-2">
           <Calendar
@@ -35,7 +35,7 @@ const WhenComponent = ({ onDateChange }) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 ml-4">
+      <div className="flex-1 mt-4 md:mt-0 md:ml-4">
         <h3 className="mb-4 text-lg font-semibold">Choose Time</h3>
         <form>
           <div className="grid grid-cols-2 gap-3">

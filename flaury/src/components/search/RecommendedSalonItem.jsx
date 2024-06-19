@@ -15,9 +15,9 @@ const RecommendedSalonItem = ({
 }) => {
   return (
     <div className="text-black sm:flex items-center gap-8 mb-8 w-full">
-      <img src={image} alt={name} className="w-1/2" />
-      <div className="w-1/2">
-        <div className="flex justify-between">
+      <img src={image} alt={name} className="w-full md:w-1/2" />
+      <div className="w-full md:w-1/2">
+        <div className="py-2 flex justify-between">
           <div>
             <h3 className="font-bold text-xl">{name}</h3>
             <p className="text-xs flex">

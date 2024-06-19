@@ -11,8 +11,8 @@ const Flaurybusiness = () => {
           </span>
         </h3>
         <p className="text-sm mb-4">
-          An <b>opportunities</b> for beauty service providers to increase their
-          revenue
+          An <b>opportunities</b> for beauty <b>service providers</b> to{" "}
+          <b>increase their revenue</b>
         </p>
         <p className="text-sm mb-4">
           Get <b>hired</b> and earn extra <b>money</b>

@@ -130,13 +130,13 @@ const Quicklinks = () => {
         </nav>
       )}
       <div>
-        <div className="flex justify-between my-10">
-          <div className="flex gap-6">
+        <div className="flex items-center justify-between my-4">
+          <div className="flex items-center gap-6">
             <div
               className="block md:hidden cursor-pointer z-10"
               onClick={() => setShowNav(!showNav)}
             >
-              <img src={menu} alt="" />
+              <img src={menu} alt="" className="w-6 h-6" />
             </div>
             <div>
               <h3 className="font-bold text-lg">Hello Becca 😊</h3>
@@ -152,13 +152,15 @@ const Quicklinks = () => {
             </Link>
           </div>
         </div>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search"
-          className="w-full border border-primaryColor rounded-lg text-xs px-4 py-2"
-        />
+        <Link to="/search">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search"
+            className="w-full border border-primaryColor rounded-lg text-xs px-4 py-2"
+          />
+        </Link>
         <h3 className="font-bold text-lg pt-10 text-black">Categories</h3>
         <div className="w-full justify-between flex">
           {services.map((service) => (

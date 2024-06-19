@@ -65,7 +65,7 @@ const Favorites = () => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
-      <div className="mt-10 md:mt-20 w-full pr-10 px-4 md:px-0">
+      <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
         <Link to="/dashboard" className="flex gap-2">
           <img src={backarrow} alt="" />
           <h3 className="text-2xl font-bold">My Favorites</h3>
