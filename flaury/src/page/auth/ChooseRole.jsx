@@ -22,17 +22,17 @@ const ChooseRole = () => {
       </h3>
       <p className="text-xs">Enjoy simplified bookings for your convenience.</p>
       <h4 className="mt-4 text-primaryColor text-3xl font-bold">Are you?</h4>
-      <div className="my-10 w-2/3 mx-auto flex justify-between md:items-center">
+      <div className="my-10 w-1/3 md:w-2/3 mx-auto block md:flex justify-between md:items-center">
         <img
           src="/roleb.png"
           alt="Business Role"
-          className="cursor-pointer"
+          className="cursor-pointer w-full"
           onClick={businessRole}
         />
         <img
           src="/rolec.png"
           alt="Customer Role"
-          className="cursor-pointer"
+          className="cursor-pointer w-full mt-6 md:mt-0"
           onClick={customerRole}
         />
       </div>

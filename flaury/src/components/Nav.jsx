@@ -160,7 +160,7 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/signup" onClick={() => setShowNav(false)}>
+                  <Link to="/choose-role" onClick={() => setShowNav(false)}>
                     <button className="transition bg-primaryColor text-white border text-sm px-4 py-2 rounded-lg my-4">
                       Sign Up
                     </button>
