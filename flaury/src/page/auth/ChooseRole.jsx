@@ -26,13 +26,13 @@ const ChooseRole = () => {
         <img
           src="/roleb.png"
           alt="Business Role"
-          className="cursor-pointer w-full"
+          className="cursor-pointer w-full md:w-1/3"
           onClick={businessRole}
         />
         <img
           src="/rolec.png"
           alt="Customer Role"
-          className="cursor-pointer w-full mt-6 md:mt-0"
+          className="cursor-pointer w-full md:w-1/3 mt-6 md:mt-0"
           onClick={customerRole}
         />
       </div>

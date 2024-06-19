@@ -55,7 +55,7 @@ const Search = () => {
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {!isSmallViewport && <SideNav />}
       <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
-        <Link to="/dashboard">
+        <Link to="/dashboard" className="md:hidden block">
           <img src="/backarrow.svg" alt="" className="pb-4" />
         </Link>
         <div className="w-full flex gap-4 mb-4">
