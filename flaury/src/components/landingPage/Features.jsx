@@ -3,7 +3,6 @@ import handshakefill from "/handshake-fill.svg";
 import money from "/money.svg";
 import globe from "/globe.svg";
 import customersupport from "/customersupport.svg";
-import handshakeoutline from "/handshake-outline.svg";
 
 const Features = () => {
   const featuresData = [
@@ -30,7 +29,10 @@ const Features = () => {
       <h3 className="text-primaryColor text-2xl font-bold py-4">At FLAURY,</h3>
       <div className="mx-auto grid grid-cols-2 md:grid-cols-3 justify-center">
         {featuresData.map((feature, index) => (
-          <div key={index} className="flex flex-col items-center mx-4 my-4">
+          <div
+            key={index}
+            className="flex flex-col justify-center items-center mx-4 my-4"
+          >
             <img src={feature.icon} alt="" />
             <p className="text-primaryColor text-sm">{feature.text}</p>
           </div>

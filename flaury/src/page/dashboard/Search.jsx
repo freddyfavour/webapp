@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import SideNav from "../../components/dashboard/SideNav";
 import NearbySalon from "../../components/dashboard/NearbySalon";
-import filter from "/filter.svg";
-import arrowup from "/arrowup.svg";
+import { Link } from "react-router-dom";
 import Recommended from "../../components/search/Recommended";
 import WhereComponent from "../../components/search/WhereComponent";
 import WhenComponent from "../../components/search/WhenComponent";
@@ -55,7 +54,10 @@ const Search = () => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {!isSmallViewport && <SideNav />}
-      <div className="mt-10 md:mt-20 w-full pr-10 px-4 md:px-0">
+      <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
+        <Link to="/dashboard">
+          <img src="/backarrow.svg" alt="" className="pb-4" />
+        </Link>
         <div className="w-full flex gap-4 mb-4">
           <input
             type="text"

@@ -7,14 +7,12 @@ const testimonialsData = [
   {
     id: 1,
     image: "/customer1.png",
-    text: "FLAURY offers superb professionals to offer their services... My ability to source for freelancers even from other locations made my search very easy...",
-    author: "Mary Jones",
+    text: "Scheduling my appointments has never been easier. The app is user-friendly, and I love that I can read reviews before booking. My favorite part is the convenience of booking last-minute appointments without any hassle",
   },
   {
     id: 2,
     image: "/customer2.png",
-    text: "FLAURY offers superb professionals to offer their services... My ability to source for freelancers even from other locations made my search very easy...",
-    author: "John Doe",
+    text: "FLAURY has simplified my booking process and allowed me to focus more on my clients. The automated reminders have reduced the number of missed appointments, and I love how easy it is to manage my schedule. It's been a great tool for growing my business and providing better service to my clients.",
   },
 ];
 
@@ -60,7 +58,6 @@ const Testimonials = () => {
             <img src={testimonial.image} alt="" className="w-full" />
             <div className="px-2 py-2 lg:py-0 lg:px-10 text-xs lg:text-normal">
               <p>{testimonial.text}</p>
-              <span>__{testimonial.author}</span>
             </div>
           </div>
         ))}

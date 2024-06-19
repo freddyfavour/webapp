@@ -7,6 +7,7 @@ import Hero from "../components/landingPage/Hero";
 import Services from "../components/landingPage/Services";
 import Testimonials from "../components/landingPage/Testimonials";
 import Whatyouget from "../components/landingPage/Whatyouget";
+import NearbySalon from "../components/landingPage/NearbySalon";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <NearbySalon />
       <Services />
       <Features />
       <Whatyouget />

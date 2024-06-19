@@ -6,7 +6,7 @@ import Quicklinks from "./Quicklinks";
 
 const Overview = () => {
   return (
-    <div className="lg:mt-20 w-full md:px-8 lg:px-0 px-4">
+    <div className="mt-0 lg:mt-20 w-full md:px-8 lg:px-0 px-4">
       <Quicklinks />
       <NearbySalon />
       <SpecialOffers />
