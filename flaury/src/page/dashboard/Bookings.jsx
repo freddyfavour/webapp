@@ -164,8 +164,14 @@ const Bookings = () => {
         </div>
         <h3 className="text-center font-bold">Other Services</h3>
         <hr className="my-6 border border-primaryColor" />
-        <div className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between pr-4">
-          <div className="flex gap-6">
+        <div className="bg-white w-full rounded-md shadow-xl mb-4 pr-4 relative">
+          <label className="flex gap-6">
+            <input
+              type="radio"
+              name="service"
+              value="eyebrow-shaping-1"
+              className="absolute top-4 right-4 w-4 h-4"
+            />
             <img src="/timelesssalon.png" alt="" />
             <div>
               <p>
@@ -175,10 +181,17 @@ const Bookings = () => {
                 Price: <span className="text-xs">$11.99</span>
               </p>
             </div>
-          </div>
+          </label>
         </div>
-        <div className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between pr-4">
-          <div className="flex gap-6">
+
+        <div className="bg-white w-full rounded-md shadow-xl mb-4 pr-4 relative">
+          <label className="flex gap-6">
+            <input
+              type="radio"
+              name="service"
+              value="eyebrow-shaping-2"
+              className="absolute top-4 right-4 w-4 h-4"
+            />
             <img src="/timelesssalon.png" alt="" />
             <div>
               <p>
@@ -188,10 +201,17 @@ const Bookings = () => {
                 Price: <span className="text-xs">$11.99</span>
               </p>
             </div>
-          </div>
+          </label>
         </div>
-        <div className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between pr-4">
-          <div className="flex gap-6">
+
+        <div className="bg-white w-full rounded-md shadow-xl mb-4 pr-4 relative">
+          <label className="flex gap-6">
+            <input
+              type="radio"
+              name="service"
+              value="eyebrow-shaping-3"
+              className="absolute top-4 right-4 w-4 h-4"
+            />
             <img src="/timelesssalon.png" alt="" />
             <div>
               <p>
@@ -201,17 +221,17 @@ const Bookings = () => {
                 Price: <span className="text-xs">$11.99</span>
               </p>
             </div>
-          </div>
+          </label>
         </div>
       </div>
       {confirmOrderPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-4/5 md:w-[55%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center relative">
             <p
-              className="absolute top-0 left-0"
+              className="absolute top-6 left-6 cursor-pointer"
               onClick={() => setConfirmOrderPopup(false)}
             >
-              Close
+              <img src="/close.svg" />
             </p>
             <h3 className="font-bold text-2xl py-3">Confirm Order</h3>
             {orderData.map((data, index) => (
