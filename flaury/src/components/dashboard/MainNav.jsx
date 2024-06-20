@@ -50,7 +50,12 @@ const MainNav = () => {
                 className="w-[25rem] mx-auto px-4 py-2 text-sm text-primaryColor placeholder-primaryColor"
               />
             </Link>
-            <img src="/filter.svg" alt="" onClick={() => setShowPopup(true)} />
+            <img
+              src="/filter.svg"
+              alt=""
+              onClick={() => setShowPopup(true)}
+              className="cursor-pointer"
+            />
           </li>
           <li className="flex gap-8">
             <Link to="#">
@@ -68,12 +73,12 @@ const MainNav = () => {
       </nav>
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-[90%] md:w-[35%] border py-8 px-4 md:px-20 rounded-lg shadow-lg text-center relative">
+          <div className="bg-white w-[90%] md:w-[50%] border py-8 px-4 md:px-10 rounded-lg shadow-lg text-center relative">
             <p
               className="cursor-pointer absolute top-4 left-4"
               onClick={() => setShowPopup(false)}
             >
-              Close
+              <img src="/close.svg" />
             </p>
             <h3 className="font-semibold mb-4 text-black">Filter</h3>
             <select className="border border-1 border-primaryColor w-full rounded-full text-xs px-4 py-2">
