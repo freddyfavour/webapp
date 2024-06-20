@@ -56,31 +56,53 @@ const Footer = () => {
         <hr className="md:hidden border-primaryColor my-6" />
       </div>
       <div className="w-4/5 md:w-full mx-auto md:mx-0 flex gap-4 justify-between md:justify-end my-4">
-        <img
-          src={Linkedin}
-          alt="linkedin"
-          className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
-        />
-        <img
-          src={Facebook}
-          alt="facebook"
-          className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
-        />
-        <img
-          src={Twitter}
-          alt="twiiter"
-          className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
-        />
-        <img
-          src={Instagram}
-          alt="instagram"
-          className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
-        />
-        <img
-          src={Tiktok}
-          alt="tiktok"
-          className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
-        />
+        <Link to="https://www.linkedin.com/in/flauryapp" target="_blank">
+          <img
+            src={Linkedin}
+            alt="linkedin"
+            className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
+          />
+        </Link>
+        <Link
+          to="https://www.facebook.com/profile.php?id=61561356925774"
+          target="_blank"
+        >
+          <img
+            src={Facebook}
+            alt="facebook"
+            className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
+          />
+        </Link>
+        <Link
+          to="https://www.x.com/flauryapp?t=nDxCPtZig-BKngT_1PG_pw&s-09"
+          target="_blank"
+        >
+          <img
+            src={Twitter}
+            alt="twiiter"
+            className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
+          />
+        </Link>
+        <Link
+          to="https://www.instagram.com/flauryapp?igsh=YzljYTk1ODg3Zg=="
+          target="_blank"
+        >
+          <img
+            src={Instagram}
+            alt="instagram"
+            className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
+          />
+        </Link>
+        <Link
+          to="https://www.tiktok.com/@theflauryapp?_t=8nMZRykwygq&_r=1"
+          target="_blank"
+        >
+          <img
+            src={Tiktok}
+            alt="tiktok"
+            className="w-[1.5rem] h-[1.5rem] md:w-[1rem] md:h-[1rem]"
+          />
+        </Link>
       </div>
       <p className="text-sm text-center md:text-left">
         All rights reserved. @Flaury 2024

@@ -33,7 +33,7 @@ const SideNav = () => {
             </Link>
           </li>
           <li className="pb-6 flex gap-2">
-            <Link to="#" className="flex gap-2">
+            <Link to="/chat" className="flex gap-2">
               <img src={chat} alt="" />
               Chat
             </Link>
