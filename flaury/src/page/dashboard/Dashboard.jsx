@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Overview from "../../components/dashboard/Overview";
+import BOverview from "../../components/dashboard/BOverview";
 import SideNav from "../../components/dashboard/SideNav";
 import earth from "/earth.svg";
 
@@ -20,11 +21,12 @@ const Dashboard = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty dependency array ensures that this effect runs only once after initial render
+  }, []);
+  const data = localStorage.getItem("userData");
+  const roleData = JSON.parse(data);
 
   const handleUseCurrentLocation = () => {
     if (navigator.geolocation) {
-      // If geolocation is supported
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -56,7 +58,7 @@ const Dashboard = () => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
-      <Overview />
+      {roleData.role === "business" ? <BOverview /> : <Overview />}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-4/5 md:w-[35%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center">
