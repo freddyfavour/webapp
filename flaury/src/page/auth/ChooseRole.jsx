@@ -7,7 +7,7 @@ const ChooseRole = () => {
 
   const businessRole = () => {
     setRole("business");
-    navigate("/signup");
+    navigate("/business-signup");
   };
 
   const customerRole = () => {

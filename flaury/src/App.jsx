@@ -21,6 +21,7 @@ import About from "./page/About";
 import Blog from "./page/Blog";
 import ChooseRole from "./page/auth/ChooseRole";
 import BookingsFlow from "./page/dashboard/BookingsFlow";
+import BSignup from "./page/auth/BSignup";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -58,6 +59,10 @@ const App = () => {
         <Route path="/choose-role" element={<ChooseRole />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp onLogin={handleLogin} />} />
+        <Route
+          path="/business-signup"
+          element={<BSignup onLogin={handleLogin} />}
+        />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/forgot2" element={<Forgot2 />} />
         <Route path="/forgot3" element={<Forgot3 />} />
