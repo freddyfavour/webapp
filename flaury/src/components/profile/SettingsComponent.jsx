@@ -8,7 +8,7 @@ const SettingsComponent = () => {
     <>
       {page === "edit-profile" ? (
         <div>
-          <form className="w-[400px] mx-auto text-black">
+          <form className="w-full md:w-[400px] mx-auto text-black">
             <div className="mt-8">
               <label htmlFor="name">Name</label>
               <input
@@ -43,7 +43,7 @@ const SettingsComponent = () => {
         </div>
       ) : page === "change-password" ? (
         <div>
-          <form className="w-[400px] mx-auto text-black">
+          <form className="w-full md:w-[400px] mx-auto text-black">
             <div className="mt-8">
               <label htmlFor="oldPassword">Old Password</label>
               <input
@@ -72,7 +72,7 @@ const SettingsComponent = () => {
         </div>
       ) : page === "change-phone-number" ? (
         <div>
-          <form className="w-[400px] mx-auto text-black">
+          <form className="w-full md:w-[400px] mx-auto text-black">
             <div className="mt-8">
               <label htmlFor="oldPhoneNumber">Old Phone Number</label>
               <input

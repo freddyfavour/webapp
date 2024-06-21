@@ -129,7 +129,7 @@ const Bookings = () => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
-      <div className="mt-10 md:mt-20 w-full pr-10 px-4 md:px-0">
+      <div className="mt-10 md:mt-20 w-full px-4 md:px-0">
         <BookingHeader confirmOrders={confirmOrders} />
         <hr className="my-6 border border-primaryColor" />
         <div className="text-sm">

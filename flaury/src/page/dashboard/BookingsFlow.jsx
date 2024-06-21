@@ -42,7 +42,7 @@ const BookingsFlow = ({ onDateChange }) => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
-      <div className="w-full pr-10 px-4 md:px-0">
+      <div className="w-full px-4 md:px-0">
         <div className="block mt-20 max-w-[800px] mx-auto justify-between md:p-4">
           {page === "payment" ? (
             <>
