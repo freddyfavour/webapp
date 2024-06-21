@@ -93,6 +93,9 @@ const ProfileComponent = () => {
     setPage("payment");
   };
 
+  const data = localStorage.getItem("userData");
+  const roleData = JSON.parse(data);
+
   return (
     <div className="mb-10">
       <Link
@@ -102,7 +105,7 @@ const ProfileComponent = () => {
         <img src="/backarrow.svg" alt="" onClick={logout} />
         Back
       </Link>
-      <div className="relative w-full flex flex-col items-center text-center text-black py-10">
+      <div className="relative w-full flex flex-col items-center text-center text-black py-4">
         {page === "faqs" ? (
           <>
             <h3 className="font-bold">FAQs</h3>
@@ -130,14 +133,24 @@ const ProfileComponent = () => {
           </>
         ) : (
           <>
-            <img src={profileData.profileimg} alt="" className="w-[5rem]" />
-            <h3 className="text-xl font-bold">{profileData.name}</h3>
-            <p className="text-xs">{profileData.email}</p>
+            {roleData.role === "business" ? (
+              <img
+                src="/timelessrecommended.png"
+                alt=""
+                className="w-full h-32"
+              />
+            ) : (
+              <>
+                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+                <h3 className="text-xl font-bold">{profileData.name}</h3>
+                <p className="text-xs">{profileData.email}</p>
+              </>
+            )}
             {page === "help" ? (
               <p className="font-bold">How can we help you?</p>
             ) : (
               <button
-                className="mt-4 md:mt-0 md:absolute flex items-center gap-2 bottom-10 right-0 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
+                className="mt-4 md:mt-0 md:absolute flex items-center gap-2 bottom-10 right-4 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
                 onClick={handleHelpClick}
               >
                 <img src={helpchat} alt="Help chat" />
