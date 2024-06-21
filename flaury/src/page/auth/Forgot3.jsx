@@ -53,7 +53,7 @@ const Forgot3 = () => {
   return (
     <div className="h-screen lg:h-full w-full flex justify-center items-center bg-primaryColor">
       <div className="gradient-overlay-signup h-[100%] md:h-[120%]"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 bg-[#fff] rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
+      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 bg-[#fff] rounded-xl flex items-center flex-col shadow-xl z-9 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">
           Create Password
         </h3>

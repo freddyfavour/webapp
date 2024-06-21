@@ -6,12 +6,13 @@ const Login = ({ isAuth, onLogin }) => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [disabled, setDisabled] = useState(true);
+  const [role, setRole] = useState("");
 
   const navigate = useNavigate();
 
   // Function to check if all fields are filled
   const handleFormValidation = () => {
-    if (email.trim() !== "" && password.trim() !== "") {
+    if (email.trim() !== "" && password.trim() !== "" && role !== "") {
       setDisabled(false);
     } else {
       setDisabled(true);
@@ -30,19 +31,28 @@ const Login = ({ isAuth, onLogin }) => {
         setPassword(value);
       }
     }
-    handleFormValidation(); // Check form validation on every input change
+    handleFormValidation();
+  };
+
+  // Function to handle role change
+  const handleRoleChange = (e) => {
+    setRole(e.target.value);
+    handleFormValidation();
+    localStorage.setItem("userData", JSON.stringify({ role: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/dashboard");
-    onLogin();
+    if (!disabled) {
+      onLogin();
+      navigate("/dashboard");
+    }
   };
 
   return (
     <div className="h-screen w-full flex justify-center md:items-center bg-primaryColor">
       <div className="gradient-overlay-login"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 mt-20 md:mt-0 bg-[#fff] md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
+      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 mt-20 md:mt-0 bg-[#fff] md:rounded-xl flex items-center flex-col shadow-xl z-9 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Login</h3>
         <p className="text-primaryColor text-sm pb-2">
           Log in to your finneseHUB account
@@ -68,6 +78,17 @@ const Login = ({ isAuth, onLogin }) => {
             onChange={handleInputChange}
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
           />
+
+          <label>Role</label>
+          <select
+            value={role}
+            onChange={handleRoleChange}
+            className="w-full block px-4 py-2 mt-2 mb-6"
+          >
+            <option value="">Select a role</option>
+            <option value="business">Business</option>
+            <option value="customer">Customer</option>
+          </select>
 
           <div className="w-full flex justify-between items-center">
             <div className="flex gap-4 items-center justify-center">
