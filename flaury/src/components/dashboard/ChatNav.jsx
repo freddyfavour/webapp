@@ -30,8 +30,8 @@ const messages = [
 
 const ChatNav = ({ onSelectMessage }) => {
   return (
-    <nav className="bg-primaryColor w-1/3 h-screen text-white flex flex-col items-center">
-      <div className="fixed">
+    <nav className="bg-primaryColor w-full md:w-1/3 h-screen text-white flex flex-col items-center">
+      <div className="w-full md:w-fit fixed">
         <Link to="/dashboard" className="flex bg-primaryColor gap-4 p-4">
           <img src="/backarrow.svg" alt="Back arrow" />
           <h3 className="font-bold text-3xl">FLAURY</h3>

@@ -1,10 +1,14 @@
 import React from "react";
 
-const BookingHeader = ({confirmOrders}) => {
+const BookingHeader = ({ confirmOrders }) => {
   return (
-    <div className="flex w-full gap-4">
-      <img src="/timelesssaloncoverimg.png" alt="" className="w-1/2" />
-      <div className="w-1/2">
+    <div className="block md:flex w-full gap-4">
+      <img
+        src="/timelesssaloncoverimg.png"
+        alt=""
+        className="w-full md:w-1/2"
+      />
+      <div className="w-full md:w-1/2">
         <h3 className="font-bold">Hair Treatment</h3>
         <div className="flex gap-4 mt-3">
           <p>Description:</p>
@@ -31,7 +35,10 @@ const BookingHeader = ({confirmOrders}) => {
             5:30pm
           </p>
         </div>
-        <button className="bg-primaryColor text-white w-full rounded-md py-2 mt-4" onClick={confirmOrders}>
+        <button
+          className="bg-primaryColor text-white w-full rounded-md py-2 mt-4"
+          onClick={confirmOrders}
+        >
           Book Now
         </button>
       </div>
