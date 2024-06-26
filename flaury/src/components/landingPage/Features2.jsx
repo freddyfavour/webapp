@@ -15,7 +15,7 @@ const Features2 = () => {
               booking process."
             </li>
             <li className="mb-4">
-              "Effortlessly schedule your next beauty traansformation with out
+              "Effortlessly schedule your next beauty transformation with our
               booking system."
             </li>
             <li className="mb-4">
