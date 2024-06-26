@@ -50,9 +50,9 @@ const Login = ({ isAuth, onLogin }) => {
   };
 
   return (
-    <div className="h-screen w-full flex justify-center md:items-center bg-primaryColor">
-      <div className="gradient-overlay-login"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 mt-20 md:mt-0 bg-[#fff] md:rounded-xl flex items-center flex-col shadow-xl z-9 lg:scale-75">
+    <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
+      <div className="gradient-overlay-signup absolute inset-0"></div>
+      <div className="w-full md:w-[70%] md:max-w-[768px] mt-20 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Login</h3>
         <p className="text-primaryColor text-sm pb-2">
           Log in to your finneseHUB account
