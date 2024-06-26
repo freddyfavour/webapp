@@ -1,4 +1,5 @@
 import flauryBusiness from "/Group 37.png";
+import { Link } from "react-router-dom";
 
 const Flaurybusiness = () => {
   return (
@@ -11,8 +12,8 @@ const Flaurybusiness = () => {
           </span>
         </h3>
         <p className="text-sm mb-4">
-          An <b>opportunities</b> for beauty <b>service providers</b> to{" "}
-          <b>increase their revenue</b>
+          An <b>opportunity</b> for beauty <b>service providers</b>{" "}
+          transformation <b>increase their revenue</b>
         </p>
         <p className="text-sm mb-4">
           Get <b>hired</b> and earn extra <b>money</b>
@@ -23,9 +24,11 @@ const Flaurybusiness = () => {
           <li className="mb-2">Accept customer service requests</li>
           <li className="mb-2">Get paid upon service completion</li>
         </ul>
-        <button className="text-xs bg-white text-primaryColor px-4 py-2 rounded-lg">
-          Start <b>FLAURY</b> Business
-        </button>
+        <Link to="/business-signup">
+          <button className="text-xs bg-white text-primaryColor px-4 py-2 rounded-lg">
+            Start <b>FLAURY</b> Business
+          </button>
+        </Link>
       </div>
       <div className="md:w-1/2">
         <img src={flauryBusiness} alt="" />
