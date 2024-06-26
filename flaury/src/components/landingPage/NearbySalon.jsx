@@ -70,6 +70,9 @@ const NearbySalon = () => {
                   {salon.location} <img src={dot} alt="" className="mx-2" />
                   {salon.distance}
                 </p>
+                <button className="transition bg-primaryColor text-white border text-xs mt-2 px-6 py-2 rounded-lg font-semibold">
+                  Book now
+                </button>
               </div>
             </Link>
           ))}
