@@ -25,7 +25,6 @@ const BeautyTips = () => {
             <img src={tip.image} alt="" className="w-full" />
             <div className="flex justify-between my-2">
               <h4 className="font-semibold">{tip.title}</h4>
-              <img src={arrow} alt="" />
             </div>
           </div>
         ))}

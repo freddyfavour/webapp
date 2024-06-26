@@ -71,6 +71,9 @@ const NearbySalon = () => {
                   {salon.distance}
                 </p>
               </div>
+              <button className="transition bg-primaryColor text-white border text-xs mt-2 px-6 py-2 rounded-lg font-semibold">
+                Book now
+              </button>
             </Link>
           ))}
         </div>
