@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileDetailsItem from "./ProfileDetailsItem";
 import HelpComponent from "./HelpComponent";
 import helpchat from "/helpchat.svg";
@@ -9,6 +9,8 @@ import SettingsComponent from "./SettingsComponent";
 import PaymentComponent from "./PaymentComponent";
 
 const ProfileComponent = () => {
+  const navigate = useNavigate();
+
   const [profileData, setProfileData] = useState({
     profileimg: "",
     name: "",
@@ -91,6 +93,11 @@ const ProfileComponent = () => {
 
   const handlePaymentClick = () => {
     setPage("payment");
+  };
+
+  const onLogout = () => {
+    navigate("/");
+    localStorage.removeItem("userData");
   };
 
   const data = localStorage.getItem("userData");
@@ -202,7 +209,10 @@ const ProfileComponent = () => {
             <h3 className="font-bold text-black">
               Are you sure you want to log-out?
             </h3>
-            <button className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4">
+            <button
+              className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
+              onClick={onLogout}
+            >
               Yes, log me out
             </button>
             <button

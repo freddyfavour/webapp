@@ -30,26 +30,6 @@ const servicesData = [
 ];
 
 const Services = () => {
-  const containerRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollTo({
-        left: containerRef.current.scrollLeft - 300,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollTo({
-        left: containerRef.current.scrollLeft + 300,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <section id="services" className="px-4 md:px-20">
       {/* <div className="w-4/5 md:w-1/3 mx-auto flex justify-between items-center py-4">
@@ -64,11 +44,8 @@ const Services = () => {
         </ul>
       </div> */}
       <div className="mt-10 relative">
-        <div className="w-[95%] mx-auto overflow-hidden" ref={containerRef}>
-          <div
-            className="w-[150%] md:w-full grid grid-cols-4 gap-4"
-            style={{ scrollSnapType: "x mandatory" }}
-          >
+        <div className="w-[100%] mx-auto overflow-scroll">
+          <div className="w-[150%] md:w-full grid grid-cols-4 gap-4">
             {servicesData.map((service) => (
               <div key={service.id} className="w-full">
                 <img
@@ -86,18 +63,6 @@ const Services = () => {
             ))}
           </div>
         </div>
-        <button
-          onClick={scrollLeft}
-          className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pl-3 pr-4 py-2 border border-[#FF7701]"
-        >
-          <img src={arrowLeft} alt="" />
-        </button>
-        <button
-          onClick={scrollRight}
-          className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-secondaryColor rounded-full pr-3 pl-4 py-2 border border-[#FF7701]"
-        >
-          <img src={arrowRight} alt="" />
-        </button>
       </div>
     </section>
   );

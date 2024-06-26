@@ -75,7 +75,7 @@ const SpecialOffers = () => {
     <div className="my-10">
       <h3 className="font-bold text-lg py-2">Special Offers</h3>
       <div className="w-[100%] md:w-full overflow-x-scroll md:overflow-x-hidden">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 ">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 py-6">
           {specialOffers.map((offer) => (
             <div key={offer.id}>
               <img src={offer.image} alt="" className="w-full" />
@@ -96,10 +96,15 @@ const SpecialOffers = () => {
                 {offer.location} <img src={dot} alt="" className="mx-2" />
                 {offer.distance}
               </p>
-              <span className="bg-[#ff780199] flex w-[9rem] mt-4 gap-2 text-xs rounded-lg px-3 py-1">
-                <img src={tag} alt="" />
-                SAVE UP TO 20%
-              </span>
+              <div className="flex justify-between items-center mt-2">
+                <span className="bg-[#ff780199] flex gap-2 text-xs rounded-lg px-4 py-1">
+                  <img src={tag} alt="" />
+                  SAVE UP TO 20%
+                </span>
+                <button className="transition bg-primaryColor text-white border text-xs px-6 py-2 rounded-lg font-semibold">
+                  Book now
+                </button>
+              </div>
             </div>
           ))}
         </div>
