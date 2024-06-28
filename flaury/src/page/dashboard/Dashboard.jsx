@@ -10,6 +10,8 @@ const Dashboard = () => {
   );
   const [showPopup, setShowPopup] = useState(true);
   const [locationObtained, setLocationObtained] = useState(false);
+  const savedUserData = localStorage.getItem("savedUser");
+  const roleData = savedUserData ? JSON.parse(savedUserData).role : null;
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,8 +24,6 @@ const Dashboard = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const data = localStorage.getItem("userData");
-  const roleData = JSON.parse(data);
 
   const handleUseCurrentLocation = () => {
     if (navigator.geolocation) {
@@ -58,7 +58,7 @@ const Dashboard = () => {
   return (
     <div className="flex gap-8 text-primaryColor lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
-      {roleData.role === "business" ? <BOverview /> : <Overview />}
+      {roleData === "Business" ? <BOverview /> : <Overview />}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-4/5 md:w-[35%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center">

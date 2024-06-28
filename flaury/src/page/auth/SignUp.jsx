@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import success from "/success.svg";
+import config from "../../../utils/config";
 
 const SignUp = ({ onLogin }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [disabled, setDisabled] = useState(true);
@@ -15,13 +16,13 @@ const SignUp = ({ onLogin }) => {
 
   useEffect(() => {
     handleFormValidation();
-  }, [name, email, mobileNumber, password, checkboxChecked]);
+  }, [name, email, phoneNumber, password, checkboxChecked]);
 
   const handleFormValidation = () => {
     if (
       name.trim() !== "" &&
       email.trim() !== "" &&
-      mobileNumber.trim() !== "" &&
+      phoneNumber.trim() !== "" &&
       password.trim() !== "" &&
       checkboxChecked
     ) {
@@ -40,8 +41,8 @@ const SignUp = ({ onLogin }) => {
       case "email":
         setEmail(value);
         break;
-      case "mobileNumber":
-        setMobileNumber(value);
+      case "phoneNumber":
+        setPhoneNumber(value);
         break;
       case "password":
         setPassword(value);
@@ -55,14 +56,39 @@ const SignUp = ({ onLogin }) => {
     setCheckboxChecked(!checkboxChecked);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (disabled) {
       return;
     }
-    onLogin();
-    navigate("/dashboard");
-    setShowPopup(true);
+
+    try {
+      const response = await fetch(`${config.baseUrl}/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, phoneNumber, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Sign up successful:", data);
+
+      // Save savedUser data to localStorage
+      localStorage.setItem("savedUser", JSON.stringify(data.savedUser));
+
+      onLogin();
+      setShowPopup(true);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000); // Redirect after 3 seconds
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
   };
 
   return (
@@ -96,13 +122,13 @@ const SignUp = ({ onLogin }) => {
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
             required
           />
-          <label htmlFor="mobile-number" className="">
-            Mobile Number
+          <label htmlFor="Phone-number" className="">
+            Phone Number
           </label>
           <input
             type="number"
-            name="mobileNumber"
-            value={mobileNumber}
+            name="phoneNumber"
+            value={phoneNumber}
             inputMode="numeric"
             onChange={handleInputChange}
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
