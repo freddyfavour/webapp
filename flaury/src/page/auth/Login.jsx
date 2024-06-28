@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import config from "../../../utils/config";
 
 const Login = ({ isAuth, onLogin }) => {
   const [email, setEmail] = useState("");
@@ -41,11 +42,29 @@ const Login = ({ isAuth, onLogin }) => {
     localStorage.setItem("userData", JSON.stringify({ role: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!disabled) {
-      onLogin();
-      navigate("/dashboard");
+      try {
+        const response = await fetch(`${config.baseUrl}/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password, role }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Login successful:", data);
+        onLogin();
+        navigate("/dashboard");
+      } catch (error) {
+        console.error("Error logging in:", error);
+      }
     }
   };
 
@@ -86,8 +105,8 @@ const Login = ({ isAuth, onLogin }) => {
             className="w-full block px-4 py-2 mt-2 mb-6"
           >
             <option value="">Select a role</option>
-            <option value="business">Business</option>
-            <option value="customer">Customer</option>
+            <option value="Business">Business</option>
+            <option value="Customer">Customer</option>
           </select>
 
           <div className="w-full flex justify-between items-center">
