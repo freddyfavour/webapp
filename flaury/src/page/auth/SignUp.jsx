@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import success from "/success.svg";
 import config from "../../../utils/config";
+import axios from "axios";
 
 const SignUp = ({ onLogin }) => {
   const [name, setName] = useState("");
@@ -68,7 +69,15 @@ const SignUp = ({ onLogin }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, phoneNumber, password }),
+        body: JSON.stringify({
+          name,
+          email,
+          phoneNumber,
+          password,
+          role: "Customer",
+        }),
+                  credentials: "include",
+
       });
 
       if (!response.ok) {
@@ -78,14 +87,13 @@ const SignUp = ({ onLogin }) => {
       const data = await response.json();
       console.log("Sign up successful:", data);
 
-      // Save savedUser data to localStorage
       localStorage.setItem("savedUser", JSON.stringify(data.savedUser));
 
       onLogin();
       setShowPopup(true);
       setTimeout(() => {
         navigate("/dashboard");
-      }, 3000); // Redirect after 3 seconds
+      }, 3000);
     } catch (error) {
       console.error("Error signing up:", error);
     }
@@ -145,6 +153,12 @@ const SignUp = ({ onLogin }) => {
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
             required
           />
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
+          />
           <button
             type="submit"
             className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
@@ -160,7 +174,7 @@ const SignUp = ({ onLogin }) => {
         <p className="text-primaryColor text-sm mt-8 text-left">
           Already have an account?{" "}
           <Link to="/login" className="font-bold">
-            Log in
+            Login
           </Link>
         </p>
         <div className="flex gap-4 items-center justify-center mt-6">

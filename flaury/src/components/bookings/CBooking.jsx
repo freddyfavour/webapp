@@ -1,6 +1,6 @@
 import BookingHeader from "./BookingHeader";
 
-const CBooking = () => {
+const CBooking = ({ salonData, confirmOrders }) => {
   return (
     <div className="mt-10 md:mt-20 w-full px-4 md:px-0">
       <BookingHeader confirmOrders={confirmOrders} />

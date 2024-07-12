@@ -3,6 +3,7 @@ import SideNav from "../../components/dashboard/SideNav";
 import NotificationItem from "../../components/notification/NotificationItem";
 import { Link } from "react-router-dom";
 import backarrow from "/backarrow.svg";
+import DashboardLayout from "../../components/dashboard/DashboardLayout";
 
 const Notifications = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
@@ -114,37 +115,38 @@ const Notifications = () => {
   };
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8">
-      {isSmallViewport ? null : <SideNav />}
-      <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
-        <Link to="/dashboard" className="flex gap-2">
-          <img src={backarrow} alt="" />
-          <h3 className="text-2xl font-bold">Notifications</h3>
-        </Link>
-        <div className="container mx-auto py-8">
-          {notifications.map((group, index) => (
-            <div key={index} className="mb-4">
-              <h4 className="text-lg font-semibold mb-2">{group.date}</h4>
-              <div className="grid gap-4">
-                {group.notifications.map((notification) => (
-                  <NotificationItem
-                    key={notification.id}
-                    icon={notification.icon}
-                    message={notification.message}
-                    details={notification.details}
-                    isRead={notification.isRead}
-                  />
-                ))}
-                <hr className="border border-black" />
+    <DashboardLayout>
+      <div className="flex gap-8 text-primaryColor lg:pr-8">
+        <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
+          <Link to="/dashboard" className="flex gap-2">
+            <img src={backarrow} alt="" />
+            <h3 className="text-2xl font-bold">Notifications</h3>
+          </Link>
+          <div className="container mx-auto py-8">
+            {notifications.map((group, index) => (
+              <div key={index} className="mb-4">
+                <h4 className="text-lg font-semibold mb-2">{group.date}</h4>
+                <div className="grid gap-4">
+                  {group.notifications.map((notification) => (
+                    <NotificationItem
+                      key={notification.id}
+                      icon={notification.icon}
+                      message={notification.message}
+                      details={notification.details}
+                      isRead={notification.isRead}
+                    />
+                  ))}
+                  <hr className="border border-black" />
+                </div>
               </div>
-            </div>
-          ))}
-          {notifications.length === 0 && (
-            <p className="text-center">No notifications</p>
-          )}
+            ))}
+            {notifications.length === 0 && (
+              <p className="text-center">No notifications</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

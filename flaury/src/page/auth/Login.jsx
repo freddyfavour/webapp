@@ -13,7 +13,7 @@ const Login = ({ isAuth, onLogin }) => {
 
   // Function to check if all fields are filled
   const handleFormValidation = () => {
-    if (email.trim() !== "" && password.trim() !== "" && role !== "") {
+    if (email.trim() !== "" && password.trim() !== "") {
       setDisabled(false);
     } else {
       setDisabled(true);
@@ -35,13 +35,6 @@ const Login = ({ isAuth, onLogin }) => {
     handleFormValidation();
   };
 
-  // Function to handle role change
-  const handleRoleChange = (e) => {
-    setRole(e.target.value);
-    handleFormValidation();
-    localStorage.setItem("userData", JSON.stringify({ role: e.target.value }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!disabled) {
@@ -51,7 +44,8 @@ const Login = ({ isAuth, onLogin }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password, role }),
+          body: JSON.stringify({ email, password, role: "Customer" }),
+          credentials: "include",
         });
 
         if (!response.ok) {
@@ -69,7 +63,7 @@ const Login = ({ isAuth, onLogin }) => {
   };
 
   return (
-    <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
+    <div className="h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
       <div className="gradient-overlay-signup absolute inset-0"></div>
       <div className="w-full md:w-[70%] md:max-w-[768px] mt-20 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Login</h3>
@@ -97,17 +91,6 @@ const Login = ({ isAuth, onLogin }) => {
             onChange={handleInputChange}
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
           />
-
-          <label>Role</label>
-          <select
-            value={role}
-            onChange={handleRoleChange}
-            className="w-full block px-4 py-2 mt-2 mb-6"
-          >
-            <option value="">Select a role</option>
-            <option value="Business">Business</option>
-            <option value="Customer">Customer</option>
-          </select>
 
           <div className="w-full flex justify-between items-center">
             <div className="flex gap-4 items-center justify-center">
