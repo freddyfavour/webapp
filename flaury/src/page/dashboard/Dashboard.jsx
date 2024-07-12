@@ -56,8 +56,8 @@ const Dashboard = () => {
   }, [locationObtained]);
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8">
-      {isSmallViewport ? null : <SideNav />}
+    <div className="flex gap-8 text-primaryColor">
+      {/* {isSmallViewport ? null : <SideNav />} */}
       {roleData === "Business" ? <BOverview /> : <Overview />}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">

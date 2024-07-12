@@ -60,6 +60,14 @@ const SettingsComponent = () => {
                 className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
               />
             </div>
+            <div className="mt-8">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+              />
+            </div>
             <button
               type="submit"
               className="transition bg-primaryColor text-white border text-xs w-full mt-10 py-3 rounded-lg font-semibold"
