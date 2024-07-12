@@ -44,7 +44,7 @@ const Services = () => {
         </ul>
       </div> */}
       <div className="mt-10 relative">
-        <div className="w-[100%] mx-auto overflow-scroll">
+        <div className="w-[100%] mx-auto overflow-scroll md:overflow-hidden">
           <div className="w-[150%] md:w-full grid grid-cols-4 gap-4">
             {servicesData.map((service) => (
               <div key={service.id} className="w-full">
