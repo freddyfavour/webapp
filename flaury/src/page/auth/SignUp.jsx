@@ -1,30 +1,46 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import success from "/success.svg";
 import config from "../../../utils/config";
-import axios from "axios";
 
 const SignUp = ({ onLogin }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
 
   const navigate = useNavigate();
 
   useEffect(() => {
     handleFormValidation();
-  }, [name, email, phoneNumber, password, checkboxChecked]);
+  }, [name, email, phoneNumber, password, confirmPassword, checkboxChecked]);
 
   const handleFormValidation = () => {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (password.trim() !== "" && !passwordRegex.test(password)) {
+      setPasswordError(
+        "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character."
+      );
+    } else {
+      setPasswordError("");
+    }
+
     if (
       name.trim() !== "" &&
       email.trim() !== "" &&
       phoneNumber.trim() !== "" &&
       password.trim() !== "" &&
+      passwordRegex.test(password) &&
+      password === confirmPassword &&
       checkboxChecked
     ) {
       setDisabled(false);
@@ -47,6 +63,9 @@ const SignUp = ({ onLogin }) => {
         break;
       case "password":
         setPassword(value);
+        break;
+      case "confirmPassword":
+        setConfirmPassword(value);
         break;
       default:
         break;
@@ -76,31 +95,34 @@ const SignUp = ({ onLogin }) => {
           password,
           role: "Customer",
         }),
-                  credentials: "include",
-
+        credentials: "include",
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error(data.message || "Network response was not ok");
       }
 
-      const data = await response.json();
       console.log("Sign up successful:", data);
 
       localStorage.setItem("savedUser", JSON.stringify(data.savedUser));
 
       onLogin();
+      toast.success("Sign up successful!");
       setShowPopup(true);
       setTimeout(() => {
         navigate("/dashboard");
       }, 3000);
     } catch (error) {
       console.error("Error signing up:", error);
+      toast.error(error.message);
     }
   };
 
   return (
     <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
+      <ToastContainer />
       <div className="gradient-overlay-signup absolute inset-0"></div>
       <div className="w-full md:w-[70%] md:max-w-[768px] mt-20 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
@@ -153,12 +175,23 @@ const SignUp = ({ onLogin }) => {
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
             required
           />
+          {passwordError && (
+            <p className="text-red-500 text-sm mt-1 mb-2">{passwordError}</p>
+          )}
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
             name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleInputChange}
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
+            required
           />
+          {confirmPassword && password !== confirmPassword && (
+            <p className="text-red-500 text-sm mt-1 mb-2">
+              Passwords do not match.
+            </p>
+          )}
           <button
             type="submit"
             className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
