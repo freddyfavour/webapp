@@ -3,32 +3,6 @@ import logo from "/logo.svg";
 import { useState, useEffect } from "react";
 import menu from "/hamburger-menu.svg";
 
-const DropDownIcon = ({ isOpen }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4 ml-1"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    {!isOpen ? (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 9l-7 7-7-7"
-      />
-    ) : (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M5 15l7-7 7 7"
-      />
-    )}
-  </svg>
-);
-
 const Nav = () => {
   const location = useLocation();
   const [authNav, setAuthNav] = useState(false);
@@ -77,39 +51,21 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li>
-                  <button
-                    className="text-sm font-semibold focus:outline-none flex items-center"
-                    onClick={toggleCompanyMenu}
+                  <Link
+                    to="/about"
+                    className="block px-4 py-2 text-sm font-medium"
+                    onClick={handleLinkClick} // Close dropdown after link click
                   >
-                    Company
-                    <DropDownIcon isOpen={showCompanyMenu} />
-                  </button>
-                  {showCompanyMenu && (
-                    <ul className="absolute mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg py-1">
-                      <li>
-                        <Link
-                          to="/about"
-                          className="block px-4 py-2 text-sm font-medium"
-                          onClick={handleLinkClick} // Close dropdown after link click
-                        >
-                          About Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/blog"
-                          className="block px-4 py-2 text-sm font-medium"
-                          onClick={handleLinkClick} // Close dropdown after link click
-                        >
-                          Blog
-                        </Link>
-                      </li>
-                    </ul>
-                  )}
+                    About Us
+                  </Link>
                 </li>
                 <li>
-                  <Link className="text-sm font-semibold" to="#services">
-                    Services
+                  <Link
+                    to="/blog"
+                    className="block px-4 py-2 text-sm font-medium"
+                    onClick={handleLinkClick} // Close dropdown after link click
+                  >
+                    Blog
                   </Link>
                 </li>
                 <li>

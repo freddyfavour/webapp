@@ -23,18 +23,27 @@ const ChooseRole = () => {
       <p className="text-xs">Enjoy simplified bookings for your convenience.</p>
       <h4 className="mt-4 text-primaryColor text-3xl font-bold">Are you?</h4>
       <div className="my-10 w-1/3 md:w-[60%] mx-auto block md:flex justify-between md:items-center">
-        <img
-          src="/roleb.png"
-          alt="Business Role"
-          className="cursor-pointer w-full md:w-1/3"
+        <div
+          className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primaryColor cursor-pointer"
           onClick={businessRole}
-        />
-        <img
-          src="/rolec.png"
-          alt="Customer Role"
-          className="cursor-pointer w-full md:w-1/3 mt-6 md:mt-0"
+        >
+          <img src="/roleb.jpeg" alt="Business Role" className="rounded-t-md" />
+          <h3 className="font-bold text-xl text-primaryColor pt-10 pb-2">
+            Beautician
+          </h3>
+          <p className="text-xs">Beauty stylist or salon owner</p>
+        </div>
+        <h2>OR</h2>
+        <div
+          className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primaryColor cursor-pointer"
           onClick={customerRole}
-        />
+        >
+          <img src="/rolec.jpeg" alt="Business Role" className="rounded-t-md" />
+          <h3 className="font-bold text-xl text-primaryColor pt-10 pb-2">
+            Customer
+          </h3>
+          <p className="text-xs">Looking to hire a service</p>
+        </div>
       </div>
     </div>
   );

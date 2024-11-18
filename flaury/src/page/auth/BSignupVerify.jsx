@@ -30,7 +30,7 @@ const BSignupVerify = ({ setPage }) => {
   return (
     <div className="h-screen w-full flex justify-center items-center bg-primaryColor relative">
       <div className="gradient-overlay-signup absolute inset-0"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] mt-10 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
+      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
         <p className="text-primaryColor text-sm pb-2">
           For the safety of our customers, you are required to submit either of

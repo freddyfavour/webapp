@@ -12,12 +12,13 @@ const BSignupInfo = ({ setPage }) => {
 
   const navigate = useNavigate();
 
-  // Function to check if all fields are filled
+  // Function to check if all fields are filled and if mobile number is 11 digits
   const handleFormValidation = () => {
+    const mobileNumberIsValid = mobileNumber.length === 11; // Check if mobile number has 11 digits
     if (
       name.trim() !== "" &&
       email.trim() !== "" &&
-      mobileNumber.trim() !== "" &&
+      mobileNumberIsValid &&
       password.trim() !== "" &&
       checkboxChecked
     ) {
@@ -66,7 +67,7 @@ const BSignupInfo = ({ setPage }) => {
   return (
     <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
       <div className="gradient-overlay-signup absolute inset-0"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] mt-20 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
+      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
         <p className="text-primaryColor text-sm pb-2">
           Register using your correct details
@@ -117,6 +118,11 @@ const BSignupInfo = ({ setPage }) => {
             className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
             required
           />
+          {mobileNumber.length > 0 && mobileNumber.length !== 11 && (
+            <p className="text-red-500 text-sm">
+              Mobile number must be 11 digits
+            </p>
+          )}
           <button
             type="submit"
             className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${

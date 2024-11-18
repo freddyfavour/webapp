@@ -34,10 +34,16 @@ const SignUp = ({ onLogin }) => {
       setPasswordError("");
     }
 
+    // Validate phone number to ensure it's 11 digits
+    if (phoneNumber.trim() !== "" && phoneNumber.length !== 11) {
+      toast.error("Phone number must be exactly 11 digits.");
+    }
+
     if (
       name.trim() !== "" &&
       email.trim() !== "" &&
       phoneNumber.trim() !== "" &&
+      phoneNumber.length === 11 && // Check for 11 digits
       password.trim() !== "" &&
       passwordRegex.test(password) &&
       password === confirmPassword &&
@@ -124,7 +130,7 @@ const SignUp = ({ onLogin }) => {
     <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
       <ToastContainer />
       <div className="gradient-overlay-signup absolute inset-0"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] mt-20 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
+      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
         <p className="text-primaryColor text-sm pb-2">
           Register using your correct details
