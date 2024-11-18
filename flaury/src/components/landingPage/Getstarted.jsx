@@ -29,7 +29,7 @@ const Getstarted = () => {
             </li>
           </ul>
           <Link to="/signup">
-            <button className="bg-secondaryColor text-primaryColor font-semibold py-1 px-8 text-xs mt-4 md:mt-0">
+            <button className="transition bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold">
               Get Started
             </button>
           </Link>
