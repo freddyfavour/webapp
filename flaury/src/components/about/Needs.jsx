@@ -2,7 +2,7 @@ import img from "/about-img2.png";
 
 const Needs = () => {
   return (
-    <section className="lg:flex justify-between items-center gap-20 py-20 px-4 md:px-20">
+    <section className="lg:flex justify-between items-center gap-20 py-20 px-4 max-w-[1200px] mx-auto">
       <img src={img} alt="" className="w-full block lg:hidden" />
       <div>
         <h3 className="font-bold text-4xl py-6">Addressing Your Needs</h3>

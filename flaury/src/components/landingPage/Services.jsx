@@ -31,7 +31,7 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section id="services" className="px-4 md:px-20">
+    <section id="services" className="px-4 max-w-[1200px] mx-auto ">
       {/* <div className="w-4/5 md:w-1/3 mx-auto flex justify-between items-center py-4">
         <h3 className="text-lightPrimaryColor text-sm">Trusted By:</h3>
         <ul className="flex gap-4">

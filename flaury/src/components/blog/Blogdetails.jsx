@@ -47,7 +47,7 @@ const blogData = [
 
 const Blogdetails = () => {
   return (
-    <section className="px-4 md:px-20 py-10">
+    <section className="px-4 max-w-[1200px] mx-auto py-10">
       <h3 className="font-bold text-4xl pb-4">Blog</h3>
       <p>
         <span className="text-primaryColor">

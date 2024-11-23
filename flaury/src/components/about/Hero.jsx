@@ -2,7 +2,7 @@ import heroImg from "/about-hero-img.png";
 
 const Hero = () => {
   return (
-    <section className="md:flex justify-between items-center mt-20 px-4 md:px-20 py-10">
+    <section className="md:flex justify-between items-center mt-20 px-4 max-w-[1200px] mx-auto py-10">
       <div className="lg:w-1/2">
         <h2 className="font-bold text-5xl md:text-6xl">
           Your <span className="text-primaryColor">beauty,</span> <br /> Our

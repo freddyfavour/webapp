@@ -2,7 +2,7 @@ import img from "/about-img6.png";
 
 const Introflauryb = () => {
   return (
-    <section className="lg:flex justify-between items-center gap-20 py-20 px-4 md:px-20">
+    <section className="lg:flex justify-between items-center gap-20 py-20 px-4 max-w-[1200px] mx-auto">
       <div>
         <h3 className="font-bold text-primaryColor text-4xl py-6">
           Introduction: Flaury Business
