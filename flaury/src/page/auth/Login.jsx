@@ -74,7 +74,7 @@ const Login = ({ isAuth, onLogin }) => {
       <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
         <h3 className="text-primaryColor font-bold text-2xl py-2">Login</h3>
         <p className="text-primaryColor text-sm pb-2">
-          Log in to your finneseHUB account
+          Log in to your Flaury account
         </p>
         <form className="w-full">
           <label htmlFor="email" className="">
