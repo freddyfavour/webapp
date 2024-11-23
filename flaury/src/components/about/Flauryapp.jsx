@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Flauryapp = () => {
   return (
-    <section className="px-4 md:px-20 py-10 md:flex justify-between items-center">
+    <section className="px-4 max-w-[1200px] mx-auto py-10 md:flex justify-between items-center">
       <div>
         <h3 className="font-bold text-4xl">Download the app</h3>
         <p className="font-medium pt-3 pb-6">

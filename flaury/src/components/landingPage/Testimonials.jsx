@@ -45,7 +45,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="mt-10 px-4 lg:px-20">
+    <section className="mt-10 px-4 max-w-[1200px] mx-auto">
       <h3 className="text-primaryColor font-semibold text-xl text-center py-4">
         What Our Customers Are Saying
       </h3>

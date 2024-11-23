@@ -44,7 +44,7 @@ const nearbySalons = [
 
 const NearbySalon = () => {
   return (
-    <div className="my-6 px-4 md:px-20">
+    <div className="my-6 px-4 max-w-[1200px] mx-auto ">
       <h3 className="font-bold text-lg py-2">Nearby Salon</h3>
       <div className="w-full overflow-x-scroll md:overflow-x-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">

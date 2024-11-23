@@ -2,7 +2,7 @@ import img from "/about-img1.jpg";
 
 const Intro = () => {
   return (
-    <section className="px-4 md:px-20">
+    <section className="px-4 max-w-[1200px] mx-auto">
       <div className="lg:bg-[#F8F4D973] lg:flex justify-between items-center gap-20 py-10 md:pr-10">
         <img src={img} alt="" className="w-full" />
         <div className="text-black font-medium mt-10 lg:mt-0">

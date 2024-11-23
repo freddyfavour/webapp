@@ -3,7 +3,7 @@ import globe from "/globe-white.svg";
 
 const Getstarted = () => {
   return (
-    <section className="mt-10 py-10">
+    <section className="mt-10 py-10 max-w-[1200px] mx-auto">
       <div className="relative md:flex items-center gap-14">
         <div className="md:w-1/2 h-[25rem] md:h-full p-10 bg-primaryColor">
           <img
