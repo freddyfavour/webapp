@@ -44,7 +44,7 @@ const nearbySalons = [
 
 const NearbySalon = () => {
   return (
-    <div className="my-6 px-4 md:px-14">
+    <div className="my-6 px-4 md:px-20">
       <h3 className="font-bold text-lg py-2">Nearby Salon</h3>
       <div className="w-full overflow-x-scroll md:overflow-x-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
@@ -55,11 +55,12 @@ const NearbySalon = () => {
               className="salon-link"
             >
               <div>
-                <img src={salon.image} alt="" className="w-full  h-40" />
+                <img src={salon.image} alt="" className="w-full" />
                 <div className="flex justify-between items-start">
                   <div className="flex gap-2">
-                    <h4 className="font-semibold">{salon.name}</h4>
-                    <img src="/salon-verified.svg" alt="" />
+                    <h4 className="font-semibold flex">
+                      {salon.name} <img src="/salon-verified.svg" alt="" />
+                    </h4>
                   </div>
                   <p className="flex gap-1 text-xs">
                     {salon.rating}
