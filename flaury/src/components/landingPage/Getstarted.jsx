@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import globe from "/globe-white.svg";
+import Button from "../Button";
 
 const Getstarted = () => {
+  const navigate = useNavigate();
   return (
     <section className="mt-10 py-10 max-w-[1200px] mx-auto">
       <div className="relative md:flex items-center gap-14">
@@ -28,11 +30,7 @@ const Getstarted = () => {
               You can make payments and get notified about your appointments
             </li>
           </ul>
-          <Link to="/signup">
-            <button className="transition bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold">
-              Get Started
-            </button>
-          </Link>
+          <Button title="Get Started" onClick={() => navigate("/signup")} />
         </div>
       </div>
     </section>

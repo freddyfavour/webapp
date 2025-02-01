@@ -1,7 +1,7 @@
 import dot from "/dot.svg";
 import star from "/star.svg";
 import { Link } from "react-router-dom";
-
+import Button from "../Button";
 // Simulated backend data
 const nearbySalons = [
   {
@@ -71,9 +71,7 @@ const NearbySalon = () => {
                   {salon.location} <img src={dot} alt="" className="mx-2" />
                   {salon.distance}
                 </p>
-                <button className="transition bg-primaryColor text-white border text-xs mt-2 px-6 py-2 rounded-lg font-semibold">
-                  Book now
-                </button>
+                <Button title="Book now" />
               </div>
             </Link>
           ))}
