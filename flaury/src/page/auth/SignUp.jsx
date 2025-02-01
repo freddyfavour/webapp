@@ -4,85 +4,26 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import success from "/success.svg";
 import config from "../../../utils/config";
+import Button from "../../components/Button";
+import { useForm } from "react-hook-form";
+import Input from "../../components/Input";
+import AuthEnv from "../../components/AuthEnv";
+import Card from "../../components/Card";
+import Popup from "../../components/Popup";
+import AuthTitle from "../../components/AuthTitle";
 
 const SignUp = ({ onLogin }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
-  const [disabled, setDisabled] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
+  const { control, handleSubmit, watch } = useForm();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    handleFormValidation();
-  }, [name, email, phoneNumber, password, confirmPassword, checkboxChecked]);
-
-  const handleFormValidation = () => {
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (password.trim() !== "" && !passwordRegex.test(password)) {
-      setPasswordError(
-        "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character."
-      );
-    } else {
-      setPasswordError("");
-    }
-
-    // Validate phone number to ensure it's 11 digits
-    if (phoneNumber.trim() !== "" && phoneNumber.length !== 11) {
-      toast.error("Phone number must be exactly 11 digits.");
-    }
-
-    if (
-      name.trim() !== "" &&
-      email.trim() !== "" &&
-      phoneNumber.trim() !== "" &&
-      phoneNumber.length === 11 && // Check for 11 digits
-      password.trim() !== "" &&
-      passwordRegex.test(password) &&
-      password === confirmPassword &&
-      checkboxChecked
-    ) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "phoneNumber":
-        setPhoneNumber(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "confirmPassword":
-        setConfirmPassword(value);
-        break;
-      default:
-        break;
-    }
-  };
 
   const handleCheckboxChange = () => {
     setCheckboxChecked(!checkboxChecked);
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (disabled) {
       return;
@@ -127,124 +68,87 @@ const SignUp = ({ onLogin }) => {
   };
 
   return (
-    <div className="lg:h-screen w-full flex justify-center items-center bg-primaryColor relative lg:overflow-hidden">
+    <>
+      <AuthEnv
+        children={
+          <>
+            <AuthTitle title="Sign Up" />
+            <p className="text-primaryColor text-sm pb-2">
+              Register using your correct details
+            </p>
+            <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                control={control}
+                name="name"
+                label="Name"
+                placeholder="Full name"
+                validateType="min"
+                minValue={2}
+              />
+              <Input
+                control={control}
+                name="email"
+                label="Email Address"
+                placeholder="Enter your email"
+                validateType="email"
+              />
+              <Input
+                control={control}
+                name="phoneNumber"
+                label="Phone Number"
+                placeholder="Enter your Nigerian phone number"
+                validateType="phoneNumber"
+                errorMessage="Phone number is required."
+              />
+              <Input
+                control={control}
+                name="password"
+                label="Password"
+                type="password"
+                placeholder="Enter your password"
+                validateType="password"
+              />
+              <Button
+                title="Continue"
+                type="submit"
+                customClasses="w-full px-4 py-3 mt-6"
+                onClick={handleSubmit(onSubmit)}
+              />
+            </form>
+            <p className="text-primaryColor text-sm mt-8 text-left">
+              Already have an account?{" "}
+              <Link to="/login" className="font-bold">
+                Login
+              </Link>
+            </p>
+            <div className="flex gap-4 items-center justify-center mt-6">
+              <input
+                type="checkbox"
+                id="tc"
+                checked={checkboxChecked}
+                onChange={handleCheckboxChange}
+                className="w-[1rem] h-[1rem]"
+              />
+              <p className="text-primaryColor text-sm w-2/3">
+                Clicking the "continue" button means I agree to the terms and
+                conditions of <b>FLAURY</b>
+              </p>
+            </div>
+          </>
+        }
+      />
       <ToastContainer />
-      <div className="gradient-overlay-signup absolute inset-0"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
-        <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
-        <p className="text-primaryColor text-sm pb-2">
-          Register using your correct details
-        </p>
-        <form className="w-full" onSubmit={handleSubmit}>
-          <label htmlFor="name" className="">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          <label htmlFor="email" className="">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          <label htmlFor="Phone-number" className="">
-            Phone Number
-          </label>
-          <input
-            type="number"
-            name="phoneNumber"
-            value={phoneNumber}
-            inputMode="numeric"
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          <label htmlFor="password" className="">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          {passwordError && (
-            <p className="text-red-500 text-sm mt-1 mb-2">{passwordError}</p>
-          )}
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-            required
-          />
-          {confirmPassword && password !== confirmPassword && (
-            <p className="text-red-500 text-sm mt-1 mb-2">
-              Passwords do not match.
-            </p>
-          )}
-          <button
-            type="submit"
-            className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
-              disabled
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-primaryColor text-white"
-            }`}
-            disabled={disabled}
-          >
-            Continue
-          </button>
-        </form>
-        <p className="text-primaryColor text-sm mt-8 text-left">
-          Already have an account?{" "}
-          <Link to="/login" className="font-bold">
-            Login
-          </Link>
-        </p>
-        <div className="flex gap-4 items-center justify-center mt-6">
-          <input
-            type="checkbox"
-            id="tc"
-            checked={checkboxChecked}
-            onChange={handleCheckboxChange}
-            className="w-[1rem] h-[1rem]"
-          />
-          <p className="text-primaryColor text-sm w-2/3">
-            Clicking the "continue" button means I agree to the terms and
-            conditions of <b>FLAURY</b>
-          </p>
-        </div>
-      </div>
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-20">
-          <div className="bg-white w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
-            <img src={success} alt="Success" className="mx-auto mb-4" />
-            <h3 className="font-bold mb-4 text-primaryColor">
-              Congratulations
-            </h3>
-            <p className="mb-4 text-xs text-black">
-              Your account is now ready to use. You will be redirected to your
-              homepage shortly.
-            </p>
-          </div>
+        <div className="absolute top-0 left-0">
+          <Popup
+            title="Congratulations"
+            subtitle="Your account is now ready to use. You will be redirected to
+          your homepage shortly."
+            image={success}
+          />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

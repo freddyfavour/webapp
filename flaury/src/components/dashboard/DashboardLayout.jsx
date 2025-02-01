@@ -79,7 +79,7 @@ const DashboardLayout = ({ children }) => {
     <div className={`flex h-screen overflow-hidden`}>
       {/* Sidebar */}
       <div
-        className={`lg:w-272 p-4 bg-primaryColor text-white overflow-y-auto ${
+        className={`lg:w-[257px] p-4 bg-primaryColor text-white overflow-y-auto ${
           isSidebarOpen || window.innerWidth >= 1024 ? "" : "hidden lg:block"
         } transition-all ease-in-out duration-300`}
       >

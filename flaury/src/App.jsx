@@ -22,6 +22,9 @@ import Blog from "./page/Blog";
 import ChooseRole from "./page/auth/ChooseRole";
 import BookingsFlow from "./page/dashboard/BookingsFlow";
 import BSignup from "./page/auth/BSignup";
+import BSignupCategory from "./page/auth/BSignupCategory";
+import BSignupVerify from "./page/auth/BSignupVerify";
+import BSignupDetails from "./page/auth/BSignupDetails";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -62,6 +65,18 @@ const App = () => {
         <Route
           path="/business-signup"
           element={<BSignup onLogin={handleLogin} />}
+        />
+        <Route
+          path="/business-category"
+          element={<BSignupCategory onLogin={handleLogin} />}
+        />
+        <Route
+          path="/business-details"
+          element={<BSignupDetails onLogin={handleLogin} />}
+        />
+        <Route
+          path="/business-verification"
+          element={<BSignupVerify onLogin={handleLogin} />}
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/forgot2" element={<Forgot2 />} />

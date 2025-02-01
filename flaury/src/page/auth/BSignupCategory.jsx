@@ -1,94 +1,107 @@
 import { useState } from "react";
+import AuthEnv from "../../components/AuthEnv";
+import AuthTitle from "../../components/AuthTitle";
+import { useNavigate } from "react-router-dom";
+import Input from "../../components/Input";
+import { useForm } from "react-hook-form";
+import ProgressBar from "../../components/ProgressBar";
 
 const categories = [
-  { id: 1, icon: "/hair.svg", name: "Haircut & styling" },
-  { id: 2, icon: "/brush.svg", name: "Makeup" },
-  { id: 3, icon: "/nail.svg", name: "Nail services" },
-  { id: 4, icon: "/facial-massage.svg", name: "Facials & skincare" },
-  { id: 5, icon: "/eyebrow.svg", name: "Eyebrows & lashes" },
-  { id: 6, icon: "/spa.svg", name: "Spa" },
-  { id: 7, icon: "/massage.svg", name: "Massage & therapy" },
-  { id: 8, icon: "/fitness.svg", name: "Fitness" },
-  { id: 9, icon: "/others.svg", name: "Others" },
+  { id: 1, name: "Haircut & styling" },
+  { id: 2, name: "Makeup" },
+  { id: 3, name: "Nail services" },
+  { id: 4, name: "Facials & skincare" },
+  { id: 5, name: "Eyebrows & lashes" },
+  { id: 6, name: "Spa" },
+  { id: 7, name: "Massage & therapy" },
+  { id: 8, name: "Fitness" },
+  { id: 9, name: "Others" },
 ];
 
-const BSignupCategory = ({ setPage }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+const BSignupCategory = () => {
+  const [description, setDescription] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const navigate = useNavigate();
+  const { control, handleSubmit, watch } = useForm();
+  const businessName = watch("businessName");
 
-  const handleCheckboxChange = (categoryId) => {
-    setSelectedCategories(
-      (prevSelected) =>
-        prevSelected.includes(categoryId)
-          ? prevSelected.filter((id) => id !== categoryId) // Uncheck
-          : [...prevSelected, categoryId] // Check
-    );
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (selectedCategories.length > 0) {
-      setPage("verification");
+  console.log(businessName, description, selectedCategory);
+  const onSubmit = () => {
+    if (businessName && description && selectedCategory) {
+      navigate("/business-details");
     }
   };
 
   return (
-    <div className="w-full flex justify-center items-center bg-primaryColor relative">
-      <div className="gradient-overlay-signup absolute inset-0"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] mt-0 p-10 md:px-20 md:py-10 bg-white md:rounded-xl flex items-center flex-col shadow-xl z-10 lg:scale-75">
-        <h3 className="text-primaryColor font-bold text-2xl py-2">Sign Up</h3>
-        <p className="text-primaryColor text-sm pb-2">
-          This information will help customers find you on the Flaury app
-        </p>
-        <form className="w-full" onSubmit={handleSubmit}>
-          <div className="w-full">
-            {categories.map((category) => (
-              <label
-                key={category.id}
-                htmlFor={`category-${category.id}`}
-                className="cursor-pointer"
+    <AuthEnv
+      children={
+        <>
+          <AuthTitle title="Sign Up" />
+
+          {/* Progress Bar */}
+          <ProgressBar activeStep={1} />
+
+          <p className="text-primaryColor text-sm pb-4">
+            This information will help customers find you on the Flaury app
+          </p>
+
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-4">
+              <label htmlFor="category">Category</label>
+              <select
+                id="category"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg mt-1"
               >
-                <div className="w-full flex justify-between shadow-md py-6 rounded-md px-3 mb-2">
-                  <div className="flex items-center gap-3">
-                    <img src={category.icon} alt="" className="w-6 h-6" />
+                <option value="" disabled>
+                  Select a category
+                </option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.name}>
                     {category.name}
-                  </div>
-                  <input
-                    type="checkbox"
-                    id={`category-${category.id}`}
-                    onChange={() => handleCheckboxChange(category.id)}
-                    checked={selectedCategories.includes(category.id)}
-                    className="custom-checkbox peer hidden"
-                  />
-                  {/* Custom checkbox styling */}
-                  <div
-                    className={`w-5 h-5 border-2 border-primaryColor rounded-md flex items-center justify-center ${
-                      selectedCategories.includes(category.id)
-                        ? "bg-primaryColor text-white"
-                        : "bg-white"
-                    }`}
-                  >
-                    {selectedCategories.includes(category.id) && (
-                      <span className="text-xs">✓</span>
-                    )}
-                  </div>
-                </div>
-              </label>
-            ))}
-          </div>
-          <button
-            type="submit"
-            className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
-              selectedCategories.length === 0
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-primaryColor text-white"
-            }`}
-            disabled={selectedCategories.length === 0}
-          >
-            Continue
-          </button>
-        </form>
-      </div>
-    </div>
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* Business Name Input */}
+            <Input
+              control={control}
+              name="businessName"
+              label="Business name"
+              placeholder="Enter your business name"
+              validateType="min"
+              minValue={2}
+            />
+            {/* Business Description Input */}
+            <div className="mb-4">
+              <label htmlFor="description">Description</label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Write a brief description of your business"
+                rows="3"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg mt-1"
+              />
+            </div>
+            {/* Category Dropdown */}
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
+                businessName && description && selectedCategory
+                  ? "bg-primaryColor text-white"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
+              disabled={!businessName || !description || !selectedCategory}
+            >
+              Continue
+            </button>
+          </form>
+        </>
+      }
+    />
   );
 };
 

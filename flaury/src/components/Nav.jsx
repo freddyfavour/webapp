@@ -1,14 +1,15 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "/logo.svg";
 import { useState, useEffect } from "react";
 import menu from "/hamburger-menu.svg";
+import Button from "./Button";
 
 const Nav = () => {
   const location = useLocation();
   const [authNav, setAuthNav] = useState(false);
   const [showNav, setShowNav] = useState(false);
   const [showCompanyMenu, setShowCompanyMenu] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setAuthNav(
       location.pathname === "/login" ||
@@ -70,11 +71,11 @@ const Nav = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/choose-role">
-                      <button className="transition bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold">
-                        Sign Up
-                      </button>
-                    </Link>
+                    <Button
+                      title="Sign Up"
+                      onClick={() => navigate("/choose-role")}
+                      customClasses="px-8 py-3"
+                    />
                   </li>
                   <li>
                     <Link to="/login">
@@ -118,11 +119,11 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/choose-role" onClick={() => setShowNav(false)}>
-                    <button className="transition bg-primaryColor text-white border text-sm px-4 py-2 rounded-lg my-4">
-                      Sign Up
-                    </button>
-                  </Link>
+                  <Button
+                    title="Sign Up"
+                    onClick={() => navigate("/choose-role")}
+                    customClasses="px-8 py-3"
+                  />
                 </li>
                 <li>
                   <Link to="/login" onClick={() => setShowNav(false)}>

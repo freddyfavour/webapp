@@ -1,0 +1,121 @@
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { useForm, Controller } from "react-hook-form";
+
+const Input = ({
+  control,
+  name,
+  placeholder,
+  type = "text",
+  rules = {},
+  label,
+  errorMessage,
+  validateType,
+  minValue,
+  prevValue,
+}) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Validation handlers
+  const validateInput = (value) => {
+    switch (validateType) {
+      case "email":
+        return (
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || "Invalid email address."
+        );
+      case "password":
+        return (
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+            value
+          ) ||
+          "Password must be at least 8 characters, include one letter, one number, and one special character."
+        );
+      case "min":
+        return (
+          value.length >= minValue || `Must be at least ${minValue} characters.`
+        );
+      case "confirmPassword":
+        return value === prevValue || "Passwords must match.";
+      default:
+        return true;
+    }
+  };
+
+  return (
+    <div style={{ marginBottom: "1rem", position: "relative" }}>
+      {label && <label htmlFor={name}>{label}</label>}
+      <Controller
+        control={control}
+        name={name}
+        rules={{
+          required: errorMessage || "This field is required.",
+          validate: validateInput,
+          ...rules,
+        }}
+        render={({ field, fieldState: { error } }) => (
+          <>
+            <input
+              {...field}
+              id={name}
+              type={
+                type === "password"
+                  ? showPassword
+                    ? "text"
+                    : "password"
+                  : type
+              }
+              placeholder={placeholder}
+              style={{
+                padding: "0.5rem",
+                borderRadius: "4px",
+                border: `1px solid ${error ? "red" : "#ccc"}`,
+                width: "100%",
+                paddingRight: type === "password" ? "2.5rem" : "0.5rem",
+              }}
+            />
+            {type === "password" && (
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "0.5rem",
+                  top: "70%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                {!showPassword ? "👁️" : "🙈"}
+              </span>
+            )}
+            {error && (
+              <span style={{ color: "red", fontSize: "0.875rem" }}>
+                {error.message}
+              </span>
+            )}
+          </>
+        )}
+      />
+    </div>
+  );
+};
+
+Input.propTypes = {
+  control: PropTypes.object.isRequired, // From react-hook-form's useForm
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  rules: PropTypes.object,
+  label: PropTypes.string,
+  errorMessage: PropTypes.string,
+  validateType: PropTypes.oneOf([
+    "email",
+    "password",
+    "min",
+    "confirmPassword",
+    "phoneNumber",
+  ]),
+  minValue: PropTypes.number,
+  prevValue: PropTypes.string, // For confirmPassword validation
+};
+
+export default Input;

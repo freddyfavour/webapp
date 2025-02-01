@@ -1,68 +1,44 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import forgotPassword from "/forgotpassword.svg";
+import AuthEnv from "../../components/AuthEnv";
+import Input from "../../components/Input";
+import { useForm } from "react-hook-form";
+import Button from "../../components/Button";
+import AuthTitle from "../../components/AuthTitle";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
-  const [disabled, setDisabled] = useState(true);
+  const { control, handleSubmit, watch } = useForm();
 
-  // Function to check if all fields are filled
-  const handleFormValidation = () => {
-    if (email.trim() !== "") {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  };
+  const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "email") {
-      setEmail(value);
-    }
-    handleFormValidation(); // Check form validation on every input change
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Your form submission logic here
+  const onSubmit = (e) => {
+    navigate("/forgot2");
   };
 
   return (
-    <div className="h-screen w-full flex justify-center md:items-center bg-primaryColor">
-      <div className="gradient-overlay-login"></div>
-      <div className="w-full md:w-[70%] md:max-w-[768px] p-10 md:p-20 mt-10 md:mt-0 bg-[#fff] rounded-xl flex items-center flex-col shadow-xl z-9 lg:scale-75">
-        <h3 className="text-primaryColor font-bold text-2xl pb-20">
-          Forgot Password
-        </h3>
-        <img src={forgotPassword} alt="" />
-        <form className="w-full" onSubmit={handleSubmit}>
-          <label htmlFor="email" className="">
-            Enter your registered email address
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleInputChange}
-            className="border w-full px-4 py-2 rounded-lg mt-1 mb-2"
-          />
-          <Link to="/forgot2">
-            <button
+    <AuthEnv
+      children={
+        <>
+          <AuthTitle title="Forgot Password" />
+          <img src={forgotPassword} alt="" />
+          <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+            <Input
+              control={control}
+              name="email"
+              label="Enter your registered email address"
+              placeholder="Enter your email"
+              validateType="email"
+            />
+            <Button
               type="submit"
-              className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
-                disabled
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-primaryColor text-[#fff]"
-              }`}
-              disabled={disabled}
-            >
-              Continue
-            </button>
-          </Link>
-        </form>
-      </div>
-    </div>
+              title="Continue"
+              customClasses="w-full px-4 py-3"
+            />
+          </form>
+        </>
+      }
+    />
   );
 };
 

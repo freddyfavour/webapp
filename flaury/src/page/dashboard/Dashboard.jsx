@@ -3,6 +3,8 @@ import Overview from "../../components/dashboard/Overview";
 import BOverview from "../../components/dashboard/BOverview";
 import SideNav from "../../components/dashboard/SideNav";
 import earth from "/earth.svg";
+import Popup from "../../components/Popup";
+import Button from "../../components/Button";
 
 const Dashboard = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
@@ -60,28 +62,18 @@ const Dashboard = () => {
       {/* {isSmallViewport ? null : <SideNav />} */}
       {roleData === "Business" ? <BOverview /> : <Overview />}
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[35%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center">
-            <img src={earth} alt="" className="mx-auto mb-4" />
-            <h3 className="font-semibold mb-4 text-black">Where are you?</h3>
-            <p className="mb-4 text-xs text-black">
-              Set your location so that we can match you with services around
-              you.
-            </p>
-            <button
-              className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
-              onClick={handleUseCurrentLocation}
-            >
-              Use Current Location
-            </button>
-            <button
-              className="transition bg-lightPrimaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
-              onClick={handleSetLater}
-            >
-              Set Later
-            </button>
-          </div>
-        </div>
+        <Popup
+          title="Where are you?"
+          subtitle="Set your location so that we can match you with services around
+              you."
+          image={earth}
+          button={2}
+          buttonStyle="py-4"
+          button1Title="Use Current Location"
+          button1Handler={handleUseCurrentLocation}
+          button2Title="Set Later"
+          button2Handler={handleSetLater}
+        />
       )}
     </div>
   );
