@@ -3,23 +3,34 @@ import { Link } from "react-router-dom";
 const Service = ({ salonData }) => {
   return (
     <>
-      {salonData.bookables.map((bookable, index) => (
-        <div key={index} className="shadow-md p-4 mb-4 rounded-md">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-sm text-black font-bold mb-4">
-                {bookable.title}
-              </p>
-              <p className="text-xs text-gray-500">${bookable.price}</p>
-            </div>
-            <Link to="/bookings">
-              <button className="bg-gray-100 text-xs px-6 py-2 rounded-full">
-                Book
-              </button>
-            </Link>
+      <ul className="flex gap-4 justify-center mt-4">
+        <li>All</li>
+        <li>Make-over</li>
+        <li>Hair styling</li>
+        <li>Manicure</li>
+        <li>Make-over</li>
+        <li>Hair styling</li>
+        <li>Manicure</li>
+      </ul>
+      <hr className="my-4" />
+      <h3 className="font-bold my-3">Services</h3>
+      <div className="flex gap-4">
+        {salonData.bookables.map((bookable, index) => (
+          <div key={index}>
+            <img src={bookable.img} alt="" className="w-full rounded-md" />
+            <h4 className="font-semibold text-black mt-2 mb-1">
+              {bookable.title}
+            </h4>
+            <p className="text-xs text-black">
+              Start price:
+              <span className="text-primaryColor font-semibold">
+                {" "}
+                ${bookable.price}
+              </span>
+            </p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   );
 };
