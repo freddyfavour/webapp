@@ -128,13 +128,12 @@ const Bookings = () => {
   const bookService = () => {
     navigate("/bookings-flow");
   };
-  const data = localStorage.getItem("userData");
-  const roleData = JSON.parse(data);
+    const roleData = localStorage.getItem("userData");
 
   return (
     <DashboardLayout>
       <div className="flex gap-8 text-primaryColor lg:pr-8">
-        {roleData.role === "business" ? (
+        {roleData === "business" ? (
           <BBooking />
         ) : (
           <CBooking salonData={salonData} confirmOrders={confirmOrders} />

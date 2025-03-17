@@ -1,14 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import SideNav from "../../components/dashboard/SideNav";
-import About from "../../components/salonProfile/About";
+import Overview from "../../components/salonProfile/Overview";
 import Reviews from "../../components/salonProfile/Reviews";
-import Team from "../../components/salonProfile/Team";
 import Service from "../../components/salonProfile/Service";
 import Gallery from "../../components/salonProfile/Gallery";
-
+import Button from "../../components/Button";
 const SalonProfile = () => {
-  const [tab, setTab] = useState("service");
+  const [tab, setTab] = useState("overview");
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [isSmallViewport, setIsSmallViewport] = useState(
     window.innerWidth <= 900
@@ -30,7 +31,7 @@ const SalonProfile = () => {
     id: id,
     name: "Timeless Salon",
     description:
-      "At Timeless Salon, we believe that beauty is not just akin deep, It's a reflection of your inner vitality. That's why our team of experienced professionals is...",
+      "At Timeless Salon, we believe that beauty is not just skin deep; it's a reflection of your inner vitality. That's why our team of experienced professionals is committed to delivering personalized and transformative experiences tailored to your unique needs. With a passion for creativity and an unwavering attention to detail, we strive to bring out your natural beauty and enhance your individual style...",
     coverPhoto: "/timelesssaloncoverimg.png",
     image: "/timelesssalonimg.png",
     services: [
@@ -41,10 +42,14 @@ const SalonProfile = () => {
       "Hair Styling",
     ],
     bookables: [
-      { title: "Hair Conditioning", price: "20" },
-      { title: "Hair Coloring", price: "50" },
-      { title: "Hair Styling", price: "30" },
-      { title: "Hair Extension", price: "40" },
+      {
+        img: "/timelessrecommended.png",
+        title: "Hair Conditioning",
+        price: "20",
+      },
+      { img: "/timelessrecommended.png", title: "Hair Coloring", price: "50" },
+      { img: "/timelessrecommended.png", title: "Hair Styling", price: "30" },
+      { img: "/timelessrecommended.png", title: "Hair Extension", price: "40" },
     ],
     rating: 4.2,
     review: 1286,
@@ -99,7 +104,7 @@ const SalonProfile = () => {
     <div
       className={`${
         isSmallViewport && "px-4"
-      } flex gap-8 text-primaryColor lg:pr-8`}
+      } flex gap-8 text-primaryColor lg:pr-8 bg-[#FEFFF1]`}
     >
       {!isSmallViewport && <SideNav />}
       <div className="container mx-auto">
@@ -107,10 +112,43 @@ const SalonProfile = () => {
           <img
             src={salonData.coverPhoto}
             alt={`${salonData.name} cover`}
-            className="w-full h-[15rem] mt-20 object-cover"
+            className="w-full h-[15rem] mt-20 rounded-lg object-cover"
           />
         </div>
+        <div className="flex justify-between mt-3">
+          <div>
+            <div className="flex gap-4 items-center">
+              <h1 className="text-2xl font-bold">{salonData.name}</h1>
+            </div>
+            <div>
+              <p className="flex gap-1 text-sm text-black">
+                Hair Styling, Spa, Facebeat
+                <img src="/dot.svg" alt="dot icon" />
+                <img src="/star.svg" alt="star icon" />
+                {salonData.rating}
+              </p>
+              <div className="flex text-sm">
+                <p className="flex text-sm text-black">
+                  {salonData.location}
+                  <img src="/dot.svg" className="mx-2" />
+                  {salonData.distance}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="text-right">
+            <Button title="Book now" onClick={() => navigate("/bookings-flow")} />
+          </div>
+        </div>
         <div className="flex justify-between w-4/5 mx-auto my-4 text-black font-bold">
+          <div
+            onClick={() => setTab("overview")}
+            className={`cursor-pointer text-sm ${
+              tab === "overview" && "text-primaryColor underline"
+            }`}
+          >
+            Overview
+          </div>
           <div
             onClick={() => setTab("service")}
             className={`cursor-pointer text-sm ${
@@ -135,77 +173,13 @@ const SalonProfile = () => {
           >
             Reviews
           </div>
-          <div
-            onClick={() => setTab("team")}
-            className={`cursor-pointer text-sm ${
-              tab === "team" && "text-primaryColor underline"
-            }`}
-          >
-            Team
-          </div>
-          <div
-            onClick={() => setTab("about")}
-            className={`cursor-pointer text-sm ${
-              tab === "about" && "text-primaryColor underline"
-            }`}
-          >
-            About
-          </div>
-        </div>
-        <hr />
-        <div className="flex justify-between items-center mt-8">
-          <div>
-            <div className="flex gap-4 items-center">
-              <img
-                src={salonData.image}
-                alt={`${salonData.name} logo`}
-                className="w-12 h-12 rounded-full"
-              />
-              <h1 className="text-2xl font-bold">{salonData.name}</h1>
-            </div>
-            <div>
-              <div className="flex mt-2 text-sm">
-                <p className="flex font-bold">
-                  {salonData.location}
-                  <img src="/locationIconprimary.svg" className="mx-2" />
-                  {salonData.distance}
-                </p>
-              </div>
-              <p className="text-sm">Open till {salonData.time}</p>
-              <span className="bg-[#ff780199] flex w-[9rem] mt-4 gap-2 text-xs rounded-lg px-3 py-1">
-                <img src="/tag.svg" alt="" />
-                SAVE UP TO 20%
-              </span>
-            </div>
-          </div>
-          <div className="text-right">
-            <p className="mb-6 flex gap-2">
-              <img src="/chaticon.svg" alt="" />
-              Chat with us
-            </p>
-            <p className="flex gap-1 items-center text-sm">
-              {salonData.rating} <img src="/star.svg" alt="star icon" />
-              <img src="/dot.svg" alt="dot icon" /> ({salonData.review})
-            </p>
-          </div>
         </div>
         <hr className="my-4" />
-        <ul className="flex gap-4 justify-center mt-4">
-          {salonData.services.map((service, index) => (
-            <li
-              key={index}
-              className="bg-secondaryColor px-4 py-2 rounded-full text-sm"
-            >
-              {service}
-            </li>
-          ))}
-        </ul>
         <div className="mt-6">
           {tab === "service" && <Service salonData={salonData} />}
           {tab === "gallery" && <Gallery />}
           {tab === "reviews" && <Reviews salonData={salonData} />}
-          {tab === "team" && <Team salonData={salonData} />}
-          {tab === "about" && <About salonData={salonData} />}
+          {tab === "overview" && <Overview salonData={salonData} />}
         </div>
       </div>
     </div>

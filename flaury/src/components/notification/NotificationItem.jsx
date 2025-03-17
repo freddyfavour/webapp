@@ -2,7 +2,7 @@ import React from "react";
 
 const NotificationItem = ({ icon, message, details, isRead }) => {
   return (
-    <div className="bg-white flex items-center gap-4 p-4 relative">
+    <div className="flex items-center gap-4 p-4 relative">
       {!isRead && (
         <div className="absolute right-1 w-2 h-2 bg-primaryColor rounded-full"></div>
       )}

@@ -3,12 +3,41 @@ import forwardarrow from "/forwardarrow.svg";
 
 const SettingsComponent = () => {
   const [page, setPage] = useState("");
-
+const roleData = localStorage.getItem("userData")
   return (
     <>
       {page === "edit-profile" ? (
         <div>
-          <form className="w-full md:w-[400px] mx-auto text-black">
+          {roleData !== "Business" ? (
+            <>
+            <div
+      className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+      onClick={()=>    setPage("business-details")      }
+    >
+      <div className="flex items-center gap-4">
+        <img src="/business.svg" alt="" className="rounded-md" />
+        <div>
+          <p className="text-black font-semibold text-sm">Business details</p>
+          <p className="text-black mt-2 text-xs">Manage your business settings such as business name & location</p>
+        </div>
+      </div>
+        <img src={forwardarrow} alt="" />
+    </div><div
+      className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+      onClick={()=>    setPage("faqs")      }
+    >
+      <div className="flex items-center gap-4">
+        <img src="/team.svg" alt="" className="rounded-md" />
+        <div>
+          <p className="text-black font-semibold text-sm">Team</p>
+          <p className="text-black mt-2 text-xs">Manage your team members</p>
+        </div>
+      </div>
+        <img src={forwardarrow} alt="" />
+    </div>
+            </>
+          ): (
+            <form className="w-full md:w-[400px] mx-auto text-black">
             <div className="mt-8">
               <label htmlFor="name">Name</label>
               <input
@@ -40,7 +69,12 @@ const SettingsComponent = () => {
               Select
             </button>
           </form>
+          )}
         </div>
+      ) : page === "business-details" ? (
+        <>
+        <h3 className="font-semibold text-black">Business details</h3>
+        </>
       ) : page === "change-password" ? (
         <div>
           <form className="w-full md:w-[400px] mx-auto text-black">

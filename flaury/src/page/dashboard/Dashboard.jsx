@@ -12,8 +12,7 @@ const Dashboard = () => {
   );
   const [showPopup, setShowPopup] = useState(true);
   const [locationObtained, setLocationObtained] = useState(false);
-  const savedUserData = localStorage.getItem("savedUser");
-  const roleData = savedUserData ? JSON.parse(savedUserData).role : null;
+  const roleData = localStorage.getItem("userData");
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,11 +55,10 @@ const Dashboard = () => {
       setShowPopup(false);
     }
   }, [locationObtained]);
-
   return (
     <div className="flex gap-8 text-primaryColor">
       {/* {isSmallViewport ? null : <SideNav />} */}
-      {roleData === "Business" ? <BOverview /> : <Overview />}
+      {roleData !== "Business" ? <BOverview /> : <Overview />}
       {showPopup && (
         <Popup
           title="Where are you?"

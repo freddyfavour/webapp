@@ -170,7 +170,7 @@ const DashboardLayout = ({ children }) => {
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="ml-10 pr-4">
+        <div className="ml-0 md:pl-10 pr-0 md:pr-4 pb-4 bg-[#FEFFF1]">
           {/* <MainNav /> */}
           {children}
         </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SideNav from "./SideNav";
 
 const messages = [
   {
@@ -30,13 +31,9 @@ const messages = [
 
 const ChatNav = ({ onSelectMessage }) => {
   return (
-    <nav className="bg-primaryColor w-full md:w-1/3 h-screen text-white flex flex-col items-center">
-      <div className="w-full md:w-fit fixed">
-        <Link to="/dashboard" className="flex bg-primaryColor gap-4 p-4">
-          <img src="/backarrow.svg" alt="Back arrow" />
-          <h3 className="font-bold text-3xl">FLAURY</h3>
-        </Link>
-        <div className="bg-secondaryColor p-4 w-full">
+    <nav className="w-full md:w-2/3 ml-4 h-screen text-white flex flex-col items-center">
+      {/* <div className="w-full md:w-fit fixed"> */}
+        <div className="bg-secondaryColor p-4 mt-20 w-full">
           <div className="flex gap-4 items-center bg-secondaryColor my-2 border border-primaryColor rounded-md">
             <div className="px-2">
               <img src="/search.svg" alt="Search icon" />
@@ -50,7 +47,7 @@ const ChatNav = ({ onSelectMessage }) => {
             />
           </div>
         </div>
-        <div className="bg-white w-full h-screen overflow-auto">
+        <div className="bg-secondaryColor w-full h-screen overflow-auto">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -81,7 +78,7 @@ const ChatNav = ({ onSelectMessage }) => {
             </div>
           ))}
         </div>
-      </div>
+      {/* </div> */}
     </nav>
   );
 };

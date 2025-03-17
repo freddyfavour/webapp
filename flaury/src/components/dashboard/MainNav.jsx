@@ -17,12 +17,14 @@ const MainNav = () => {
   const onSubmit = () => {
     setShowPopup(false);
   };
+  const roleData = localStorage.getItem("userData");
 
   return (
     <>
-      <nav className="w-full">
-        <ul className="w-3/4 h-20 flex gap-4 justify-between items-center absolute right-10">
-          <div className="flex gap-6 items-center">
+      {roleData === "Business" ? (<nav className="w-full">
+        <div className="bg-[#FEFFF1] w-[calc(100%-257px)] absolute left-[257px] h-20">
+      <ul className="w-full h-20 flex justify-between items-center ml-10 pr-12">
+      <div className="flex gap-6 items-center">
             <li>
               <Link
                 to={
@@ -79,7 +81,40 @@ const MainNav = () => {
             </Link>
           </li>
         </ul>
+        </div>
+      </nav>):(<><nav className="w-full">
+        <div className="bg-[#FEFFF1] w-[calc(100%-257px)] absolute left-[257px] h-20">
+      <ul className="w-full h-20 flex justify-between items-center ml-10 pr-12">
+        <div className="flex gap-2 justify-between items-center p-4">
+          <img
+            src="/timelessrecommended.png"
+            alt=""
+            className="w-12 h-12 rounded-full"
+          />
+          <div>
+            <p>Good Morning!</p>
+            <b>Becca Baruch</b>
+          </div>
+          <img src="/salon-verified.svg" alt="" />
+        </div>
+        <li className="flex gap-8 items-center">
+        <Link
+                to="/notifications"
+                className="relative"
+              >
+                  <img src={notifications} alt="" />
+              </Link>
+            <Link to="#">
+              <img src={settings} alt="" />
+            </Link>
+            <Link to="/favorites">
+              <img src={favorites} alt="" />
+            </Link>
+          </li>
+        </ul>
+        </div>
       </nav>
+      </>)}
       {showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-[90%] md:w-[35%] border py-8 px-4 md:px-20 rounded-lg shadow-lg text-left relative">
