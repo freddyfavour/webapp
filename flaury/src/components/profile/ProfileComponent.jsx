@@ -100,8 +100,7 @@ const ProfileComponent = () => {
     localStorage.removeItem("userData");
   };
 
-  const data = localStorage.getItem("userData");
-  const roleData = JSON.parse(data);
+  const roleData = localStorage.getItem("userData");
 
   return (
     <div className="mb-10">
@@ -134,17 +133,27 @@ const ProfileComponent = () => {
           </>
         ) : page === "settings" ? (
           <>
-            <img src={profileData.profileimg} alt="" className="w-[5rem]" />
-            <h3 className="text-xl font-bold">{profileData.name}</h3>
-            <p className="text-xs">{profileData.email}</p>
-          </>
-        ) : (
-          <>
-            {roleData.role === "business" ? (
+            {roleData !== "Business" ? (
               <img
                 src="/timelessrecommended.png"
                 alt=""
-                className="w-full h-32"
+                className="w-full h-32 object-cover"
+              />
+            ) : (
+              <>
+                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+                <h3 className="text-xl font-bold">{profileData.name}</h3>
+                <p className="text-xs">{profileData.email}</p>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            {roleData !== "Business" ? (
+              <img
+                src="/timelessrecommended.png"
+                alt=""
+                className="w-full h-32 object-cover"
               />
             ) : (
               <>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import SideNav from "../../components/dashboard/SideNav";
 import Overview from "../../components/salonProfile/Overview";
@@ -8,6 +8,8 @@ import Gallery from "../../components/salonProfile/Gallery";
 import Button from "../../components/Button";
 const SalonProfile = () => {
   const [tab, setTab] = useState("overview");
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [isSmallViewport, setIsSmallViewport] = useState(
     window.innerWidth <= 900
@@ -102,7 +104,7 @@ const SalonProfile = () => {
     <div
       className={`${
         isSmallViewport && "px-4"
-      } flex gap-8 text-primaryColor lg:pr-8`}
+      } flex gap-8 text-primaryColor lg:pr-8 bg-[#FEFFF1]`}
     >
       {!isSmallViewport && <SideNav />}
       <div className="container mx-auto">
@@ -135,7 +137,7 @@ const SalonProfile = () => {
             </div>
           </div>
           <div className="text-right">
-            <Button title="Book now" />
+            <Button title="Book now" onClick={() => navigate("/bookings-flow")} />
           </div>
         </div>
         <div className="flex justify-between w-4/5 mx-auto my-4 text-black font-bold">
