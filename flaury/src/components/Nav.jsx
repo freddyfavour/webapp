@@ -33,14 +33,14 @@ const Nav = () => {
   return (
     <>
       {authNav ? (
-        <div className="fixed top-0 w-full bg-[#fff] flex justify-center items-center z-[100] border border-b">
+        <div className="w-full bg-[#fff] flex justify-center items-center z-[100] border border-b">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-10 md:h-14" />
           </Link>
         </div>
       ) : (
         <>
-          <div className="fixed top-0 w-full bg-[#fff] px-4 md:px-20 py-2 z-[100] border border-b">
+          <div className=" w-full bg-[#fff] px-4 md:px-20 py-2 z-[100] border border-b">
             <div className="max-w-[1200px] mx-auto flex justify-between items-center">
               <Link to="/">
                 <img src={logo} alt="Logo" className="h-10 md:h-14" />

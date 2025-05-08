@@ -25,16 +25,19 @@ import BSignup from "./page/auth/BSignup";
 import BSignupCategory from "./page/auth/BSignupCategory";
 import BSignupVerify from "./page/auth/BSignupVerify";
 import BSignupDetails from "./page/auth/BSignupDetails";
+import { useAuthStore } from "./store/authstore";
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [isSmallViewport, setIsSmallViewport] = useState(
-    window.innerWidth <= 900
-  );
+  const { isAuth, isSmallViewport, checkViewport} = useAuthStore();
+
+  // const [isAuth, setIsAuth] = useState(false);
+  // const [isSmallViewport, setIsSmallViewport] = useState(
+  //   window.innerWidth <= 900
+  // );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallViewport(window.innerWidth <= 900);
+      checkViewport(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -42,7 +45,7 @@ const App = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [checkViewport]);
 
   const handleLogin = () => {
     setIsAuth(true);
