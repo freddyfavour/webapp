@@ -1,18 +1,11 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
-
-const confirmPayment = async (id, data) => {
-    try {
-        const response = await api.post(`/bookings/pay/${id}`, data);
-        return response.data;
-    } catch (err) {
-        console.log("Error confirming payment: ", err);
-        toast.error("Error confirming payment: ", err);
-    }
+const paymentsAPI = {
+    confirmPayment: (id) => createApiRequest('post', `/bookings/pay/$(id)`, {
+        errorMessage: 'An error occured confirming payment.'
+    })
 }
 
 export default {
-    confirmPayment,
+    paymentsAPI,
 }

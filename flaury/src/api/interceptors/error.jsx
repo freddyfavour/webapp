@@ -7,6 +7,7 @@ const errorInterceptor = (axiosInstance) => {
             case 401:
               // TODO: Handle unauthorized access 
               console.log("Unauthorized access.");
+              
               // TODO: Attempt to refresh the token.
               break;
             case 403:

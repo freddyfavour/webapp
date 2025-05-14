@@ -26,9 +26,10 @@ import BSignupCategory from "./page/auth/BSignupCategory";
 import BSignupVerify from "./page/auth/BSignupVerify";
 import BSignupDetails from "./page/auth/BSignupDetails";
 import { useAuthStore } from "./store/authstore";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
-  const { isAuth, isSmallViewport, checkViewport} = useAuthStore();
+  const { isAuth, isSmallViewport, checkViewport } = useAuthStore();
 
   // const [isAuth, setIsAuth] = useState(false);
   // const [isSmallViewport, setIsSmallViewport] = useState(
@@ -53,6 +54,7 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer />
       {isAuth ? (
         <div className="flex gap-4">{!isSmallViewport && <MainNav />}</div>
       ) : (

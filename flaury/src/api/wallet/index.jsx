@@ -1,51 +1,23 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
+const walletAPI = {
+    addFunds: createApiRequest('post', '/wallet/add-funds', {
+        errorMessage: 'An error occurred while adding funds.'
+    }),
 
-const addFunds = async (data) => {
-    try {
-        const response = await api.post(`/wallet/add-funds`, data);
-        return response.data;
-    } catch (err) {
-        console.log("Error adding funds: ", err);
-        toast.error("Error adding funds: ", err);
-    }
-}
+    getBalance: createApiRequest('get', '/wallet/balance', {
+        errorMessage: 'An error occurred while fetching balance.'
+    }),
 
-const getBalance = async () => {
-    try {
-        const response = await api.get(`/wallet/balance`);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching balance: ", err);
-        toast.error("Error fetching balance: ", err);
-    }
-}
+    getTransactions: createApiRequest('get', '/wallet/transactions', {
+        errorMessage: 'An error occurred while fetching transactions.'
+    }),
 
-const getTransactions = async () => {
-    try {
-        const response = await api.get(`/wallet/transactions`);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching transactions: ", err);
-        toast.error("Error fetching transactions: ", err);
-    }
-}
-
-const withdrawFunds = async (data) => {
-    try {
-        const response = await api.post(`/wallet/withdraw`, data);
-        return response.data;
-    } catch (err) {
-        console.log("Error withdrawing funds: ", err);
-        toast.error("Error withdrawing funds: ", err);
-    }
+    withdrawFunds: createApiRequest('post', '/wallet/withdraw', {
+        errorMessage: 'An error occurred while withdrawing funds.'
+    })
 }
 
 export default {
-    addFunds,
-    getBalance,
-    getTransactions,
-    withdrawFunds,
+    walletAPI,
 }

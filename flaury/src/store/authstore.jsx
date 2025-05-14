@@ -18,6 +18,11 @@ export const useAuthStore = create(
     set({ token: null });
   },
 
+  // User management
+  setUser: (user) => set({ user, isAuth: true }),
+
+  clearUser: () => set({ user: null, isAuth: false}),
+
   // Actions
   login: () => set({ isAuth: true }),
   logout: () => set({ isAuth: false }),

@@ -1,18 +1,11 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
+const adminAPI = {
+  getBookings: createApiRequest("get", "/bookings/bookings", {
+    errorMessage: "An error occurred fetching bookings.",
+  }),
+};
 
-const getBookings = async () => {
-    try {
-      const response = await api.get('/bookings/bookings');
-      return response.data;
-    } catch (err) {
-      console.log("Error fetching data: ", err);
-      toast.error("Error fetching data: ", err);
-    }
-  };
-  
-  export default {
-    getBookings,
-  };
+export default {
+  adminAPI,
+};

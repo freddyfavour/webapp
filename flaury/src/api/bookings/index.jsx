@@ -1,40 +1,19 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
+const bookingsIndexAPI = {
+    createBooking: createApiRequest('post', '/bookings/create', {
+        errorMessage: 'An error occured creating booking.'
+    }),
 
-const createBooking = async (data) => {
-    try {
-        const response = await api.post('/bookings/create', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error creating booking: ", err);
-        toast.error("Error creating booking: ", err);
-    }
-};
+    deleteBooking: (id) => createApiRequest('delete', `/bookings/delete/$(id)`, {
+        errorMessage: 'An error occured deleting booking.'
+    }),
 
-const deleteBooking = async (id) => {
-    try {
-        const response = await api.delete(`/bookings/delete/${id}`);
-        return response.data;
-    } catch(err) {
-        console.log("Error deleting booking: ", err);
-        toast.error("Error deleting booking: ", err);
-    }
-};
-
-const updateBooking = async (id, data) => {
-    try {
-        const response = await api.put(`/bookings/update/${id}`, data);
-        return response.data;
-    } catch (err) {
-        console.log("Error updating booking: ", err);
-        toast.error("Error updating booking: ", err);
-    }
-};
+    updateBooking: (id) => createApiRequest('put', `/bookings/update/$(id)`, {
+        errorMessage: 'An error occured updating booking.'
+    }),
+}
 
 export default {
-    createBooking,
-    deleteBooking,
-    updateBooking,
+    bookingsIndexAPI,
 };

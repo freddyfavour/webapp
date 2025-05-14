@@ -1,51 +1,23 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
+const userAdminAPI = {
+    adminDeleteUser: (id) => createApiRequest('delete', `/users/delete/${id}`, {
+        errorMessage: 'An error occured deleting user.'
+    }),
 
-const adminDeleteUser = async (id) => {
-    try {
-        const response = await api.delete(`/users/delete/${id}`);
-        return response.data;
-    } catch (err) {
-        console.log("Error deleting user: ", err);
-        toast.error("Error deleting user: ", err);
-    }
-}
+    adminUpdateUserRole: (id) => createApiRequest('patch', `/users/role/${id}`, {
+        errorMessage: 'An error occured updating user role.'
+    }),
 
-const adminUpdateUserRole = async (id, data) => {
-    try {
-        const response = await api.patch(`/users/role/${id}`, data);
-        return response.data;
-    } catch (err) {
-        console.log("Error updating user role: ", err);
-        toast.error("Error updating user role: ", err);
-    }
-}
+    adminBanUser: (id) => createApiRequest('patch', `/users/status/${id}`, {
+        errorMessage: 'An error occured banning user.'
+    }), 
 
-const adminBanUser = async (id) => {
-    try {
-        const response = await api.patch(`/users/status/${id}`);
-        return response.data;
-    } catch (err) {
-        console.log("Error banning user: ", err);
-        toast.error("Error banning user: ", err);
-    }
-}
-
-const adminGetUsers = async () => {
-    try {
-        const response = await api.get(`/users/users`);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching users: ", err);
-        toast.error("Error fetching users: ", err);
-    }
+    adminGetUsers: createApiRequest('get', '/users/users', {
+        errorMessage: 'An error occured getting users.'
+    })
 }
 
 export default {
-    adminDeleteUser,
-    adminUpdateUserRole,
-    adminBanUser,
-    adminGetUsers,
+    userAdminAPI,
 }

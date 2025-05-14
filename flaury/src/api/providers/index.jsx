@@ -1,7 +1,12 @@
-import api from '../axiosConfig';
-import { toast } from 'react-toastify';
+import { createApiRequest } from "../helper";
 
-// TODO: Remove console.log statements and replace with proper error handling
+const providersAPI = {
+    serviceProviderGet: (id) => createApiRequest('get', `/service-provider/users/view/service/providers/$(id)`, {
+        errorMessage: 'An error occured fetching service provider.'
+    }),
+
+    ser
+}
 
 const serviceProviderDelete = async (id) => {
     try {

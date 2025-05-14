@@ -1,106 +1,65 @@
-import api from '../axiosConfig';
-import { toast} from 'react-toastify';
+import { createApiRequest } from '../helper';
 
-// TODO: Remove console.log statements and replace with proper error handling
+const authAPI = {
+    authCheck: createApiRequest('get', '/users/auth-check', {
+        errorMessage: 'An error occured fetching auth check.'
+    }),
 
-const authCheck = async () => {
-    try {
-        const response = await api.get('/users/auth-check');
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    forgotPassword: createApiRequest('post', '/users/forgot-password', {
+        errorMessage: 'An error occured fetching forgot password.'
+    }),
 
-const forgotPassword = async (data) => {
-    try {
-        const response = await api.post('/users/forgot-password', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    login: createApiRequest('post', '/users/login', {
+        errorMessage: 'An error occured Logining in.'
+    }),
 
-const login = async (credentials) => {
-    try {
-        const response = await api.post('/users/login', credentials);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    logout: createApiRequest('post', '/users/logout', {
+        errorMessage: 'An error occured Logining out.'
+    }),
+    
+    refreshToken: createApiRequest('post', '/users/refresh', {
+        errorMessage: 'An error occured refreshing token.'
+    }),
+    
+    resendVerification: createApiRequest('post', '/users/resend-verification', {
+        errorMessage: 'An error occured Resending verification.'
+    }),
 
-const logout = async () => {
-    try {
-        const response = await api.post('/users/logout');
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    register: createApiRequest('post', '/users/register', {
+        errorMessage: 'An error occured Registering.'
+    }),
 
-const refreshToken = async () => {
-    try {
-        const response = await api.post('/users/refresh');
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    resetPassword: createApiRequest('post', '/users/reset-password', { 
+        errorMessage: 'An error occured Resetting password.'
+    }),
 
-const register = async (data) => {
-    try {
-        const response = await api.post('/users/register', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+    verifyEmail: createApiRequest('post', '/users/verify-email', {
+        errorMessage: 'An error occured Verifying email.'
+    }),
+}
 
-const resendVerification = async (data) => {
-    try {
-        const response = await api.post('/users/resend-verification', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
+// const login = async (credentials) => {
+//     try {
+//       const response = await apiClient.post('/users/login', credentials);
+//       return {
+//         success: true,
+//         data: response.data
+//       };
+//     } catch (error) {
+//       const status = error.response?.status;
+//       const message = error.response?.data?.message || error.message || "Login failed";
+      
+//       return {
+//         success: false,
+//         error: {
+//           status,
+//           message
+//         }
+//       };
+//     }
+//   };
 
-const resetPassword = async (data) => {
-    try {
-        const response = await api.post('/users/reset-password', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
-
-const verifyEmail = async (data) => {
-    try {
-        const response = await api.post('/users/verify-email', data);
-        return response.data;
-    } catch (err) {
-        console.log("Error fetching data: ", err);
-        toast.error("Error fetching data: ", err);
-    }
-};
 
 export default {
-    authCheck,
-    forgotPassword,
-    login,
-    logout,
-    refreshToken,
-    register,
-    resendVerification,
-    resetPassword,
-    verifyEmail
+    authAPI,
 };
