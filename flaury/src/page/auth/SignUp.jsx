@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import success from "/success.svg";
-import config from "../../../utils/config";
 import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import Input from "../../components/Input";
 import AuthEnv from "../../components/AuthEnv";
-import Card from "../../components/Card";
 import Popup from "../../components/Popup";
 import AuthTitle from "../../components/AuthTitle";
+import authAPI from "../../api/user/auth";
 
-const SignUp = ({ onLogin }) => {
+const SignUp = () => {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const { control, handleSubmit, watch } = useForm();
 
@@ -23,47 +23,65 @@ const SignUp = ({ onLogin }) => {
     setCheckboxChecked(!checkboxChecked);
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (disabled) {
+  const onSubmit = async (formData) => {
+    setIsSubmitting(true);
+
+    if (!checkboxChecked) {
+      toast.error("Please agree to the terms and conditions");
       return;
     }
 
     try {
-      const response = await fetch(`${config.baseUrl}/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phoneNumber,
-          password,
-          role: "Customer",
-        }),
-        credentials: "include",
-      });
+      // Prepare the data object according to your API requirements
+      const userData = {
+        email: formData.email,
+        name: formData.name,
+        password: formData.password,
+        phone_number : formData.phoneNumber,
+        role: "Client",
+        type_of_service: "basic",
+        username: formData.name
+      };
 
-      const data = await response.json();
+      const result = await authAPI.authAPI.register(userData);
 
-      if (!response.ok) {
-        throw new Error(data.message || "Network response was not ok");
+      if (result.success) {
+        const response = result.data;
+
+        if (response && response.token) {
+          localStorage.setItem("authToken", response.token);
+        }
+
+        if (response && response.user) {
+          localStorage.setItem("savedUser", JSON.stringify(response.user));
+        }
+
+        toast.success("Sign up successful!");
+        setShowPopup(true);
+
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
+      } else {
+        const error = result.error;
+
+        if (error.status === 403) {
+          toast.error("Access denied. You don't have permission to log in.");
+        } else if (error.status === 401) {
+          toast.error("Invalid email or password. Please try again.");
+        } else if (error.status === 429) {
+          toast.error("Too many login attempts. Please try again later.");
+        } else {
+          toast.error(error.message || "Login failed. Please try again.");
+        }
+
+        console.error("Login error:", error);
       }
-
-      console.log("Sign up successful:", data);
-
-      localStorage.setItem("savedUser", JSON.stringify(data.savedUser));
-
-      onLogin();
-      toast.success("Sign up successful!");
-      setShowPopup(true);
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
     } catch (error) {
-      console.error("Error signing up:", error);
-      toast.error(error.message);
+      console.error("Unexpected erro:", error);
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -109,10 +127,9 @@ const SignUp = ({ onLogin }) => {
                 validateType="password"
               />
               <Button
-                title="Continue"
+                title={isSubmitting ? "Loading..." : "Continue"}
                 type="submit"
                 customClasses="w-full px-4 py-3 mt-6"
-                onClick={handleSubmit(onSubmit)}
               />
             </form>
             <p className="text-primaryColor text-sm mt-8 text-left">
@@ -137,7 +154,6 @@ const SignUp = ({ onLogin }) => {
           </>
         }
       />
-      <ToastContainer />
       {showPopup && (
         <div className="absolute top-0 left-0">
           <Popup
