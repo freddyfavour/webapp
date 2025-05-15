@@ -31,11 +31,6 @@ import { ToastContainer } from "react-toastify";
 const App = () => {
   const { isAuth, isSmallViewport, checkViewport } = useAuthStore();
 
-  // const [isAuth, setIsAuth] = useState(false);
-  // const [isSmallViewport, setIsSmallViewport] = useState(
-  //   window.innerWidth <= 900
-  // );
-
   useEffect(() => {
     const handleResize = () => {
       checkViewport(window.innerWidth);
@@ -48,40 +43,34 @@ const App = () => {
     };
   }, [checkViewport]);
 
-  const handleLogin = () => {
-    setIsAuth(true);
-  };
-
   return (
     <>
       <ToastContainer />
-      {isAuth ? (
-        <div className="flex gap-4">{!isSmallViewport && <MainNav />}</div>
-      ) : (
-        <Nav />
-      )}
+      {!isAuth && <Nav/>}
+      {isAuth && !isSmallViewport && <MainNav />}
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/choose-role" element={<ChooseRole />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/signup" element={<SignUp onLogin={handleLogin} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/business-signup"
-          element={<BSignup onLogin={handleLogin} />}
+          element={<BSignup />}
         />
         <Route
           path="/business-category"
-          element={<BSignupCategory onLogin={handleLogin} />}
+          element={<BSignupCategory />}
         />
         <Route
           path="/business-details"
-          element={<BSignupDetails onLogin={handleLogin} />}
+          element={<BSignupDetails />}
         />
         <Route
           path="/business-verification"
-          element={<BSignupVerify onLogin={handleLogin} />}
+          element={<BSignupVerify />}
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/forgot2" element={<Forgot2 />} />

@@ -60,8 +60,8 @@ const SignUp = () => {
         setShowPopup(true);
 
         setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
+          navigate("/login");
+        }, 5000);
       } else {
         const error = result.error;
 
@@ -78,7 +78,7 @@ const SignUp = () => {
         console.error("Login error:", error);
       }
     } catch (error) {
-      console.error("Unexpected erro:", error);
+      console.error("Unexpected error:", error);
       toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -158,8 +158,7 @@ const SignUp = () => {
         <div className="absolute top-0 left-0">
           <Popup
             title="Congratulations"
-            subtitle="Your account is now ready to use. You will be redirected to
-          your homepage shortly."
+            subtitle="Your account is almost ready. Check your email for a verification code."
             image={success}
           />
         </div>
