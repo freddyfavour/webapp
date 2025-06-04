@@ -1,10 +1,12 @@
-import { useState } from "react";
-import AuthEnv from "../../components/AuthEnv";
-import AuthTitle from "../../components/AuthTitle";
+import React, { useState } from "react";
+import { useAuthStore } from "../../store/authstore";
+
+import AuthEnv from "../AuthEnv";
+import AuthTitle from "../AuthTitle";
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input";
+import Input from "../Input";
 import { useForm } from "react-hook-form";
-import ProgressBar from "../../components/ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 const categories = [
   { id: 1, name: "Haircut & styling" },
@@ -18,23 +20,31 @@ const categories = [
   { id: 9, name: "Others" },
 ];
 
-const BSignupCategory = () => {
+const Step2BusinessInfo = ({ onComplete }) => {
+  const { updateRegistrationData, registrationData, prevStep } = useAuthStore();
+
   const [description, setDescription] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigate();
   const { control, handleSubmit, watch } = useForm();
   const businessName = watch("businessName");
 
-  console.log(businessName, description, selectedCategory);
-  const onSubmit = () => {
-    if (businessName && description && selectedCategory) {
-      navigate("/business-details");
-    }
-  };
+  const onSubmit = (formData) => {
+    // TODO: Update the Registration Data for the API
+    const userData = {
+        team_size: formData.team_size,
+        location: formData.location,
+        profile_image: formData.profile_image,
+        banner_image: formData.banner_image,
+    };
+
+    updateRegistrationData(userData);
+    onComplete();
+    
+
+  }
 
   return (
-    <AuthEnv
-      children={
         <>
           <AuthTitle title="Sign Up" />
 
@@ -100,9 +110,7 @@ const BSignupCategory = () => {
             </button>
           </form>
         </>
-      }
-    />
   );
 };
 
-export default BSignupCategory;
+export default Step2BusinessInfo;

@@ -10,10 +10,12 @@ import AuthEnv from "../../components/AuthEnv";
 import Popup from "../../components/Popup";
 import AuthTitle from "../../components/AuthTitle";
 import authAPI from "../../api/user/auth";
+import OTPVerification from "../../components/registration/otpverification";
 
 const SignUp = () => {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const { control, handleSubmit, watch } = useForm();
 
@@ -28,6 +30,7 @@ const SignUp = () => {
 
     if (!checkboxChecked) {
       toast.error("Please agree to the terms and conditions");
+      setIsSubmitting(false);
       return;
     }
 
@@ -46,6 +49,7 @@ const SignUp = () => {
       const result = await authAPI.authAPI.register(userData);
 
       if (result.success) {
+        
         const response = result.data;
 
         if (response && response.token) {
@@ -57,11 +61,13 @@ const SignUp = () => {
         }
 
         toast.success("Sign up successful!");
-        setShowPopup(true);
+        setSubmittedEmail(formData.email);
+        // setShowPopup(true);
 
         setTimeout(() => {
-          navigate("/login");
-        }, 5000);
+          // navigate("/login");
+          setShowPopup(true);
+        }, 4000);
       } else {
         const error = result.error;
 
@@ -156,11 +162,7 @@ const SignUp = () => {
       />
       {showPopup && (
         <div className="absolute top-0 left-0">
-          <Popup
-            title="Congratulations"
-            subtitle="Your account is almost ready. Check your email for a verification code."
-            image={success}
-          />
+          <OTPVerification email={submittedEmail}/>
         </div>
       )}
     </>

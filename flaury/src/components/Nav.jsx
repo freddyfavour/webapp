@@ -18,7 +18,7 @@ const Nav = () => {
         location.pathname === "/forgot-password" ||
         location.pathname === "/forgot2" ||
         location.pathname === "/forgot3" ||
-        loccation.pathname === "/register"
+        location.pathname === "/register"
     );
   }, [location]);
 

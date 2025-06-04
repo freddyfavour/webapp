@@ -341,11 +341,11 @@ const BBooking = () => {
                             className={`block w-10 h-6 rounded-full ${
                               booking.isRemindMe
                                 ? "bg-primaryColor"
-                                : "bg-gray-300"
+                                : "bg-[#FEFFF1]"
                             }`}
                           ></div>
                           <div
-                            className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${
+                            className={`dot absolute left-1 top-1 bg-[#FEFFF1] w-4 h-4 rounded-full transition ${
                               booking.isRemindMe
                                 ? "transform translate-x-full"
                                 : ""
@@ -394,7 +394,7 @@ const BBooking = () => {
       </div>
       {isPopupOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[35%] py-8 px-6 md:px-14 rounded-lg shadow-lg text-center relative">
+          <div className="bg-[#FEFFF1] w-4/5 md:w-[35%] py-8 px-6 md:px-14 rounded-lg shadow-lg text-center relative">
             <img
               src="/close.svg"
               alt=""
