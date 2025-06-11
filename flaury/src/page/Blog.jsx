@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import Blogdetails from "../components/blog/Blogdetails";
-import Flauryapp from "../components/blog/Flauryapp";
-import Hero from "../components/blog/Hero";
-import Footer from "../components/Footer";
+import Blogdetails from "../components/landingPage/blog/Blogdetails";
+import Flauryapp from "../components/landingPage/blog/Flauryapp";
+import Hero from "../components/landingPage/blog/Hero";
+import Footer from "../components/landingPage/Footer";
+import Nav from "../components/landingPage/Nav";
 
 const Blog = () => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const Blog = () => {
   }, []);
   return (
     <div>
+      <Nav />
       <Hero />
       <Blogdetails />
       <Flauryapp />

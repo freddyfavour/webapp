@@ -5,9 +5,6 @@ import nail from "/nail.svg";
 import hair from "/hair.svg";
 import doublearrow from "/doublearrow.svg";
 import { Link } from "react-router-dom";
-import notifications from "/notifications.svg";
-import favorites from "/favorites.svg";
-import menu from "/hamburger-menu.svg";
 import dashboard from "/dashboard.svg";
 import profile from "/profile.svg";
 import booking from "/booking.svg";
@@ -132,24 +129,10 @@ const Quicklinks = () => {
       <div>
         <div className="flex items-center justify-between my-4">
           <div className="flex items-center gap-6">
-            <div
-              className="block md:hidden cursor-pointer z-10"
-              onClick={() => setShowNav(!showNav)}
-            >
-              <img src={menu} alt="" className="w-6 h-6" />
-            </div>
             <div>
               <h3 className="font-bold text-lg">Hello Becca 😊</h3>
               <p className="text-xs">What are you saying for today?</p>
             </div>
-          </div>
-          <div className="flex gap-6">
-            <Link to="/notifications">
-              <img src={notifications} alt="" />
-            </Link>
-            <Link to="/favorites">
-              <img src={favorites} alt="" />
-            </Link>
           </div>
         </div>
         <Link to="/search">

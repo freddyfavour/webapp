@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 import NotificationItem from "../../components/notification/NotificationItem";
 import { Link } from "react-router-dom";
 import backarrow from "/backarrow.svg";

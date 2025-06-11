@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 
 const Settings = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(

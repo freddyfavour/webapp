@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ChatNav from "../../components/dashboard/ChatNav";
 import ChatComponent from "../../components/chat/ChatComponent";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 
 const Chat = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
@@ -34,7 +34,7 @@ const Chat = () => {
 
   return (
     <div className="flex flex-col lg:flex-row text-primaryColor lg:pr-8">
-        <SideNav />
+      <SideNav />
       {isSmallViewport ? (
         showChatComponent ? (
           <div className="md:mt-20 w-full px-4 md:px-0 bg-[#ccc] text-primaryColor">
@@ -56,7 +56,7 @@ const Chat = () => {
               <ChatComponent selectedMessage={selectedMessage} />
             ) : (
               <div className="h-full flex items-center justify-center">
-              <p>Select a chat to start messaging</p>
+                <p>Select a chat to start messaging</p>
               </div>
             )}
           </div>

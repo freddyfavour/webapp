@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import Hero from "../components/about/Hero";
-import Intro from "../components/about/Intro";
-import Needs from "../components/about/Needs";
-import Whyflaury from "../components/about/Whyflaury";
-import Introflauryb from "../components/about/Introflauryb";
-import Flauryapp from "../components/about/Flauryapp";
-import Footer from "../components/Footer";
+import Hero from "../components/landingPage/about/Hero";
+import Intro from "../components/landingPage/about/Intro";
+import Needs from "../components/landingPage/about/Needs";
+import Whyflaury from "../components/landingPage/about/Whyflaury";
+import Introflauryb from "../components/landingPage/about/Introflauryb";
+import Flauryapp from "../components/landingPage/about/Flauryapp";
+import Footer from "../components/landingPage/Footer";
+import Nav from "../components/landingPage/Nav";
 
 const About = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const About = () => {
   }, []);
   return (
     <div>
+      <Nav />
       <Hero />
       <Intro />
       <Needs />

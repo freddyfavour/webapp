@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
-import BookingHeader from "../../components/bookings/BookingHeader";
 import { useNavigate } from "react-router-dom";
 import BBooking from "../../components/bookings/BBooking";
 import CBooking from "../../components/bookings/CBooking";
@@ -128,7 +126,7 @@ const Bookings = () => {
   const bookService = () => {
     navigate("/bookings-flow");
   };
-    const roleData = localStorage.getItem("userData");
+  const roleData = localStorage.getItem("userData");
 
   return (
     <DashboardLayout>

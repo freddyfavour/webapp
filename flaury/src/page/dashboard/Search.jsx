@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 import NearbySalon from "../../components/dashboard/NearbySalon";
 import { Link } from "react-router-dom";
 import Recommended from "../../components/search/Recommended";
@@ -55,11 +55,10 @@ const Search = () => {
           {["All", "Spa", "Manicure", "Skin care"].map((label) => (
             <button
               key={label}
-              className={`border text-xs px-4 py-1 rounded-full ${
-                label === "All"
+              className={`border text-xs px-4 py-1 rounded-full ${label === "All"
                   ? "bg-primaryColor text-white border-primaryColor"
                   : "text-primaryColor border-primaryColor"
-              }`}
+                }`}
             >
               {label}
             </button>

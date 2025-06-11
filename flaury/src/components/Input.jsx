@@ -13,11 +13,15 @@ const Input = ({
   validateType,
   minValue,
   prevValue,
+  defaultValue = "", // Add defaultValue with empty string as default
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   // Validation handlers
   const validateInput = (value) => {
+    // Add safety check to handle undefined/null values
+    if (!value && validateType !== "required") return true;
+    
     switch (validateType) {
       case "email":
         return (
@@ -29,6 +33,11 @@ const Input = ({
             value
           ) ||
           "Password must be at least 8 characters, include one letter, one number, and one special character."
+        );
+      case "code":
+        return (
+          /^[A-Za-z0-9]{6}$/.test(value) || 
+          "Code must be exactly 6 alphanumeric characters."
         );
       case "min":
         return (
@@ -42,11 +51,12 @@ const Input = ({
   };
 
   return (
-    <div style={{ marginBottom: "1rem", position: "relative" }}>
+    <div style={{ marginBottom: "1rem", position: "relative", background: "#FEFFF1" }}>
       {label && <label htmlFor={name}>{label}</label>}
       <Controller
         control={control}
         name={name}
+        defaultValue={defaultValue} // Set default value here
         rules={{
           required: errorMessage || "This field is required.",
           validate: validateInput,
@@ -65,13 +75,16 @@ const Input = ({
                   : type
               }
               placeholder={placeholder}
+              value={field.value || ""} // Ensure value is never undefined
+              className="custom-input"
               style={{
                 padding: "0.5rem",
                 borderRadius: "4px",
-                border: `1px solid ${error ? "red" : "#ccc"}`,
+                // border: `1px solid ${error ? "red" : "#ccc"}`,
                 width: "100%",
                 paddingRight: type === "password" ? "2.5rem" : "0.5rem",
               }}
+              maxLength={validateType === "code" ? 6 : undefined}
             />
             {type === "password" && (
               <span
@@ -113,9 +126,11 @@ Input.propTypes = {
     "min",
     "confirmPassword",
     "phoneNumber",
+    "code", // Added new validation type
   ]),
   minValue: PropTypes.number,
   prevValue: PropTypes.string, // For confirmPassword validation
+  defaultValue: PropTypes.string, // Add defaultValue prop
 };
 
 export default Input;
