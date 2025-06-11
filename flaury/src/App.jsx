@@ -21,20 +21,18 @@ import About from "./page/About";
 import Blog from "./page/Blog";
 import ChooseRole from "./page/auth/ChooseRole";
 import BookingsFlow from "./page/dashboard/BookingsFlow";
-import BSignup from "./page/auth/BSignup";
-import BSignupCategory from "./page/auth/BSignupCategory";
-import BSignupVerify from "./page/auth/BSignupVerify";
-import BSignupDetails from "./page/auth/BSignupDetails";
+import { useAuthStore } from "./store/authstore";
+import { ToastContainer } from "react-toastify";
+import Registration from "./page/auth/registration";
+import BaseNavigation from "./page/newDashboard/BaseNavigation";
+import NewDashboard from "./page/newDashboard/NewDashboard";
 
 const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  const [isSmallViewport, setIsSmallViewport] = useState(
-    window.innerWidth <= 900
-  );
+  const { isAuth, isSmallViewport, checkViewport } = useAuthStore();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallViewport(window.innerWidth <= 900);
+      checkViewport(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -42,42 +40,31 @@ const App = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  const handleLogin = () => {
-    setIsAuth(true);
-  };
+  }, [checkViewport]);
 
   return (
     <>
-      {isAuth ? (
-        <div className="flex gap-4">{!isSmallViewport && <MainNav />}</div>
-      ) : (
-        <Nav />
-      )}
+      <ToastContainer />
+      {/* TODO: Might want to use MainNavs as a component in the required pages rather than a top level conditional check. */}
+      {!isAuth && <Nav/>}
+      {/* {isAuth && !isSmallViewport && <MainNav />} */}
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+
         <Route path="/choose-role" element={<ChooseRole />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/signup" element={<SignUp onLogin={handleLogin} />} />
-        <Route
-          path="/business-signup"
-          element={<BSignup onLogin={handleLogin} />}
-        />
-        <Route
-          path="/business-category"
-          element={<BSignupCategory onLogin={handleLogin} />}
-        />
-        <Route
-          path="/business-details"
-          element={<BSignupDetails onLogin={handleLogin} />}
-        />
-        <Route
-          path="/business-verification"
-          element={<BSignupVerify onLogin={handleLogin} />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/register" element={<Registration/>} />
+
+
+        {/* TODO: Complete all ports to the Route method */}
+        <Route path="dashboard" element={<BaseNavigation/>} >
+          <Route index element={<NewDashboard/>} />
+        </Route>
+
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/forgot2" element={<Forgot2 />} />
         <Route path="/forgot3" element={<Forgot3 />} />

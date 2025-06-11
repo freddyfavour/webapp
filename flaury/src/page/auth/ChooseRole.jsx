@@ -7,17 +7,17 @@ const ChooseRole = () => {
 
   const businessRole = () => {
     setRole("business");
-    navigate("/business-signup");
+    navigate("/signup?role=business");
   };
 
   const customerRole = () => {
     setRole("customer");
-    navigate("/signup");
+    navigate("/signup?role=customer");
   };
 
   return (
-    <div className="text-center">
-      <h3 className="mt-24 text-primaryColor text-xl font-bold">
+    <div className="text-center min-h-screen bg-[#FEFFF1]">
+      <h3 className="pt-24 text-primaryColor text-xl font-bold">
         Welcome to Flaury
       </h3>
       <p className="text-xs">Enjoy simplified bookings for your convenience.</p>

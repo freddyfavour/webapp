@@ -19,6 +19,21 @@ input[type="radio"]:checked {
   accent-color: #8b3e00;
 }
 
+input{
+  background-color: #FEFFF1;
+}
+
+.custom-input {
+  background-color: #FEFFF1;
+  border: 1px solid #ADADAD; /* Default border */
+  border-radius: 4px;
+}
+
+/* Change border when input is filled */
+.custom-input:not(:placeholder-shown) {
+  border-color: #8b3e00; /* Green (or any color you prefer) */
+}
+
 .izIndex {
   z-index: 1;
 }
