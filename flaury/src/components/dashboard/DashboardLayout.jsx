@@ -100,7 +100,7 @@ const DashboardLayout = ({ children }) => {
         <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
           <Link to="/dashboard" className="flex items-center space-x-2">
             <img src={logo || "/placeholder.svg"} alt="Logo" className="w-10 h-10" />
-            <span className="text-xl font-semibold">Timeless</span>
+            <span className="text-xl font-semibold"></span>
           </Link>
           <button onClick={toggleSidebar} className="p-1 rounded-md lg:hidden hover:bg-white/10">
             <svg
