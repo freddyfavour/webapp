@@ -75,7 +75,7 @@ const Nav = () => {
 
             {/* Mobile Navigation Drawer */}
             {showNav && (
-              <div className="fixed inset-0 bg-white z-40 flex flex-col pt-16 px-6 py-10 animate-slide-in">
+              <div className="fixed inset-0 bg-secondary z-40 flex flex-col pt-16 px-6 py-10 animate-slide-in">
                 <ul className="space-y-6 text-lg font-medium">
                   <li><Link to="/" onClick={() => setShowNav(false)}>Home</Link></li>
                   <li><Link to="/about" onClick={() => setShowNav(false)}>About Us</Link></li>
