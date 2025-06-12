@@ -143,7 +143,7 @@ const OTPVerification = ({ email, complete }) => {
       {!showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-20">
           <Card className="md:max-w-[574px]">
-            <h3 className="font-bold mb-4 text-primaryColor">
+            <h3 className="font-bold mb-4 text-primary">
               OTP Verification
             </h3>
             <p className="mb-4 text-xs text-black">
@@ -213,7 +213,7 @@ const OTPVerification = ({ email, complete }) => {
                 />
               </div>
               <div className="flex items-center justify-center">
-                <p className="text-primaryColor text-sm">
+                <p className="text-primary text-sm">
                   {seconds > 0
                     ? `Resend code in ${seconds} seconds`
                     : resendCode}

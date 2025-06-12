@@ -58,7 +58,7 @@ const Forgot2 = () => {
         <>
           <AuthTitle title="Forgot Password" />
 
-          <p className="text-primaryColor text-sm pb-6">
+          <p className="text-primary text-sm pb-6">
             Enter the code sent to your email
           </p>
           <form className="w-full" onSubmit={handleSubmit}>
@@ -70,9 +70,8 @@ const Forgot2 = () => {
                 inputMode="numeric"
                 value={code1}
                 onChange={(e) => handleInputChange(e, setCode1)}
-                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${
-                  code1 !== "" ? "bg-red-200" : "bg-gray-200"
-                }`}
+                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${code1 !== "" ? "bg-red-200" : "bg-gray-200"
+                  }`}
               />
               <input
                 type="text"
@@ -81,9 +80,8 @@ const Forgot2 = () => {
                 inputMode="numeric"
                 value={code2}
                 onChange={(e) => handleInputChange(e, setCode2)}
-                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${
-                  code2 !== "" ? "bg-red-200" : "bg-gray-200"
-                }`}
+                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${code2 !== "" ? "bg-red-200" : "bg-gray-200"
+                  }`}
               />
               <input
                 type="text"
@@ -92,9 +90,8 @@ const Forgot2 = () => {
                 inputMode="numeric"
                 value={code3}
                 onChange={(e) => handleInputChange(e, setCode3)}
-                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${
-                  code3 !== "" ? "bg-red-200" : "bg-gray-200"
-                }`}
+                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center ${code3 !== "" ? "bg-red-200" : "bg-gray-200"
+                  }`}
               />
               <input
                 type="text"
@@ -103,9 +100,8 @@ const Forgot2 = () => {
                 inputMode="numeric"
                 value={code4}
                 onChange={(e) => handleInputChange(e, setCode4)}
-                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 text-center ${
-                  code4 !== "" ? "bg-red-200" : "bg-gray-200"
-                }`}
+                className={`border w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 text-center ${code4 !== "" ? "bg-red-200" : "bg-gray-200"
+                  }`}
               />
             </div>
             <Button
@@ -118,7 +114,7 @@ const Forgot2 = () => {
             />
           </form>
 
-          <p className="text-primaryColor text-sm mt-12">
+          <p className="text-primary text-sm mt-12">
             {seconds > 0 ? `Resend code in ${seconds} seconds` : resendText}
           </p>
         </>

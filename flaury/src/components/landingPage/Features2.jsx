@@ -5,7 +5,7 @@ const Features2 = () => {
     <section className="bg-[#FFC951] mt-20 pb-10">
       <div className="lg:flex items-center justify-center">
         <img src={image} alt="" className="h-full" />
-        <div className="text-primaryColor px-16">
+        <div className="text-primary px-16">
           <p className="text-sm py-6">
             With <b className="text-3xl">FLAURY</b>, you have the power to
           </p>

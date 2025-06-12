@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 import NearbySalon from "../../components/dashboard/NearbySalon";
 import { Link } from "react-router-dom";
 import Recommended from "../../components/search/Recommended";
@@ -44,7 +44,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8">
+    <div className="flex gap-8 text-primary lg:pr-8">
       {!isSmallViewport && <SideNav />}
       <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
         <Link to="/dashboard" className="md:hidden block">
@@ -55,11 +55,10 @@ const Search = () => {
           {["All", "Spa", "Manicure", "Skin care"].map((label) => (
             <button
               key={label}
-              className={`border text-xs px-4 py-1 rounded-full ${
-                label === "All"
-                  ? "bg-primaryColor text-white border-primaryColor"
-                  : "text-primaryColor border-primaryColor"
-              }`}
+              className={`border text-xs px-4 py-1 rounded-full ${label === "All"
+                ? "bg-primary text-white border-primary"
+                : "text-primary border-primary"
+                }`}
             >
               {label}
             </button>
@@ -131,7 +130,7 @@ export default Search;
 //     };
 //   }, []);
 //   return (
-//     <div className="flex gap-8 text-primaryColor lg:pr-8">
+//     <div className="flex gap-8 text-primary lg:pr-8">
 //       {!isSmallViewport && <SideNav />}
 //       <div className="mt-4 md:mt-20 w-full h-screen px-4 md:px-0">
 //         <Link to="/dashboard" className="md:hidden block">

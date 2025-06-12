@@ -106,7 +106,7 @@ const ProfileComponent = () => {
     <div className="mb-10">
       <Link
         onClick={() => setPage("")}
-        className="flex gap-2 text-primaryColor font-bold text-left mt-10"
+        className="flex gap-2 text-primary font-bold text-left mt-10"
       >
         <img src="/backarrow.svg" alt="" onClick={logout} />
         Back
@@ -120,11 +120,10 @@ const ProfileComponent = () => {
               {["Payment", "Coupons", "Bookings"].map((label) => (
                 <button
                   key={label}
-                  className={`border text-xs px-4 py-1 rounded-full ${
-                    label === "All"
-                      ? "bg-primaryColor text-white border-primaryColor"
-                      : "text-primaryColor border-primaryColor"
-                  }`}
+                  className={`border text-xs px-4 py-1 rounded-full ${label === "All"
+                      ? "bg-primary text-white border-primary"
+                      : "text-primary border-primary"
+                    }`}
                 >
                   {label}
                 </button>
@@ -166,7 +165,7 @@ const ProfileComponent = () => {
               <p className="font-bold">How can we help you?</p>
             ) : (
               <button
-                className="mt-4 md:mt-0 md:absolute flex items-center gap-2 bottom-10 right-4 bg-primaryColor text-white border text-xs px-10 py-2 rounded-lg font-semibold"
+                className="mt-4 md:mt-0 md:absolute flex items-center gap-2 bottom-10 right-4 bg-primary text-white border text-xs px-10 py-2 rounded-lg font-semibold"
                 onClick={handleHelpClick}
               >
                 <img src={helpchat} alt="Help chat" />
@@ -176,7 +175,7 @@ const ProfileComponent = () => {
           </>
         )}
       </div>
-      <hr className="border-primaryColor" />
+      <hr className="border-primary" />
       {page === "help" ? (
         <HelpComponent />
       ) : page === "faqs" ? (
@@ -197,12 +196,12 @@ const ProfileComponent = () => {
               profileDetail.name === "About"
                 ? handleAboutClick
                 : profileDetail.name === "Help"
-                ? handleHelpClick
-                : profileDetail.name === "Settings"
-                ? handleSettingsClick
-                : profileDetail.name === "Payment"
-                ? handlePaymentClick
-                : null
+                  ? handleHelpClick
+                  : profileDetail.name === "Settings"
+                    ? handleSettingsClick
+                    : profileDetail.name === "Payment"
+                      ? handlePaymentClick
+                      : null
             }
           />
         ))
@@ -219,13 +218,13 @@ const ProfileComponent = () => {
               Are you sure you want to log-out?
             </h3>
             <button
-              className="transition bg-primaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
               onClick={onLogout}
             >
               Yes, log me out
             </button>
             <button
-              className="transition bg-lightPrimaryColor text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
+              className="transition bg-lightprimary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
               onClick={() => setShowPopup(false)}
             >
               Login with another account

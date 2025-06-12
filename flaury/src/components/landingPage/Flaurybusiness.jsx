@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const Flaurybusiness = () => {
   return (
-    <section className="mt-10 px-4 md:px-20 py-10 bg-primaryColor text-white">
+    <section className="mt-10 px-4 md:px-20 py-10 bg-primary text-white">
       <div className="max-w-[1200px] mx-auto md:flex items-center">
         <div className="md:w-1/2">
           <h3 className="py-4 relative">
             <b>FLAURY</b> Business
-            <span className="absolute top-2 text-xs bg-white text-primaryColor px-1 py-[0.1rem] rounded-lg">
+            <span className="absolute top-2 text-xs bg-white text-primary px-1 py-[0.1rem] rounded-lg">
               extra
             </span>
           </h3>
@@ -26,7 +26,7 @@ const Flaurybusiness = () => {
             <li className="mb-2">Get paid upon service completion</li>
           </ul>
           <Link to="/business-signup">
-            <button className="text-xs bg-white text-primaryColor px-4 py-2 rounded-lg">
+            <button className="text-xs bg-white text-primary px-4 py-2 rounded-lg">
               Start <b>FLAURY</b> Business
             </button>
           </Link>

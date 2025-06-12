@@ -60,8 +60,8 @@ input{
   /* z-index: -1; Ensure it stays behind other elements */
 }
 
-.placeholder-lightPrimaryColor::placeholder {
-  color: var(--lightPrimaryColor);
+.placeholder-lightprimary::placeholder {
+  color: var(--lightprimary);
 }
 
 /* styles.css or CustomDateSelector.module.css */
@@ -95,4 +95,15 @@ input{
 .react-calendar__tile--active {
   background-color: #8b3e00;
   color: #fff;
+}
+
+
+/* Add to existing globals.css */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

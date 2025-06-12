@@ -286,25 +286,22 @@ const BBooking = () => {
       <h3 className="font-bold text-2xl py-8">Bookings</h3>
       <div className="w-2/3 mx-auto flex justify-between items-center">
         <p
-          className={`${
-            tab === "upcoming" ? "text-primaryColor underline" : "text-black"
-          } cursor-pointer font-semibold`}
+          className={`${tab === "upcoming" ? "text-primary underline" : "text-black"
+            } cursor-pointer font-semibold`}
           onClick={() => setTab("upcoming")}
         >
           Upcoming
         </p>
         <p
-          className={`${
-            tab === "completed" ? "text-primaryColor underline" : "text-black"
-          } cursor-pointer font-semibold`}
+          className={`${tab === "completed" ? "text-primary underline" : "text-black"
+            } cursor-pointer font-semibold`}
           onClick={() => setTab("completed")}
         >
           Completed
         </p>
         <p
-          className={`${
-            tab === "cancelled" ? "text-primaryColor underline" : "text-black"
-          } cursor-pointer font-semibold`}
+          className={`${tab === "cancelled" ? "text-primary underline" : "text-black"
+            } cursor-pointer font-semibold`}
           onClick={() => setTab("cancelled")}
         >
           Cancelled
@@ -338,18 +335,16 @@ const BBooking = () => {
                             onChange={() => toggleRemindMe(booking.id)}
                           />
                           <div
-                            className={`block w-10 h-6 rounded-full ${
-                              booking.isRemindMe
-                                ? "bg-primaryColor"
-                                : "bg-[#FEFFF1]"
-                            }`}
+                            className={`block w-10 h-6 rounded-full ${booking.isRemindMe
+                              ? "bg-primary"
+                              : "bg-[#FEFFF1]"
+                              }`}
                           ></div>
                           <div
-                            className={`dot absolute left-1 top-1 bg-[#FEFFF1] w-4 h-4 rounded-full transition ${
-                              booking.isRemindMe
-                                ? "transform translate-x-full"
-                                : ""
-                            }`}
+                            className={`dot absolute left-1 top-1 bg-[#FEFFF1] w-4 h-4 rounded-full transition ${booking.isRemindMe
+                              ? "transform translate-x-full"
+                              : ""
+                              }`}
                           ></div>
                         </div>
                       </label>
@@ -370,18 +365,18 @@ const BBooking = () => {
                 </div>
               </div>
               {booking.status === "completed" ? (
-                <button className="text-primaryColor border border-primaryColor w-full rounded-full py-2 mt-4">
+                <button className="text-primary border border-primary w-full rounded-full py-2 mt-4">
                   View receipt
                 </button>
               ) : booking.status === "cancelled" ? null : (
                 <div className="flex gap-4 items-center">
                   <button
-                    className="text-primaryColor border border-primaryColor w-full rounded-full py-2 mt-4"
+                    className="text-primary border border-primary w-full rounded-full py-2 mt-4"
                     onClick={() => handleCancelClick(booking)}
                   >
                     Cancel booking
                   </button>
-                  <button className="bg-primaryColor text-white w-full rounded-full py-2 mt-4">
+                  <button className="bg-primary text-white w-full rounded-full py-2 mt-4">
                     View receipt
                   </button>
                 </div>
@@ -416,13 +411,13 @@ const BBooking = () => {
                 <p>Are you sure you want to cancel your booking?</p>
                 <div className="flex justify-between mt-4">
                   <button
-                    className="bg-secondaryColor text-primaryColor px-4 py-2 rounded"
+                    className="bg-secondary text-primary px-4 py-2 rounded"
                     onClick={handlePopupClose}
                   >
                     Cancel
                   </button>
                   <button
-                    className="bg-primaryColor text-white px-4 py-2 rounded"
+                    className="bg-primary text-white px-4 py-2 rounded"
                     onClick={handlePopupConfirm}
                   >
                     Cancel Booking

@@ -45,7 +45,7 @@ const step4BusinessVerification = ({ onComplete }) => {
   return (
     <>
       <AuthTitle title="Sign Up" />
-      <p className="text-primaryColor text-sm pb-2 text-center">
+      <p className="text-primary text-sm pb-2 text-center">
         For the safety of our customers, you are required to submit either of
         these documents for verification.
       </p>
@@ -90,11 +90,10 @@ const step4BusinessVerification = ({ onComplete }) => {
         )}
         <button
           type="submit"
-          className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${
-            !selectedCategory || !uploadedImage
+          className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${!selectedCategory || !uploadedImage
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-primaryColor text-white"
-          }`}
+              : "bg-primary text-white"
+            }`}
           disabled={!selectedCategory || !uploadedImage}
         >
           Submit

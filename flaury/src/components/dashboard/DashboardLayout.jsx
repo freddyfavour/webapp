@@ -1,192 +1,212 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "/logo-white.svg";
-import dashboard from "/dashboard.svg";
-import profile from "/profile.svg";
-import booking from "/booking.svg";
-import chat from "/chat.svg";
-import favorite from "/favorite.svg";
-import MainNav from "../dashboard/MainNav";
+"use client"
+
+import { useState, useEffect } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
+import logo from "/logo-white.svg"
+import dashboard from "/dashboard.svg"
+import profile from "/profile.svg"
+import booking from "/booking.svg"
+import chat from "/chat.svg"
+import favorite from "/favorite.svg"
+import MainNav from "./navbar/Header"
+import notifications from "/notifications.svg";
+import favorites from "/favorites.svg";
+import MobileNav from "./navbar/MobileNav"
+import MiniNav from "./navbar/MiniNav"
 
 const DashboardLayout = ({ children }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-  const location = useLocation();
-  const path = location.pathname;
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [error, setError] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [isSidebarOpen, setSidebarOpen] = useState(false)
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [userData, setUserData] = useState(null)
+
+  // Navigation items for both sidebar and mobile nav
+  const navigationItems = [
+    { path: "/dashboard", icon: dashboard, label: "Dashboard" },
+    { path: "/profile", icon: profile, label: "Profile" },
+    { path: "/bookings", icon: booking, label: "Bookings" },
+    { path: "/chat", icon: chat, label: "Chat" },
+    { path: "/favorites", icon: favorite, label: "Favorites" },
+  ]
 
   // Set sidebar open on LG screens, close on smaller screens
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
-    setSidebarOpen(mediaQuery.matches);
+    const mediaQuery = window.matchMedia("(min-width: 1024px)")
+    setSidebarOpen(mediaQuery.matches)
 
     const handleMediaQueryChange = (e) => {
-      setSidebarOpen(e.matches);
-    };
+      setSidebarOpen(e.matches)
+    }
 
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    mediaQuery.addEventListener("change", handleMediaQueryChange)
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-    };
-  }, []);
+      mediaQuery.removeEventListener("change", handleMediaQueryChange)
+    }
+  }, [])
+
   useEffect(() => {
     const fetchUserData = async () => {
-      const userInfoData = localStorage.getItem("userInfo");
-      const parsedUserInfoResponse = JSON.parse(userInfoData);
+      const userInfoData = localStorage.getItem("userInfo")
+      if (userInfoData) {
+        const parsedUserInfoResponse = JSON.parse(userInfoData)
+        setUserData(parsedUserInfoResponse)
+      }
+    }
 
-      setUserData(parsedUserInfoResponse);
-    };
+    fetchUserData()
+  }, [])
 
-    fetchUserData();
-  }, []);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prevState) => !prevState);
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  // Close mobile nav when route changes
+  useEffect(() => {
+    setMobileNavOpen(false)
+  }, [location.pathname])
 
   const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   const handleLogout = () => {
-    navigate("/");
-    closeModal();
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userInfo");
-  };
+    navigate("/")
+    closeModal()
+    localStorage.removeItem("accessToken")
+    localStorage.removeItem("userInfo")
+  }
 
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
-
-  const openMobileNav = () => {
-    setMobileNavOpen(true);
-  };
-
-  const closeMobileNav = () => {
-    setMobileNavOpen(false);
-  };
+    setSidebarOpen(!isSidebarOpen)
+  }
 
   return (
-    <div className={`flex h-screen overflow-hidden`}>
-      {/* Sidebar */}
-      <div
-        className={`lg:w-[257px] p-4 bg-primaryColor text-white overflow-y-auto ${
-          isSidebarOpen || window.innerWidth >= 1024 ? "" : "hidden lg:block"
-        } transition-all ease-in-out duration-300`}
+    <div className="flex h-screen overflow-hidden bg-[#FEFFF1]">
+      {/* Sidebar - hidden on mobile, toggleable on tablet, always visible on desktop */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-40 w-54 bg-primary text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:relative lg:w-54 lg:shrink-0`}
       >
-        <div className="flex items-center justify-between mb-4">
-          {/* Hamburger Menu */}
-          <button
-            type="button"
-            onClick={() => toggleSidebar()}
-            className="text-white focus:outline-none"
-          >
-            {/* <FontAwesomeIcon
-              icon={faBars}
-              className={text-white ${
-                isSidebarOpen ? "pl-8" : "w-93 pl-4 pt-6"
-              }}
-            /> */}
-          </button>
-
-          {/* Logo */}
-          <Link to="/dashboard">
-            <img
-              src={logo}
-              alt="Logo"
-              className={`w-14 mr-8 ${isSidebarOpen ? "block" : "hidden"}`}
-            />
+        <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
+          <Link to="/dashboard" className="flex items-center space-x-2">
+            <img src={logo || "/placeholder.svg"} alt="Logo" className="w-10 h-10" />
+            <span className="text-xl font-semibold"></span>
           </Link>
+          <button onClick={toggleSidebar} className="p-1 rounded-md lg:hidden hover:bg-white/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        {/* Navigation */}
 
-        <nav>
-          <ul>
-            <li className={`mb-5`}>
-              <Link to="/dashboard">
-                <div
-                  className={`flex gap-3 py-2 lg:px-3 rounded-lg transition-all duration-300`}
-                >
-                  <img src={dashboard} alt="" />
-                  {isSidebarOpen && "Dashboard"}
-                </div>
-              </Link>
-            </li>
-
-            <li className={`mb-5`}>
-              <Link to="/profile">
-                <div
-                  className={`flex gap-3 py-2 lg:px-3 rounded-lg transition-all duration-300`}
-                >
-                  <img src={profile} alt="" />
-                  {isSidebarOpen && "Profile"}
-                </div>
-              </Link>
-            </li>
-
-            <li className={`mb-5`}>
-              <Link to="/bookings">
-                <div
-                  className={`flex gap-3 py-2 lg:px-3 rounded-lg transition-all duration-300`}
-                >
-                  <img src={booking} alt="" />
-                  {isSidebarOpen && "Bookings"}
-                </div>
-              </Link>
-            </li>
-
-            <li className={`mb-5`}>
-              <Link to="/chat">
-                <div
-                  className={`flex gap-3 py-2 lg:px-3 rounded-lg transition-all duration-300`}
-                >
-                  <img src={chat} alt="" />
-                  {isSidebarOpen && "Chat"}
-                </div>
-              </Link>
-            </li>
-
-            <li className={`mb-5`}>
-              <Link to="/favorites">
-                <div
-                  className={`flex gap-3 py-2 lg:px-3 rounded-lg transition-all duration-300`}
-                >
-                  <img src={favorite} alt="" />
-                  {isSidebarOpen && "Favorites"}
-                </div>
-              </Link>
-            </li>
+        <nav className="p-4">
+          <ul className="space-y-2">
+            {navigationItems.map((item) => {
+              const isActive = location.pathname === item.path
+              return (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`flex items-center px-4 py-3 space-x-3 rounded-lg transition-all duration-200 group ${isActive ? "bg-white/20 text-white" : "text-white/80 hover:bg-white/10 hover:text-white"
+                      }`}
+                  >
+                    <div className="flex items-center justify-center w-6 h-6">
+                      <img
+                        src={item.icon || "/placeholder.svg"}
+                        alt=""
+                        className={`transition-all duration-200 ${isActive ? "opacity-100" : "opacity-70 group-hover:opacity-100"
+                          }`}
+                      />
+                    </div>
+                    <span className={`transition-all duration-200 ${isActive ? "font-medium" : "font-normal"}`}>
+                      {item.label}
+                    </span>
+                    {isActive && <span className="ml-auto w-1.5 h-5 bg-white rounded-full" />}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
+
+          {userData && (
+            <div className="absolute bottom-0 left-0 right-0 p-4">
+              <div className="flex items-center p-3 space-x-3 bg-white/10 rounded-lg">
+                <div className="w-10 h-10 bg-white/20 rounded-full overflow-hidden">
+                  {userData.profilePicture ? (
+                    <img
+                      src={userData.profilePicture || "/placeholder.svg"}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center w-full h-full text-lg font-medium">
+                      {userData.name?.charAt(0) || "U"}
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">{userData.name || "User"}</p>
+                  <p className="text-xs text-white/70 truncate">{userData.email || ""}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </nav>
-      </div>
+      </aside>
 
-      <div className="flex-1 overflow-y-auto">
-        <div className="ml-0 md:pl-10 pr-0 md:pr-4 pb-4 bg-[#FEFFF1]">
-          {/* <MainNav /> */}
+      {/* Main Content */}
+      <div className="flex flex-col flex-1 w-full overflow-hidden">
+        {/* Top Navigation */}
+        <header className="z-30 flex hidden lg:block items-center justify-between h-16 px-4 bg-white shadow-sm lg:px-6">
+          <MainNav toggleSidebar={toggleSidebar} />
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 overflow-y-auto px-4 lg:p-6">
+          <MiniNav toggleSidebar={toggleSidebar} />
           {children}
-        </div>
+        </main>
       </div>
 
-      {/* Mobile Navbar */}
-      {/* <MobileNavbar
+      {/* Mobile Navigation Overlay */}
+      {/* <MobileNav
         isOpen={isMobileNavOpen}
-        onClose={() => closeMobileNav()}
+        onClose={toggleMobileNav}
         navigationItems={navigationItems}
-        onItemClick={(newPath) => {
-          // You may want to navigate to the selected path using React Router
-        }}
+        currentPath={location.pathname}
+        userData={userData}
+        onLogout={openModal}
       /> */}
-    </div>
-  );
-};
 
-export default DashboardLayout;
+      {/* Logout Confirmation Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-sm p-6 mx-4 bg-white rounded-lg shadow-lg">
+            <h3 className="mb-4 text-lg font-medium">Confirm Logout</h3>
+            <p className="mb-6 text-gray-600">Are you sure you want to log out of your account?</p>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={closeModal}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default DashboardLayout

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 import Overview from "../../components/salonProfile/Overview";
 import Reviews from "../../components/salonProfile/Reviews";
 import Service from "../../components/salonProfile/Service";
@@ -102,9 +102,8 @@ const SalonProfile = () => {
 
   return (
     <div
-      className={`${
-        isSmallViewport && "px-4"
-      } flex gap-8 text-primaryColor lg:pr-8 bg-[#FEFFF1]`}
+      className={`${isSmallViewport && "px-4"
+        } flex gap-8 text-primary lg:pr-8 bg-[#FEFFF1]`}
     >
       {!isSmallViewport && <SideNav />}
       <div className="container mx-auto">
@@ -143,33 +142,29 @@ const SalonProfile = () => {
         <div className="flex justify-between w-4/5 mx-auto my-4 text-black font-bold">
           <div
             onClick={() => setTab("overview")}
-            className={`cursor-pointer text-sm ${
-              tab === "overview" && "text-primaryColor underline"
-            }`}
+            className={`cursor-pointer text-sm ${tab === "overview" && "text-primary underline"
+              }`}
           >
             Overview
           </div>
           <div
             onClick={() => setTab("service")}
-            className={`cursor-pointer text-sm ${
-              tab === "service" && "text-primaryColor underline"
-            }`}
+            className={`cursor-pointer text-sm ${tab === "service" && "text-primary underline"
+              }`}
           >
             Service
           </div>
           <div
             onClick={() => setTab("gallery")}
-            className={`cursor-pointer text-sm ${
-              tab === "gallery" && "text-primaryColor underline"
-            }`}
+            className={`cursor-pointer text-sm ${tab === "gallery" && "text-primary underline"
+              }`}
           >
             Gallery
           </div>
           <div
             onClick={() => setTab("reviews")}
-            className={`cursor-pointer text-sm ${
-              tab === "reviews" && "text-primaryColor underline"
-            } `}
+            className={`cursor-pointer text-sm ${tab === "reviews" && "text-primary underline"
+              } `}
           >
             Reviews
           </div>

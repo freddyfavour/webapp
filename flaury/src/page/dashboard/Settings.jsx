@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
+import SideNav from "../../components/dashboard/navbar/SideNav";
 
 const Settings = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
@@ -19,7 +19,7 @@ const Settings = () => {
   }, []);
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8">
+    <div className="flex gap-8 text-primary lg:pr-8">
       {isSmallViewport ? null : <SideNav />}
       <div className="mt-10 md:mt-20 w-full pr-10 px-4 md:px-0">
         <h1 className="text-2xl font-bold">Settings</h1>

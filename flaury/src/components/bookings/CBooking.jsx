@@ -4,7 +4,7 @@ const CBooking = ({ salonData, confirmOrders }) => {
   return (
     <div className="mt-10 md:mt-20 w-full px-4 md:px-0">
       <BookingHeader confirmOrders={confirmOrders} />
-      <hr className="my-6 border border-primaryColor" />
+      <hr className="my-6 border border-primary" />
       <div className="text-sm">
         <div className="flex gap-4 items-center">
           <img
@@ -36,7 +36,7 @@ const CBooking = ({ salonData, confirmOrders }) => {
         </div>
       </div>
       <h3 className="text-center font-bold">Other Services</h3>
-      <hr className="my-6 border border-primaryColor" />
+      <hr className="my-6 border border-primary" />
       <div className="bg-white w-full rounded-md shadow-xl mb-4 pr-4 relative">
         <label className="flex gap-6">
           <input

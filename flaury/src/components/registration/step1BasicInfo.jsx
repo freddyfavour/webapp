@@ -122,7 +122,7 @@ const Step1BasicInfo = ({ onComplete }) => {
   return (
     <>
       <AuthTitle title="Sign Up" />
-      <p className="text-primaryColor text-sm pb-2">
+      <p className="text-primary text-sm pb-2">
         Register using your correct details
       </p>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -152,7 +152,7 @@ const Step1BasicInfo = ({ onComplete }) => {
         <div className="mb-4">
           <label
             htmlFor="gender"
-            className="block text-sm font-medium text-primaryColor"
+            className="block text-sm font-medium text-primary"
           >
             Gender
           </label>
@@ -161,15 +161,13 @@ const Step1BasicInfo = ({ onComplete }) => {
             id="gender"
             value={gender}
             onChange={handleGenderChange}
-            className={`block w-full mt-1 p-3 border border-[#ADADAD] rounded-[4px] text-sm ${
-              gender === ""
+            className={`block w-full mt-1 p-3 border border-[#ADADAD] rounded-[4px] text-sm ${gender === ""
                 ? "border-[#ADADAD]" // Unselected
                 : "border-[#A54900]" // Selected
-            } ${
-              genderError
+              } ${genderError
                 ? "border-red-500 focus:border-red-500"
                 : "border-gray-300 focus:border-blue-500"
-            }`}
+              }`}
             style={{
               padding: "0.5rem",
               borderRadius: "4px",
@@ -213,7 +211,7 @@ const Step1BasicInfo = ({ onComplete }) => {
           disabled={isSubmitting}
         />
       </form>
-      <p className="text-primaryColor text-sm mt-8 text-left">
+      <p className="text-primary text-sm mt-8 text-left">
         Already have an account?{" "}
         <Link to="/login" className="font-bold">
           Login
@@ -232,7 +230,7 @@ const Step1BasicInfo = ({ onComplete }) => {
         <label
           id="tc-label"
           htmlFor="tc"
-          className="text-primaryColor text-sm w-2/3 cursor-pointer"
+          className="text-primary text-sm w-2/3 cursor-pointer"
         >
           I agree to the terms and conditions of <b>FLAURY</b>{" "}
           <span className="text-red-500">*</span>

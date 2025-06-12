@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./page/auth/Login";
 import SignUp from "./page/auth/SignUp";
-import Nav from "./components/Nav";
 import ForgotPassword from "./page/auth/ForgotPassword";
 import Forgot2 from "./page/auth/Forgot2";
 import Forgot3 from "./page/auth/Forgot3";
 import Home from "./page/Home";
-import Dashboard from "./page/dashboard/Dashboard";
-import MainNav from "./components/dashboard/MainNav";
+import Dashboard from "./page/dashboard";
 import Notifications from "./page/dashboard/Notifications";
 import Settings from "./page/dashboard/Settings";
 import Favorites from "./page/dashboard/Favorites";
@@ -24,8 +22,6 @@ import BookingsFlow from "./page/dashboard/BookingsFlow";
 import { useAuthStore } from "./store/authstore";
 import { ToastContainer } from "react-toastify";
 import Registration from "./page/auth/registration";
-import BaseNavigation from "./page/newDashboard/BaseNavigation";
-import NewDashboard from "./page/newDashboard/NewDashboard";
 
 const App = () => {
   const { isAuth, isSmallViewport, checkViewport } = useAuthStore();
@@ -45,10 +41,8 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      {/* TODO: Might want to use MainNavs as a component in the required pages rather than a top level conditional check. */}
-      {!isAuth && <Nav/>}
       {/* {isAuth && !isSmallViewport && <MainNav />} */}
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -57,18 +51,15 @@ const App = () => {
         <Route path="/choose-role" element={<ChooseRole />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/register" element={<Registration/>} />
+        <Route path="/register" element={<Registration />} />
 
 
         {/* TODO: Complete all ports to the Route method */}
-        <Route path="dashboard" element={<BaseNavigation/>} >
-          <Route index element={<NewDashboard/>} />
-        </Route>
+        <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/forgot2" element={<Forgot2 />} />
         <Route path="/forgot3" element={<Forgot3 />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/favorites" element={<Favorites />} />

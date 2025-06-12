@@ -7,13 +7,13 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import AuthEnv from "../../components/AuthEnv";
 import AuthTitle from "../../components/AuthTitle";
-import authAPI  from "../../api/user/auth";
+import authAPI from "../../api/user/auth";
 
 const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { control, handleSubmit } = useForm();
-  
+
   const navigate = useNavigate();
 
   const handleCheckboxChange = (e) => {
@@ -22,24 +22,24 @@ const Login = () => {
 
   const onSubmit = async (formData) => {
     setIsSubmitting(true);
-    
+
     try {
       const userData = {
         email: formData.email,
         password: formData.password,
       };
-      
+
       const result = await authAPI.authAPI.login(userData);
-      
+
       if (result.success) {
         // Login was successful
         const response = result.data;
-        
+
         // Store user data and token
         if (response && response.user) {
           localStorage.setItem("savedUser", JSON.stringify(response.user));
         }
-        
+
         if (response && response.token) {
           localStorage.setItem("authToken", response.token);
         }
@@ -48,7 +48,7 @@ const Login = () => {
         if (response && response.user) {
           localStorage.setItem("isAuth", true);
         }
-        
+
         toast.success("Login successful!");
 
         setTimeout(() => {
@@ -57,7 +57,7 @@ const Login = () => {
       } else {
         // Handle errors based on status code
         const error = result.error;
-        
+
         if (error.status === 403) {
           toast.error("Email is not verified.");
         } else if (error.status === 401) {
@@ -67,7 +67,7 @@ const Login = () => {
         } else {
           toast.error(error.message || "Login failed. Please try again.");
         }
-        
+
         console.error("Login error:", error);
       }
     } catch (unexpectedError) {
@@ -83,7 +83,7 @@ const Login = () => {
     <>
       <AuthEnv>
         <AuthTitle title="Login" />
-        <p className="text-primaryColor text-sm pb-2">
+        <p className="text-primary text-sm pb-2">
           Log in to your Flaury account
         </p>
         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -117,7 +117,7 @@ const Login = () => {
             </div>
             <Link
               to="/forgot-password"
-              className="text-primaryColor font-bold text-sm"
+              className="text-primary font-bold text-sm"
             >
               Forgot Password?
             </Link>
@@ -129,7 +129,7 @@ const Login = () => {
             disabled={isSubmitting}
           />
         </form>
-        <p className="text-primaryColor text-sm mt-8">
+        <p className="text-primary text-sm mt-8">
           Don't have an account?{" "}
           <Link to="/signup" className="font-bold">
             Sign up

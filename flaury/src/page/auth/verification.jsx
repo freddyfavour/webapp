@@ -21,7 +21,7 @@ const Verification = () => {
     const onSubmit = async (formData) => {
         setIsSubmitting(true);
 
-        try{
+        try {
             const userData = {
                 code: formData.code,
                 email: formData.email,
@@ -35,7 +35,7 @@ const Verification = () => {
                 toast.success("Verification successful");
 
                 setShowPopup(true);
-                
+
                 setTimeout(() => {
                     navigate("/dashboard");
                 }, 3000);
@@ -60,22 +60,22 @@ const Verification = () => {
 
     return (
         <>
-            <AuthEnv 
+            <AuthEnv
                 children={
                     <>
-                        <AuthTitle title="Verification"/>
-                        <p className="text-primaryColor text-sm pb-2">
-                            Verify your email using pin sent to 
+                        <AuthTitle title="Verification" />
+                        <p className="text-primary text-sm pb-2">
+                            Verify your email using pin sent to
                         </p>
                         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-                            <Input 
+                            <Input
                                 control={control}
                                 name="code"
                                 label="Code"
                                 validateType="code"
                                 errorMessage="A valid verification code is required."
                             />
-                            <Button 
+                            <Button
                                 title={isSubmitting ? "Loading..." : "Contiue"}
                                 type="submit"
                                 customClasses="w-full px-4 py-3 mt-6"
@@ -85,15 +85,15 @@ const Verification = () => {
                 }
             />
             {showPopup && (
-        <div className="absolute top-0 left-0">
-          <Popup
-            title="Congratulations"
-            subtitle="Your account is now ready to use. You will be redirected to
+                <div className="absolute top-0 left-0">
+                    <Popup
+                        title="Congratulations"
+                        subtitle="Your account is now ready to use. You will be redirected to
           your homepage shortly."
-            image={success}
-          />
-        </div>
-      )}
+                        image={success}
+                    />
+                </div>
+            )}
         </>
     )
 }

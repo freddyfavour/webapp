@@ -20,7 +20,7 @@ const Popup = ({
       <Card>
         <>
           <img src={image} alt="Success" className="mx-auto mb-4" />
-          <h3 className="font-bold mb-4 text-primaryColor">{title}</h3>
+          <h3 className="font-bold mb-4 text-primary">{title}</h3>
           <p className="mb-4 text-xs text-black">{subtitle}</p>
 
           {/* Conditional Rendering for Buttons */}

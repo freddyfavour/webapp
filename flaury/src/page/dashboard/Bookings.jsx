@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/SideNav";
-import BookingHeader from "../../components/bookings/BookingHeader";
 import { useNavigate } from "react-router-dom";
 import BBooking from "../../components/bookings/BBooking";
 import CBooking from "../../components/bookings/CBooking";
@@ -128,11 +126,11 @@ const Bookings = () => {
   const bookService = () => {
     navigate("/bookings-flow");
   };
-    const roleData = localStorage.getItem("userData");
+  const roleData = localStorage.getItem("userData");
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primaryColor lg:pr-8">
+      <div className="flex gap-8 text-primary lg:pr-8">
         {roleData === "business" ? (
           <BBooking />
         ) : (
@@ -183,7 +181,7 @@ const Bookings = () => {
               ))}
 
               <button
-                className="bg-primaryColor text-white w-full rounded-md py-2 mt-4"
+                className="bg-primary text-white w-full rounded-md py-2 mt-4"
                 onClick={bookService}
               >
                 Continue Booking
