@@ -19,7 +19,7 @@ const ChatComponent = ({ selectedMessage }) => {
 
   return (
     <>
-      <nav className="flex justify-between items-center h-20 p-4 border-b border-primaryColor">
+      <nav className="flex justify-between items-center h-20 p-4 border-b border-primary">
         <div className="flex gap-3 items-center">
           <img
             src={selectedMessage.img}
@@ -40,7 +40,7 @@ const ChatComponent = ({ selectedMessage }) => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="p-4 border-t border-primaryColor flex items-center"
+        className="p-4 border-t border-primary flex items-center"
       >
         <input
           type="text"
@@ -51,7 +51,7 @@ const ChatComponent = ({ selectedMessage }) => {
         />
         <button
           type="submit"
-          className="ml-2 p-2 bg-primaryColor text-white rounded-md"
+          className="ml-2 p-2 bg-primary text-white rounded-md"
         >
           Send
         </button>

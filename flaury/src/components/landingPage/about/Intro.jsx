@@ -9,7 +9,7 @@ const Intro = () => {
           <p className="mb-6">
             Flaury was born out of a vision to bridge the gap for beauty lovers
             who require{" "}
-            <b className="text-primaryColor">
+            <b className="text-primary">
               timely access to beauty services
             </b>{" "}
             wherever they may be.

@@ -80,7 +80,7 @@ const Nav = () => {
                   </li>
                   <li>
                     <Link to="/login">
-                      <button className="transition border border-lightPrimaryColor text-primaryColor text-xs px-8 py-3 rounded-lg font-semibold">
+                      <button className="transition border border-lightprimary text-primary text-xs px-8 py-3 rounded-lg font-semibold">
                         Login
                       </button>
                     </Link>
@@ -128,7 +128,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <Link to="/login" onClick={() => setShowNav(false)}>
-                    <button className="transition border border-lightPrimaryColor text-primaryColor text-sm px-4 py-2 rounded-lg">
+                    <button className="transition border border-lightprimary text-primary text-sm px-4 py-2 rounded-lg">
                       Login
                     </button>
                   </Link>

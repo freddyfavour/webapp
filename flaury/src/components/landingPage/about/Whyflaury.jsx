@@ -22,7 +22,7 @@ const Whyflaury = () => {
   return (
     <section className="px-4 md:px-20 py-10 text-center bg-[#F8F4D973]">
       <div className="max-w-[1200px] mx-auto">
-        <h3 className="text-primaryColor text-5xl font-bold py-4">
+        <h3 className="text-primary text-5xl font-bold py-4">
           Why Flaury?
         </h3>
         <div className="mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">

@@ -22,10 +22,10 @@ const Profile = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primaryColor lg:pr-8">
+      <div className="flex gap-8 text-primary lg:pr-8">
         {/* {isSmallViewport ? null : <SideNav />} */}
         <div className="w-full px-4 md:px-0">
-          <hr className="border-primaryColor" />
+          <hr className="border-primary" />
           <ProfileComponent />
         </div>
       </div>

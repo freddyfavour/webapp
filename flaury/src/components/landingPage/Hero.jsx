@@ -26,7 +26,7 @@ const Hero = () => {
                 name="search"
                 id="search"
                 placeholder="Search for a service"
-                className="border-r border-r-lightPrimaryColor w-full px-4 py-2 text-sm text-lightPrimaryColor placeholder-lightPrimaryColor"
+                className="border-r border-r-lightprimary w-full px-4 py-2 text-sm text-lightprimary placeholder-lightprimary"
               />
               <div className="px-3">
                 <img src={search} alt="" />

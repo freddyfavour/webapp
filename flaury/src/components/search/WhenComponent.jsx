@@ -26,10 +26,10 @@ const WhenComponent = ({ onDateChange }) => {
             className="w-full bg-transparent border-none p-2"
           />
           <div className="flex gap-4 mt-4">
-            <button className="bg-white text-primaryColor text-xs px-8 py-3 rounded-lg font-semibold">
+            <button className="bg-white text-primary text-xs px-8 py-3 rounded-lg font-semibold">
               Cancel
             </button>
-            <button className="bg-primaryColor text-white text-xs px-8 py-3 rounded-lg font-semibold">
+            <button className="bg-primary text-white text-xs px-8 py-3 rounded-lg font-semibold">
               Select Date
             </button>
           </div>
@@ -50,17 +50,16 @@ const WhenComponent = ({ onDateChange }) => {
               <div
                 key={time}
                 onClick={() => handleTimeClick(time)}
-                className={`px-6 py-2 border border-gray-200 rounded-md text-center cursor-pointer ${
-                  selectedTime === time
-                    ? "bg-primaryColor text-white"
+                className={`px-6 py-2 border border-gray-200 rounded-md text-center cursor-pointer ${selectedTime === time
+                    ? "bg-primary text-white"
                     : "text-gray-700"
-                }`}
+                  }`}
               >
                 {time}
               </div>
             ))}
           </div>
-          <button className="w-full mt-8 bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold">
+          <button className="w-full mt-8 bg-primary text-white border text-xs px-8 py-3 rounded-lg font-semibold">
             SCHEDULE
           </button>
         </form>

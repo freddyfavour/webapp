@@ -11,7 +11,7 @@ const Button2 = ({
   return (
     <button
       type={type}
-      className={`transition bg-lightPrimaryColor text-white border text-xs px-6 py-2 rounded-lg font-semibold opacity-50 w-full"
+      className={`transition bg-lightprimary text-white border text-xs px-6 py-2 rounded-lg font-semibold opacity-50 w-full"
  ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${customClasses}`} // Applied customClasses here
       disabled={disabled}
       onClick={onClick}

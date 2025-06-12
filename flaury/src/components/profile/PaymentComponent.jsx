@@ -40,13 +40,13 @@ const PaymentComponent = () => {
               you want to delete?
             </p>
             <button
-              className="font-bold border border-primaryColor px-4 py-2 rounded-md w-full mt-6 text-[#ff0000] text-xs"
+              className="font-bold border border-primary px-4 py-2 rounded-md w-full mt-6 text-[#ff0000] text-xs"
               onClick={() => setShowDeletePopup(false)}
             >
               Delete
             </button>
             <button
-              className="font-bold bg-primaryColor px-4 py-2 rounded-md w-full mt-6 text-white text-xs"
+              className="font-bold bg-primary px-4 py-2 rounded-md w-full mt-6 text-white text-xs"
               onClick={() => setShowDeletePopup(false)}
             >
               Cancel
@@ -66,7 +66,7 @@ const PaymentComponent = () => {
                 type="number"
                 name="card-number"
                 placeholder="Please enter your card number"
-                className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
               />
               <div className="grid grid-cols-3 gap-4 mt-6">
                 <div className="grid col-span-1">
@@ -74,7 +74,7 @@ const PaymentComponent = () => {
                   <input
                     type="number"
                     name="expiry-date"
-                    className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                    className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
                   />
                 </div>
                 <div className="grid col-span-2">
@@ -83,7 +83,7 @@ const PaymentComponent = () => {
                     type="number"
                     name="cvv"
                     placeholder="Enter your cvv"
-                    className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                    className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
                   />
                 </div>
               </div>
@@ -93,11 +93,11 @@ const PaymentComponent = () => {
                   type="number"
                   name="pin"
                   placeholder="Enter your PIN"
-                  className="border border-1 border-primaryColor block px-4 py-1 rounded-md"
+                  className="border border-1 border-primary block px-4 py-1 rounded-md"
                 />
               </div>
               <button
-                className="font-bold bg-lightPrimaryColor px-4 py-2 rounded-md w-full mt-6 text-white opacity-70"
+                className="font-bold bg-lightprimary px-4 py-2 rounded-md w-full mt-6 text-white opacity-70"
                 onClick={() => setShowPopup(false)}
               >
                 Confirm

@@ -21,7 +21,7 @@ const Forgot3 = () => {
         <>
           <AuthTitle title="Create Password" />
 
-          <p className="text-primaryColor text-sm pb-2">
+          <p className="text-primary text-sm pb-2">
             Register using your correct details
           </p>
           <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -49,7 +49,7 @@ const Forgot3 = () => {
             />
           </form>
 
-          <p className="text-primaryColor text-sm mt-8 text-left">
+          <p className="text-primary text-sm mt-8 text-left">
             Already have an account?{" "}
             <Link to="/login" className="font-bold">
               Log in

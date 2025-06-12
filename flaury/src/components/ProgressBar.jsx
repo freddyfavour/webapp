@@ -6,7 +6,7 @@ const ProgressBar = ({ activeStep }) => {
       {activeStep === 1 && (
         <>
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>
@@ -27,13 +27,13 @@ const ProgressBar = ({ activeStep }) => {
       {activeStep === 2 && (
         <>
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>
           <div className="flex-1 h-[2px] bg-gray-300" />
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>
@@ -48,19 +48,19 @@ const ProgressBar = ({ activeStep }) => {
       {activeStep === 3 && (
         <>
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>
           <div className="flex-1 h-[2px] bg-gray-300" />
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>
           <div className="flex-1 h-[2px] bg-gray-300" />
           <div className="flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-primaryColor text-white flex items-center justify-center">
+            <div className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center">
               {/* Optional: Add content here, e.g., an icon or number */}
             </div>
           </div>

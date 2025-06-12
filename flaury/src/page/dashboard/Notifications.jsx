@@ -116,7 +116,7 @@ const Notifications = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primaryColor lg:pr-8">
+      <div className="flex gap-8 text-primary lg:pr-8">
         <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
           <Link to="/dashboard" className="flex gap-2">
             <img src={backarrow} alt="" />

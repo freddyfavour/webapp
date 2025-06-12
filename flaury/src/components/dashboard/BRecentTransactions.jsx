@@ -86,64 +86,64 @@ const BRecentTransactions = () => {
   return (
     <div className="text-black">
       <div className="w-full flex justify-between items-center">
-        <h3 className="font-bold text-2xl pt-6 pb-4 text-primaryColor">Transactions</h3>
-        <a href="" className="text-sm text-primaryColor">View all</a>
+        <h3 className="font-bold text-2xl pt-6 pb-4 text-primary">Transactions</h3>
+        <a href="" className="text-sm text-primary">View all</a>
       </div>
-     <div>
-     <div className="flex justify-between items-center">
-        <p>⬆️ Transfer to wallet</p>
-        <b>+#20,000</b>
+      <div>
+        <div className="flex justify-between items-center">
+          <p>⬆️ Transfer to wallet</p>
+          <b>+#20,000</b>
+        </div>
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
+          <p className="text-xs text-[green]">Successful</p>
+        </div>
       </div>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-        <p className="text-xs text-[green]">Successful</p>
+      <hr className="my-4" />
+      <div>
+        <div className="flex justify-between items-center">
+          <p>⬆️ Transfer to wallet</p>
+          <b>+#20,000</b>
+        </div>
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
+          <p className="text-xs text-[green]">Successful</p>
+        </div>
       </div>
-     </div>
-     <hr className="my-4" />
-     <div>
-     <div className="flex justify-between items-center">
-        <p>⬆️ Transfer to wallet</p>
-        <b>+#20,000</b>
+      <hr className="my-4" />
+      <div>
+        <div className="flex justify-between items-center">
+          <p>⬇️ Withdrawal to bank</p>
+          <b>+#40,000</b>
+        </div>
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
+          <p className="text-xs text-[green]">Successful</p>
+        </div>
       </div>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-        <p className="text-xs text-[green]">Successful</p>
+      <hr className="my-4" />
+      <div>
+        <div className="flex justify-between items-center">
+          <p>⬇️ Withdrawal to bank</p>
+          <b>+#40,000</b>
+        </div>
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
+          <p className="text-xs text-[green]">Successful</p>
+        </div>
       </div>
-     </div>
-     <hr className="my-4" />
-     <div>
-     <div className="flex justify-between items-center">
-        <p>⬇️ Withdrawal to bank</p>
-        <b>+#40,000</b>
+      <hr className="my-4" />
+      <div>
+        <div className="flex justify-between items-center">
+          <p>⬆️ Transfer to wallet</p>
+          <b>+#20,000</b>
+        </div>
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
+          <p className="text-xs text-[green]">Successful</p>
+        </div>
       </div>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
-        <p className="text-xs text-[green]">Successful</p>
-      </div>
-     </div>
-     <hr className="my-4" />
-     <div>
-     <div className="flex justify-between items-center">
-        <p>⬇️ Withdrawal to bank</p>
-        <b>+#40,000</b>
-      </div>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
-        <p className="text-xs text-[green]">Successful</p>
-      </div>
-     </div>
-     <hr className="my-4" />
-     <div>
-     <div className="flex justify-between items-center">
-        <p>⬆️ Transfer to wallet</p>
-        <b>+#20,000</b>
-      </div>
-      <div className="flex justify-between items-center mt-1">
-        <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-        <p className="text-xs text-[green]">Successful</p>
-      </div>
-     </div>
-     <hr className="my-4" />
+      <hr className="my-4" />
     </div>
   );
 };

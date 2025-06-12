@@ -44,7 +44,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8">
+    <div className="flex gap-8 text-primary lg:pr-8">
       {!isSmallViewport && <SideNav />}
       <div className="mt-4 md:mt-20 w-full px-4 md:px-0">
         <Link to="/dashboard" className="md:hidden block">
@@ -56,8 +56,8 @@ const Search = () => {
             <button
               key={label}
               className={`border text-xs px-4 py-1 rounded-full ${label === "All"
-                  ? "bg-primaryColor text-white border-primaryColor"
-                  : "text-primaryColor border-primaryColor"
+                ? "bg-primary text-white border-primary"
+                : "text-primary border-primary"
                 }`}
             >
               {label}
@@ -130,7 +130,7 @@ export default Search;
 //     };
 //   }, []);
 //   return (
-//     <div className="flex gap-8 text-primaryColor lg:pr-8">
+//     <div className="flex gap-8 text-primary lg:pr-8">
 //       {!isSmallViewport && <SideNav />}
 //       <div className="mt-4 md:mt-20 w-full h-screen px-4 md:px-0">
 //         <Link to="/dashboard" className="md:hidden block">

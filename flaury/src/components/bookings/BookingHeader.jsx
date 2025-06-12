@@ -36,7 +36,7 @@ const BookingHeader = ({ confirmOrders }) => {
           </p>
         </div>
         <button
-          className="bg-primaryColor text-white w-full rounded-md py-2 mt-4"
+          className="bg-primary text-white w-full rounded-md py-2 mt-4"
           onClick={confirmOrders}
         >
           Book Now

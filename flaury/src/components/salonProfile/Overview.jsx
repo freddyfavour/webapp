@@ -46,7 +46,7 @@ const Overview = ({ salonData }) => {
           {["All", "Spa", "Manicure", "Skin care"].map((label) => (
             <button
               key={label}
-              className="border text-xs px-4 py-1 rounded-full text-primaryColor border-primaryColor"
+              className="border text-xs px-4 py-1 rounded-full text-primary border-primary"
             >
               {label}
             </button>

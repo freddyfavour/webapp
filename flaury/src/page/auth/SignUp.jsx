@@ -40,7 +40,7 @@ const SignUp = () => {
         email: formData.email,
         name: formData.name,
         password: formData.password,
-        phone_number : formData.phoneNumber,
+        phone_number: formData.phoneNumber,
         role: "Client",
         type_of_service: "basic",
         username: formData.name
@@ -49,7 +49,7 @@ const SignUp = () => {
       const result = await authAPI.authAPI.register(userData);
 
       if (result.success) {
-        
+
         const response = result.data;
 
         if (response && response.token) {
@@ -97,7 +97,7 @@ const SignUp = () => {
         children={
           <>
             <AuthTitle title="Sign Up" />
-            <p className="text-primaryColor text-sm pb-2">
+            <p className="text-primary text-sm pb-2">
               Register using your correct details
             </p>
             <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -138,7 +138,7 @@ const SignUp = () => {
                 customClasses="w-full px-4 py-3 mt-6"
               />
             </form>
-            <p className="text-primaryColor text-sm mt-8 text-left">
+            <p className="text-primary text-sm mt-8 text-left">
               Already have an account?{" "}
               <Link to="/login" className="font-bold">
                 Login
@@ -152,7 +152,7 @@ const SignUp = () => {
                 onChange={handleCheckboxChange}
                 className="w-[1rem] h-[1rem]"
               />
-              <p className="text-primaryColor text-sm w-2/3">
+              <p className="text-primary text-sm w-2/3">
                 Clicking the "continue" button means I agree to the terms and
                 conditions of <b>FLAURY</b>
               </p>
@@ -162,7 +162,7 @@ const SignUp = () => {
       />
       {showPopup && (
         <div className="absolute top-0 left-0">
-          <OTPVerification email={submittedEmail}/>
+          <OTPVerification email={submittedEmail} />
         </div>
       )}
     </>

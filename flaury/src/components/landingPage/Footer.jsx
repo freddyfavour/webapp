@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="px-4 py-10 md:p-20 bg-[#E1D3D3] mt-20 text-primaryColor">
+    <footer className="px-4 py-10 md:p-20 bg-[#E1D3D3] mt-20 text-primary">
       <div className="max-w-[1200px] mx-auto">
         <div className="md:grid grid-cols-6 gap-4">
           <div className="col-span-2 text-center md:text-left">
@@ -17,14 +17,14 @@ const Footer = () => {
               and confidence."
             </p>
           </div>
-          <hr className="md:hidden border-primaryColor my-6" />
+          <hr className="md:hidden border-primary my-6" />
           <div>
             <h3 className="pb-6">Support</h3>
             <ul>
               <li className="text-sm">Customer Service</li>
             </ul>
           </div>
-          <hr className="md:hidden border-primaryColor my-6" />
+          <hr className="md:hidden border-primary my-6" />
           <div>
             <h3 className="pb-6">Services</h3>
             <ul>
@@ -33,7 +33,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <hr className="md:hidden border-primaryColor my-6" />
+          <hr className="md:hidden border-primary my-6" />
           <div>
             <h3 className="pb-6">Company</h3>
             <ul>
@@ -46,7 +46,7 @@ const Footer = () => {
               <li className="text-sm mb-2">Social Media</li>
             </ul>
           </div>
-          <hr className="md:hidden border-primaryColor my-6" />
+          <hr className="md:hidden border-primary my-6" />
           <div>
             <h3 className="pb-6">Others</h3>
             <ul>
@@ -108,7 +108,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <hr className="md:hidden border-primaryColor my-6" />
+          <hr className="md:hidden border-primary my-6" />
         </div>
         <p className="text-sm text-center md:text-left">
           All rights reserved. @Flaury 2024

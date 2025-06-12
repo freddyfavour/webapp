@@ -33,12 +33,12 @@ const Services = () => {
   return (
     <section id="services" className="px-4 max-w-[1200px] mx-auto ">
       {/* <div className="w-4/5 md:w-1/3 mx-auto flex justify-between items-center py-4">
-        <h3 className="text-lightPrimaryColor text-sm">Trusted By:</h3>
+        <h3 className="text-lightprimary text-sm">Trusted By:</h3>
         <ul className="flex gap-4">
-          <button className="border border-lightPrimaryColor text-xs px-4 py-1 rounded-lg text-lightPrimaryColor">
+          <button className="border border-lightprimary text-xs px-4 py-1 rounded-lg text-lightprimary">
             Wave
           </button>
-          <button className="border border-lightPrimaryColor text-xs px-4 py-1 rounded-lg text-lightPrimaryColor">
+          <button className="border border-lightprimary text-xs px-4 py-1 rounded-lg text-lightprimary">
             HOE
           </button>
         </ul>
@@ -51,12 +51,12 @@ const Services = () => {
                 <img
                   src={service.image}
                   alt=""
-                  className="bg-secondaryColor w-full"
+                  className="bg-secondary w-full"
                 />
-                <h4 className="text-primaryColor text-xl font-bold py-2">
+                <h4 className="text-primary text-xl font-bold py-2">
                   {service.title}
                 </h4>
-                <p className="text-primaryColor text-sm">
+                <p className="text-primary text-sm">
                   {service.description}
                 </p>
               </div>

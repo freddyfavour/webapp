@@ -27,14 +27,14 @@ const Whatyouget = () => {
 
   return (
     <section className="mt-10 px-4 max-w-[1200px] mx-auto  py-10 text-center">
-      <h4 className="text-primaryColor text-2xl">
+      <h4 className="text-primary text-2xl">
         Have Beauty Needs?, Get It Here
       </h4>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 gap-4">
         {itemsData.map((item, index) => (
           <div key={index}>
             <img src={item.image} alt="" className="w-4/5 mx-auto" />
-            <p className="text-primaryColor pt-4">{item.text}</p>
+            <p className="text-primary pt-4">{item.text}</p>
           </div>
         ))}
       </div>

@@ -50,7 +50,7 @@ const Blogdetails = () => {
     <section className="px-4 max-w-[1200px] mx-auto py-10">
       <h3 className="font-bold text-4xl pb-4">Blog</h3>
       <p>
-        <span className="text-primaryColor">
+        <span className="text-primary">
           Discover And Unleash the Beauty Inside of You :
         </span>
         <br />
@@ -67,7 +67,7 @@ const Blogdetails = () => {
           </div>
         ))}
       </div>
-      <p className="text-primaryColor mt-10 text-center font-bold">Read more</p>
+      <p className="text-primary mt-10 text-center font-bold">Read more</p>
     </section>
   );
 };

@@ -2,7 +2,7 @@ import NearbySalon from "./NearbySalon";
 import SpecialOffers from "./SpecialOffers";
 import BeautyTips from "./BeautyTips";
 import Recommendations from "./Recommendations";
-import Quicklinks from "./Quicklinks";
+import Quicklinks from "./navbar/MiniNav";
 import DashboardLayout from "./DashboardLayout";
 
 const Overview = () => {

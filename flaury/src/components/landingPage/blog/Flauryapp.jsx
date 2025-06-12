@@ -9,7 +9,7 @@ import transparentplay from "/transparent-play.png";
 const Flauryapp = () => {
   return (
     <section className="px-4 max-w-[1200px] mx-auto">
-      <div className="bg-primaryColor relative md:flex justify-between items-center px-4 lg:px-20 pt-10 md:pt-0 rounded-lg overflow-hidden">
+      <div className="bg-primary relative md:flex justify-between items-center px-4 lg:px-20 pt-10 md:pt-0 rounded-lg overflow-hidden">
         <img src={rightmoon} alt="" className="absolute left-0" />
         <img
           src={semicircle}

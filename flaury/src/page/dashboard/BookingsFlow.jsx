@@ -46,7 +46,7 @@ const BookingsFlow = ({ onDateChange }) => {
   };
 
   return (
-    <div className="flex gap-8 text-primaryColor lg:pr-8 bg-[#FEFFF1]">
+    <div className="flex gap-8 text-primary lg:pr-8 bg-[#FEFFF1]">
       {isSmallViewport ? null : <SideNav />}
       <div className="w-full px-4 md:px-0">
         <div className="block mx-auto justify-between">
@@ -121,7 +121,7 @@ const BookingsFlow = ({ onDateChange }) => {
                 <div className="relative h-screen w-screen flex justify-center items-center">
                   <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-20">
                     <Card>
-                      <h3 className="font-bold mb-4 text-primaryColor">Confirm Orders</h3>
+                      <h3 className="font-bold mb-4 text-primary">Confirm Orders</h3>
                       <div className="flex gap-4">
                         <h3>Hair Treatment -</h3>
                         <div>
@@ -233,7 +233,7 @@ const BookingsFlow = ({ onDateChange }) => {
                 </div>
               </div>
               <hr className="my-4" />
-              <div className="block md:flex text-primaryColor">
+              <div className="block md:flex text-primary">
                 <div className="w-1/2"></div>
                 <div className="w-full md:w-1/2 text-center">
                   <h3 className="font-bold">Payment Methods</h3>
@@ -259,7 +259,7 @@ const BookingsFlow = ({ onDateChange }) => {
                         type="number"
                         name="card-number"
                         placeholder="Please enter your card number"
-                        className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                        className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
                       />
                       <div className="grid grid-cols-3 gap-4 mt-6">
                         <div className="grid col-span-1">
@@ -267,7 +267,7 @@ const BookingsFlow = ({ onDateChange }) => {
                           <input
                             type="number"
                             name="expiry-date"
-                            className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                            className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
                           />
                         </div>
                         <div className="grid col-span-2">
@@ -276,7 +276,7 @@ const BookingsFlow = ({ onDateChange }) => {
                             type="number"
                             name="cvv"
                             placeholder="Enter your cvv"
-                            className="border border-1 border-primaryColor w-full block px-4 py-1 rounded-md"
+                            className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
                           />
                         </div>
                       </div>
@@ -286,7 +286,7 @@ const BookingsFlow = ({ onDateChange }) => {
                           type="number"
                           name="pin"
                           placeholder="Enter your PIN"
-                          className="border border-1 border-primaryColor block px-4 py-1 rounded-md"
+                          className="border border-1 border-primary block px-4 py-1 rounded-md"
                         />
                       </div>
                     </form>
@@ -301,7 +301,7 @@ const BookingsFlow = ({ onDateChange }) => {
                     </div>
                   )}
                   <button
-                    className="w-full mt-8 bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold"
+                    className="w-full mt-8 bg-primary text-white border text-xs px-8 py-3 rounded-lg font-semibold"
                     onClick={() => setPage("completed")}
                   >
                     Continue
@@ -315,10 +315,10 @@ const BookingsFlow = ({ onDateChange }) => {
                 <ProgressBar activeStep={3} />
               </div>
 
-              <h2 className="text-4xl font-bold text-primaryColor text-center pb-10">
+              <h2 className="text-4xl font-bold text-primary text-center pb-10">
                 Service Booking Completed
               </h2>
-              <div className="block md:flex w-full gap-8 text-primaryColor">
+              <div className="block md:flex w-full gap-8 text-primary">
                 <img
                   src="/timelesssaloncoverimg.png"
                   alt=""
@@ -349,7 +349,7 @@ const BookingsFlow = ({ onDateChange }) => {
                 </div>
               </div>
               <Link to="/dashboard">
-                <button className="w-full md:w-1/2 mt-8 bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold">
+                <button className="w-full md:w-1/2 mt-8 bg-primary text-white border text-xs px-8 py-3 rounded-lg font-semibold">
                   Book more services
                 </button>
               </Link>
@@ -365,10 +365,10 @@ const BookingsFlow = ({ onDateChange }) => {
                     className="w-full bg-transparent border-none p-2"
                   />
                   <div className="flex gap-4 mt-4">
-                    <button className="bg-white text-primaryColor text-xs px-8 py-3 rounded-lg font-semibold">
+                    <button className="bg-white text-primary text-xs px-8 py-3 rounded-lg font-semibold">
                       Cancel
                     </button>
-                    <button className="bg-primaryColor text-white text-xs px-8 py-3 rounded-lg font-semibold">
+                    <button className="bg-primary text-white text-xs px-8 py-3 rounded-lg font-semibold">
                       Select Date
                     </button>
                   </div>
@@ -389,8 +389,8 @@ const BookingsFlow = ({ onDateChange }) => {
                         key={time}
                         onClick={() => handleTimeClick(time)}
                         className={`px-6 py-2 border border-gray-200 rounded-md text-center cursor-pointer ${selectedTime === time
-                            ? "bg-primaryColor text-white"
-                            : "text-gray-700"
+                          ? "bg-primary text-white"
+                          : "text-gray-700"
                           }`}
                       >
                         {time}
@@ -398,7 +398,7 @@ const BookingsFlow = ({ onDateChange }) => {
                     ))}
                   </div>
                   <button
-                    className="w-full mt-8 bg-primaryColor text-white border text-xs px-8 py-3 rounded-lg font-semibold"
+                    className="w-full mt-8 bg-primary text-white border text-xs px-8 py-3 rounded-lg font-semibold"
                     onClick={() => setPage("pay")}
                   >
                     Book Now

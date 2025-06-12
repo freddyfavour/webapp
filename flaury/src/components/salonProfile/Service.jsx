@@ -23,7 +23,7 @@ const Service = ({ salonData }) => {
             </h4>
             <p className="text-xs text-black">
               Start price:
-              <span className="text-primaryColor font-semibold">
+              <span className="text-primary font-semibold">
                 {" "}
                 ${bookable.price}
               </span>

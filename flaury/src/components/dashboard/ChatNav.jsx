@@ -33,8 +33,8 @@ const ChatNav = ({ onSelectMessage }) => {
   return (
     <nav className="w-full md:w-2/3 ml-4 h-screen text-white flex flex-col items-center">
       {/* <div className="w-full md:w-fit fixed"> */}
-      <div className="bg-secondaryColor p-4 mt-20 w-full">
-        <div className="flex gap-4 items-center bg-secondaryColor my-2 border border-primaryColor rounded-md">
+      <div className="bg-secondary p-4 mt-20 w-full">
+        <div className="flex gap-4 items-center bg-secondary my-2 border border-primary rounded-md">
           <div className="px-2">
             <img src="/search.svg" alt="Search icon" />
           </div>
@@ -43,11 +43,11 @@ const ChatNav = ({ onSelectMessage }) => {
             name="search"
             id="search"
             placeholder="Search chat"
-            className="w-full px-4 py-2 text-sm bg-secondaryColor rounded-md text-primaryColor placeholder-primaryColor"
+            className="w-full px-4 py-2 text-sm bg-secondary rounded-md text-primary placeholder-primary"
           />
         </div>
       </div>
-      <div className="bg-secondaryColor w-full h-screen overflow-auto">
+      <div className="bg-secondary w-full h-screen overflow-auto">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -60,7 +60,7 @@ const ChatNav = ({ onSelectMessage }) => {
                 alt={message.name}
                 className="w-12 h-12 rounded-full"
               />
-              <div className="text-primaryColor">
+              <div className="text-primary">
                 <h3 className="font-bold">{message.name}</h3>
                 <p className="text-xs">{message.text}</p>
               </div>

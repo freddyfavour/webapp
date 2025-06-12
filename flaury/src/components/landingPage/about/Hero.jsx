@@ -5,14 +5,14 @@ const Hero = () => {
     <section className="md:flex justify-between items-center mt-20 px-4 max-w-[1200px] mx-auto py-10">
       <div className="lg:w-1/2">
         <h2 className="font-bold text-5xl md:text-6xl">
-          Your <span className="text-primaryColor">beauty,</span> <br /> Our
+          Your <span className="text-primary">beauty,</span> <br /> Our
           connection
         </h2>
         <h2 className="text-xl md:text-2xl mt-6 mb-10">
           We connect you to your beauty dreams in the most convenient way for
           you.
         </h2>
-        <button className="transition bg-primaryColor text-white border text-xs px-8 py-4 rounded-lg font-semibold">
+        <button className="transition bg-primary text-white border text-xs px-8 py-4 rounded-lg font-semibold">
           Connect with us
         </button>
       </div>

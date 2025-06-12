@@ -4,7 +4,7 @@ const NotificationItem = ({ icon, message, details, isRead }) => {
   return (
     <div className="flex items-center gap-4 p-4 relative">
       {!isRead && (
-        <div className="absolute right-1 w-2 h-2 bg-primaryColor rounded-full"></div>
+        <div className="absolute right-1 w-2 h-2 bg-primary rounded-full"></div>
       )}
       <img src={icon} alt="" />
       <div>

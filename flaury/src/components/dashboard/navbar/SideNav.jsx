@@ -8,7 +8,7 @@ import favorite from "/favorite.svg";
 
 const SideNav = () => {
   return (
-    <nav className="bg-primaryColor w-[257px] text-white flex flex-col items-center">
+    <nav className="bg-primary w-[257px] text-white flex flex-col items-center">
       <div className="fixed">
         <Link to="/dashboard">
           <img src={logo} alt="" className="my-4 ml-[40%] w-14 h-14" />

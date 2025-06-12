@@ -130,7 +130,7 @@ const Bookings = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primaryColor lg:pr-8">
+      <div className="flex gap-8 text-primary lg:pr-8">
         {roleData === "business" ? (
           <BBooking />
         ) : (
@@ -181,7 +181,7 @@ const Bookings = () => {
               ))}
 
               <button
-                className="bg-primaryColor text-white w-full rounded-md py-2 mt-4"
+                className="bg-primary text-white w-full rounded-md py-2 mt-4"
                 onClick={bookService}
               >
                 Continue Booking
