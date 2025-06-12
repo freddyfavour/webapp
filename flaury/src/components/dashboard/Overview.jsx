@@ -1,4 +1,4 @@
-import NearbySalon from "./NearbySalon";
+import NearbySalon from "../shared/NearbySalon";
 import SpecialOffers from "./SpecialOffers";
 import BeautyTips from "./BeautyTips";
 import Recommendations from "./Recommendations";

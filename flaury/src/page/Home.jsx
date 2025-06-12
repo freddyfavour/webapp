@@ -7,7 +7,7 @@ import Hero from "../components/landingPage/Hero";
 import Services from "../components/landingPage/Services";
 import Testimonials from "../components/landingPage/Testimonials";
 import Whatyouget from "../components/landingPage/Whatyouget";
-import NearbySalon from "../components/landingPage/NearbySalon";
+import NearbySalon from "../components/shared/NearbySalon";
 import { useEffect } from "react";
 import Nav from "../components/landingPage/Nav";
 
@@ -19,7 +19,9 @@ const Home = () => {
     <div>
       <Nav />
       <Hero />
-      <NearbySalon />
+      <div className="px-4 sm:px-8 lg:px-24">
+        <NearbySalon />
+      </div>
       <Services />
       <Features />
       <Whatyouget />

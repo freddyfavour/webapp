@@ -2,7 +2,7 @@ import heroImg from "/blog-hero-img.png";
 
 const Hero = () => {
   return (
-    <section className="lg:flex justify-between items-center mt-20 px-4 max-w-[1200px] mx-auto py-10">
+    <section className="lg:flex justify-between items-center pt-20 px-4 max-w-[1200px] mx-auto py-10">
       <img src={heroImg} alt="" className="h-[25rem] hidden lg:block" />
       <div className="lg:w-1/2 text-right">
         <h2 className="font-bold text-5xl md:text-6xl">

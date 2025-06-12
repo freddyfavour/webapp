@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import SideNav from "../../components/dashboard/navbar/SideNav";
-import NearbySalon from "../../components/dashboard/NearbySalon";
+import NearbySalon from "../../components/shared/NearbySalon";
 import { Link } from "react-router-dom";
 import Recommended from "../../components/search/Recommended";
 import WhereComponent from "../../components/search/WhereComponent";

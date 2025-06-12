@@ -1,11 +1,10 @@
 import { Star, MapPin } from "lucide-react"
-import { Badge } from "../../components/ui/badge"
-import { Button } from "../../components/ui/button"
+import { Badge } from "../../ui/badge"
+import { Button } from "../../ui/button"
 import hairstyling from "/hairstyling.png";
 import haircut from "/haircut.png";
 import massage from "/massage.png";
 import perfume from "/perfume.png";
-import { Link } from "react-router-dom";
 
 // Simulated backend data
 const nearbySalons = [

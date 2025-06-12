@@ -1,5 +1,5 @@
 import DashboardLayout from "../../components/dashboard/DashboardLayout"
-import NearbySalon from "../../components/dashboard/NearbySalon";
+import NearbySalon from "../../components/shared/NearbySalon";
 import SpecialOffers from "../../components/dashboard/SpecialOffers";
 import BeautyTips from "../../components/dashboard/BeautyTips";
 import Recommendations from "../../components/dashboard/Recommendations";
