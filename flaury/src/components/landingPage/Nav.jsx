@@ -27,19 +27,12 @@ const Nav = () => {
   }, []);
 
   useEffect(() => {
-    if (showNav) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = showNav ? "hidden" : "auto";
   }, [showNav]);
 
-  const navClass = scrolled
-    ? "bg-[#FEFFF1]/95 backdrop-blur-md shadow-md border-b"
-    : "bg-[#FEFFF1]";
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 ${navClass} transition-all duration-300`}>
+    <header className={`fixed top-0 left-0 w-full z-50 bg-secondary transition-all duration-300`}>
       <div className="mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-24 h-[60px] sm:h-[70px]">
         {/* Logo */}
         <Link to="/" className="z-50">
@@ -75,33 +68,73 @@ const Nav = () => {
 
             {/* Mobile Navigation Drawer */}
             {showNav && (
-              <div className="fixed inset-0 bg-secondary z-40 flex flex-col pt-16 px-6 py-10 animate-slide-in">
-                <ul className="space-y-6 text-lg font-medium">
-                  <li><Link to="/" onClick={() => setShowNav(false)}>Home</Link></li>
-                  <li><Link to="/about" onClick={() => setShowNav(false)}>About Us</Link></li>
-                  <li><Link to="/blog" onClick={() => setShowNav(false)}>Blog</Link></li>
-                  <li><Link to="#services" onClick={() => setShowNav(false)}>Services</Link></li>
-                  <li>
-                    <Button
-                      title="Sign Up"
-                      onClick={() => {
-                        setShowNav(false);
-                        navigate("/choose-role");
-                      }}
-                      customClasses="w-full py-2 text-base"
-                    />
-                  </li>
-                  <li>
-                    <Link to="/login" onClick={() => setShowNav(false)}>
-                      <button className="w-full border border-lightprimary text-primary text-base px-4 py-2 rounded-lg">
-                        Login
-                      </button>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <>
+                {/* Backdrop */}
+                <div
+                  className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                  onClick={() => setShowNav(false)}
+                />
+
+                {/* Drawer */}
+                <div
+                  className="fixed inset-y-0 right-0 w-3/4 sm:w-1/2 bg-secondary z-50 shadow-lg animate-slide-in overflow-y-auto"
+                  style={{ maxHeight: '100vh' }}
+                >
+                  {/* Close Button */}
+                  <div className="flex justify-end p-4">
+                    <button
+                      onClick={() => setShowNav(false)}
+                      className="text-primary text-2xl font-bold"
+                      aria-label="Close Menu"
+                    >
+                      &times;
+                    </button>
+                  </div>
+
+                  {/* Drawer Content */}
+                  <div className="px-6 pb-1 h-screen">
+                    <ul className="space-y-6 text-lg font-medium flex-1">
+                      <li>
+                        <Link to="/" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/about" onClick={() => setShowNav(false)} className="block hover:underline">
+                          About Us
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/blog" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Blog
+                        </Link>
+                      </li>
+                      <li>
+                        <a href="#services" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Services
+                        </a>
+                      </li>
+                    </ul>
+                    <div className="flex flex-col space-y-4 mt-10">
+                      <Button
+                        title="Sign Up"
+                        onClick={() => {
+                          setShowNav(false);
+                          navigate("/choose-role");
+                        }}
+                        customClasses="w-full py-2 text-base"
+                      />
+                      <Link to="/login" onClick={() => setShowNav(false)}>
+                        <button className="w-full border border-lightprimary text-primary text-base px-4 py-2 rounded-lg hover:bg-lightprimary/10">
+                          Login
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </>
             )}
-          </>
+</>
         )}
 
         {/* Auth Navigation (centered logo only) */}

@@ -7,6 +7,11 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .hero-bg {
   background-image: linear-gradient(to right bottom, #8b3e00e6, #8b3e00e6),
     url(./hero-img.png);
