@@ -1,28 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "/logo.svg";
 
 const ChooseRole = () => {
-  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
   const businessRole = () => {
-    setRole("business");
     navigate("/signup?role=business");
   };
 
   const customerRole = () => {
-    setRole("customer");
     navigate("/signup?role=customer");
   };
 
   return (
     <div className="text-center min-h-screen bg-[#FEFFF1]">
-      <h3 className="pt-24 text-primary text-xl font-bold">
+      <div className="mx-auto flex justify-center items-center p-4 sm:p-8 h-[70px] border border-b">
+        {/* Logo */}
+        <Link to="/" className="z-50">
+          <img src={logo} alt="Logo" className="h-12" />
+        </Link>
+      </div>
+
+      <h3 className="pt-12 md:pt-24 text-primary text-xl font-bold">
         Welcome to Flaury
       </h3>
       <p className="text-xs">Enjoy simplified bookings for your convenience.</p>
       <h4 className="mt-4 text-primary text-3xl font-bold">Are you?</h4>
-      <div className="my-10 w-1/3 md:w-[50%] mx-auto block md:flex gap-10 justify-center md:items-center">
+
+      <div className=" flex flex-col md:flex-row my-10 w-full mx-auto gap-10 px-4 sm:px-8 lg:px-24 justify-center md:items-center">
         <div
           className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primary cursor-pointer"
           onClick={businessRole}
@@ -33,7 +39,9 @@ const ChooseRole = () => {
           </h3>
           <p className="text-xs">Beauty stylist or salon owner</p>
         </div>
+
         <h2>OR</h2>
+
         <div
           className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primary cursor-pointer"
           onClick={customerRole}

@@ -78,7 +78,7 @@ const Input = ({
               value={field.value || ""} // Ensure value is never undefined
               className="custom-input"
               style={{
-                padding: "0.5rem",
+                padding: "4px",
                 borderRadius: "4px",
                 // border: `1px solid ${error ? "red" : "#ccc"}`,
                 width: "100%",
