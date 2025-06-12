@@ -21,7 +21,7 @@ const Flaurybusiness = () => {
           </p>
           <ul className="list-disc pl-4">
             <li className="mb-2">Register an account as a service provider</li>
-            <li className="mb-2">Set up your profile and you'll get listed</li>
+            <li className="mb-2">Set up your profile and you`ll get listed</li>
             <li className="mb-2">Accept customer service requests</li>
             <li className="mb-2">Get paid upon service completion</li>
           </ul>
