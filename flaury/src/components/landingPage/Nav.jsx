@@ -40,7 +40,7 @@ const Nav = () => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 ${navClass} transition-all duration-300`}>
-      <div className="max-w-[1200px] mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-24 h-[60px] sm:h-[70px]">
+      <div className="mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-24 h-[60px] sm:h-[70px]">
         {/* Logo */}
         <Link to="/" className="z-50">
           <img src={logo} alt="Logo" className="h-10 md:h-14" />
