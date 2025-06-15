@@ -11,7 +11,7 @@ const MainNav = () => {
   const userData = { name: "Becca Adorn", profilePicture: "/diverse-person-portrait.png" }
 
   return (
-    <div className="w-full bg-[#faf7f2] py-3 px-4">
+    <div className="w-full py-3">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Notification Bell */}
         <Link to="/notifications" className="relative text-primary rounded-full hover:bg-gray-100">

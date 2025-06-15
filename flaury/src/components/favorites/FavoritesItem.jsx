@@ -7,9 +7,9 @@ const FavoritesItem = ({ picture, name, location, ratings }) => {
     <div className="bg-white w-full rounded-md shadow-lg flex mb-2 justify-between p-4">
       <div className="flex items-center gap-4">
         <img src={picture} alt="" className="rounded-md" />
-        <div>
+        <div className="flex flex-col gap-3">
           <p className="text-black font-semibold">{name}</p>
-          <p className="text-black mt-2 text-xs flex gap-2">
+          <p className="text-black text-xs flex gap-2">
             <img src={locationIcon} alt="" />
             {location}
           </p>
