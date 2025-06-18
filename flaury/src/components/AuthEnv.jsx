@@ -13,7 +13,7 @@ const AuthEnv = ({ children, style = null }) => {
           <img src={logo} alt="Logo" className="h-12" />
         </Link>
       </div>
-      <div className="min-h-screen w-full flex justify-center items-center bg-primary relative lg:overflow-hidden">
+      <div className="h-screen w-full flex justify-center items-center bg-primary relative lg:overflow-hidden">
         <div className="gradient-overlay-signup absolute inset-0"></div>
         <Card style={style} children={children} />
       </div>

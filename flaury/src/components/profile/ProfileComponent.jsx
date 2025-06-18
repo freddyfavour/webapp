@@ -106,7 +106,7 @@ const ProfileComponent = () => {
     <div className="mb-10">
       <Link
         onClick={() => setPage("")}
-        className="flex gap-2 text-primary font-bold text-left mt-10"
+        className="flex gap-2 text-primary font-bold text-left"
       >
         <img src="/backarrow.svg" alt="" onClick={logout} />
         Back

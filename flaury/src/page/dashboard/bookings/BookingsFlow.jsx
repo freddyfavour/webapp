@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import Button from "../../components/Button";
-import Card from "../../components/Card";
-import ProgressBar from "../../components/ProgressBar";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import Button from "../../../components/Button";
+import Card from "../../../components/Card";
+import ProgressBar from "../../../components/ProgressBar";
+import DashboardLayout from "../../../components/dashboard/DashboardLayout";
 
 const BookingsFlow = ({ onDateChange }) => {
   const [page, setPage] = useState("");
@@ -97,7 +96,7 @@ const BookingsFlow = ({ onDateChange }) => {
                         type="radio"
                         id={`service-${index}`}
                         name="service"
-                        className="absolute right-4"
+                        className="absolute border border-primary right-4"
                       />
                       <label htmlFor={`service-${index}`} className="flex items-center w-full gap-4 cursor-pointer">
                         <img

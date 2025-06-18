@@ -9,9 +9,6 @@ import booking from "/booking.svg"
 import chat from "/chat.svg"
 import favorite from "/favorite.svg"
 import MainNav from "./navbar/Header"
-import notifications from "/notifications.svg";
-import favorites from "/favorites.svg";
-import MobileNav from "./navbar/MobileNav"
 import MiniNav from "./navbar/MiniNav"
 
 const DashboardLayout = ({ children }) => {
@@ -25,10 +22,10 @@ const DashboardLayout = ({ children }) => {
   // Navigation items for both sidebar and mobile nav
   const navigationItems = [
     { path: "/dashboard", icon: dashboard, label: "Dashboard" },
-    { path: "/profile", icon: profile, label: "Profile" },
     { path: "/bookings", icon: booking, label: "Bookings" },
     { path: "/chat", icon: chat, label: "Chat" },
     { path: "/favorites", icon: favorite, label: "Favorites" },
+    { path: "/profile", icon: profile, label: "Profile" },
   ]
 
   // Set sidebar open on LG screens, close on smaller screens
@@ -85,7 +82,7 @@ const DashboardLayout = ({ children }) => {
         className={`fixed inset-y-0 left-0 z-40 w-54 bg-primary text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } lg:relative lg:w-54 lg:shrink-0`}
       >
-        <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
+        <div className="flex w-full items-center justify-between h-16 px-4 border-b border-white/10">
           <Link to="/dashboard" className="flex items-center space-x-2">
             <img src={logo || "/placeholder.svg"} alt="Logo" className="w-10 h-10" />
             <span className="text-xl font-semibold"></span>
@@ -103,7 +100,7 @@ const DashboardLayout = ({ children }) => {
           </button>
         </div>
 
-        <nav className="p-4">
+        <nav className="w-full p-4">
           <ul className="space-y-2">
             {navigationItems.map((item) => {
               const isActive = location.pathname === item.path

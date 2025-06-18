@@ -22,7 +22,7 @@ const ChooseRole = () => {
         </Link>
       </div>
 
-      <h3 className="pt-12 md:pt-24 text-primary text-xl font-bold">
+      <h3 className="pt-6 text-primary text-xl font-bold">
         Welcome to Flaury
       </h3>
       <p className="text-xs">Enjoy simplified bookings for your convenience.</p>

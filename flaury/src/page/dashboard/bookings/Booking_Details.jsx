@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BBooking from "../../components/bookings/BBooking";
-import CBooking from "../../components/bookings/CBooking";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import BBooking from "../../../components/bookings/BBooking";
+import CBooking from "../../../components/bookings/CBooking";
+import DashboardLayout from "../../../components/dashboard/DashboardLayout";
 
 const Bookings = () => {
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ const Bookings = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primary lg:pr-8">
+      <div className="flex gap-8 text-primary">
         {roleData === "business" ? (
           <BBooking />
         ) : (

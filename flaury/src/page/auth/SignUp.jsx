@@ -9,6 +9,7 @@ import AuthEnv from "../../components/AuthEnv";
 import OTPVerification from "../../components/registration/otpverification";
 import AuthTitle from "../../components/AuthTitle";
 import authAPI from "../../api/user/auth";
+import ShowHidePassword from "../../components/shared/ShowHidePassword";
 
 const SignUp = () => {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -16,9 +17,16 @@ const SignUp = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [role, setRole] = useState("customer");
+  const [password, setPassword,] = useState()
 
   const { control, handleSubmit, register } = useForm();
   const location = useLocation();
+
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+
+  const showPassword = () => {
+    setShowPasswordToggle(!showPasswordToggle);
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -43,7 +51,7 @@ const SignUp = () => {
       const userData = {
         email: formData.email,
         name: formData.name,
-        password: formData.password,
+        password: password,
         phone_number: formData.phoneNumber,
         gender: formData.gender,
         role,
@@ -124,7 +132,7 @@ const SignUp = () => {
 
           {/* Gender Field */}
           <div className="my-4">
-            <label htmlFor="gender" className="text-sm font-medium text-primary block mb-2">
+            <label htmlFor="gender" className="text-sm font-medium block mb-2">
               Gender
             </label>
             <select
@@ -137,15 +145,28 @@ const SignUp = () => {
               <option value="other">Other</option>
             </select>
           </div>
-
-          <Input
-            control={control}
-            name="password"
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
-            validateType="password"
-          />
+          
+          <div className="space-y-2">
+            <label className="text-sm font-medium block mb-2">
+              Password<span className="text-red-500"></span>
+            </label>
+            <div className="relative">
+              <input
+                className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                type={showPasswordToggle ? "text" : "password"}
+                name="Password"
+                placeholder="********"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              <button
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
+                onClick={showPassword}
+              >
+                <ShowHidePassword showPasswordToggle={showPasswordToggle} />
+              </button>
+            </div>
+          </div>
 
           <Button
             title={isSubmitting ? "Loading..." : "Continue"}

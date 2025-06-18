@@ -2,7 +2,7 @@ import BookingHeader from "./BookingHeader";
 
 const CBooking = ({ salonData, confirmOrders }) => {
   return (
-    <div className="mt-10 md:mt-20 w-full px-4 md:px-0">
+    <div className="mt-10 md:mt-0 w-full">
       <BookingHeader confirmOrders={confirmOrders} />
       <hr className="my-6 border border-primary" />
       <div className="text-sm">
