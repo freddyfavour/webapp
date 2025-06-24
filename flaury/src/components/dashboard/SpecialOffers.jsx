@@ -107,7 +107,7 @@ const SpecialOffers = () => {
                   {offer.distance}
                 </p>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="bg-[#ff780199] flex gap-2 text-xs rounded-lg px-4 py-1">
+                  <span className="bg-[#ff780199] text-white flex gap-2 text-[8px] rounded-lg px-4 py-1">
                     <img src={tag} alt="" />
                     SAVE UP TO 20%
                   </span>

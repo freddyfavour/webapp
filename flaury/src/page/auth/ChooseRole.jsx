@@ -14,7 +14,7 @@ const ChooseRole = () => {
   };
 
   return (
-    <div className="text-center min-h-screen bg-[#FEFFF1]">
+    <div className="text-center md:h-screen bg-[#FEFFF1]">
       <div className="mx-auto flex justify-center items-center p-4 sm:p-8 h-[70px] border border-b">
         {/* Logo */}
         <Link to="/" className="z-50">

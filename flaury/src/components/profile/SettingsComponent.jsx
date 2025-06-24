@@ -5,7 +5,7 @@ const SettingsComponent = () => {
   const [page, setPage] = useState("");
   const roleData = localStorage.getItem("userData")
   return (
-    <>
+    <div>
       {page === "edit-profile" ? (
         <div>
           {roleData !== "Business" ? (
@@ -22,7 +22,8 @@ const SettingsComponent = () => {
                   </div>
                 </div>
                 <img src={forwardarrow} alt="" />
-              </div><div
+              </div>
+              <div
                 className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
                 onClick={() => setPage("faqs")}
               >
@@ -189,7 +190,7 @@ const SettingsComponent = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

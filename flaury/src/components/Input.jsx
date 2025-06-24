@@ -70,7 +70,7 @@ const Input = ({
               placeholder={placeholder}
               value={field.value || ""}
               className={`custom-input ${type === "password" ?
-                "w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                "w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-transparent transition-all duration-200 placeholder-gray-400"
                 : "p-3 w-full"}`}
               style={{
                 borderRadius: "4px",

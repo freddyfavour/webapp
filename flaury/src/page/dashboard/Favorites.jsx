@@ -72,7 +72,7 @@ const Favorites = () => {
             <img src={backarrow} alt="" />
             <h3 className="text-2xl font-bold">My Favorites</h3>
           </Link>
-          <div className="container mx-auto py-8">
+          <div className="container mx-auto py-2">
             <div className="">
               {favorites.map((favorite) => (
                 <FavoritesItem

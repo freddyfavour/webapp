@@ -84,6 +84,8 @@ const SignUp = () => {
           toast.error("Access denied. You don't have permission to sign up.");
         } else if (error.status === 401) {
           toast.error("Invalid credentials. Please try again.");
+        } else if (error.status === 400) {
+          toast.error("Password must be at least 6 characters, include upper & lower case, a number, and a special character");
         } else if (error.status === 429) {
           toast.error("Too many attempts. Please try again later.");
         } else {
@@ -132,12 +134,12 @@ const SignUp = () => {
 
           {/* Gender Field */}
           <div className="my-4">
-            <label htmlFor="gender" className="text-sm font-medium block mb-2">
+            <label htmlFor="gender" className="block mb-2">
               Gender
             </label>
             <select
               {...register("gender", { required: "Gender is required" })}
-              className="w-full border border-gray-300 rounded-md p-3 text-sm"
+              className="w-full bg-transparent border border-gray-300 rounded-md p-3 text-sm"
             >
               <option value="">Select your gender</option>
               <option value="male">Male</option>
@@ -147,12 +149,12 @@ const SignUp = () => {
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium block mb-2">
+            <label className="block mb-2">
               Password<span className="text-red-500"></span>
             </label>
             <div className="relative">
               <input
-                className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-transparent transition-all duration-200 placeholder-gray-400"
                 type={showPasswordToggle ? "text" : "password"}
                 name="Password"
                 placeholder="********"
