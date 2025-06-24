@@ -71,23 +71,23 @@ const FavoritesItem = ({ picture, name, location, ratings, onDelete }) => {
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader className={"flex flex-col items-start gap-4"}>
-            <DialogTitle className="flex items-center gap-2">
-              <Trash2 className="w-5 h-5 text-red-500" />
+            <DialogTitle className="flex text-primary items-center gap-2">
+              <Trash2 className="w-5 h-5" />
               Confirm Delete
             </DialogTitle>
             <DialogDescription>
-              Are you sure you want to remove <strong>{name}</strong> from your favorites? This action cannot be undone.
+              Are you sure you want to remove <strong className="text-primary">{name}</strong> from your favorites? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex gap-4 sm:gap-5">
             <Button
               variant="outline"
               onClick={handleCancelDelete}
-              className="bg-white text-primary p-2 rounded-lg border border-primary hover:bg-gray-50"
+              className="bg-white text-primary px-4 py-2 rounded-lg border border-primary hover:bg-gray-50"
             >
               Cancel
             </Button>
-            <Button variant="destructive" onClick={handleConfirmDelete} className="bg-red-500 p-2 rounded-lg text-white hover:bg-red-600">
+            <Button variant="destructive" onClick={handleConfirmDelete} className="bg-primary px-4 py-2 rounded-lg text-white hover:bg-primary/90">
               Delete
             </Button>
           </DialogFooter>
@@ -103,11 +103,11 @@ const FavoritesItem = ({ picture, name, location, ratings, onDelete }) => {
               Successfully Deleted
             </DialogTitle>
             <DialogDescription>
-              <strong>{name}</strong> has been removed from your favorites.
+              <strong className="text-primary">{name}</strong> has been removed from your favorites.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button onClick={handleSuccessClose} className="bg-green-500 p-2 rounded-lg hover:bg-green-600 text-white">
+            <Button onClick={handleSuccessClose} className="bg-primary p-2 rounded-lg hover:bg-primary/90 text-white">
               OK
             </Button>
           </DialogFooter>

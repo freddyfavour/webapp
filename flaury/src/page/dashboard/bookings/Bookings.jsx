@@ -132,8 +132,8 @@ export default function BookingManagement() {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`py-4 px-6 text-sm font-medium border-b-2 ${activeTab === tab
-                      ? "border-primary text-primary"
-                      : "border-transparent text-gray-500 hover:text-gray-700"
+                    ? "border-primary text-primary"
+                    : "border-transparent text-gray-500 hover:text-gray-700"
                     }`}
                 >
                   {tab}
@@ -146,9 +146,9 @@ export default function BookingManagement() {
           <div className="flex-1 py-6 overflow-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
               {getFilteredBookings().map((booking, index) => (
-                <Card key={`${booking.id}-${index}`} className="overflow-hidden">
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between mb-1">
+                <Card key={`${booking.id}-${index}`} className="border border-primary py-2 rounded-md overflow-hidden">
+                  <CardContent className="">
+                    <div className="flex px-4 py-2 w-full border-b pb-2 items-center justify-between">
                       <span className="text-sm text-gray-500">{booking.date}</span>
                       {booking.status === "upcoming" && (
                         <div className="flex items-center gap-2">
@@ -161,10 +161,10 @@ export default function BookingManagement() {
                         <div className="flex items-center justify-between mb-1">
                           <div
                             className={`px-2 py-1 rounded text-xs font-medium ${booking.status === "completed"
-                                ? "bg-green-500 text-white"
-                                : booking.status === "cancelled"
-                                  ? "bg-red-500 text-white"
-                                  : "bg-primary text-white"
+                              ? "bg-green-500 text-white"
+                              : booking.status === "cancelled"
+                                ? "bg-red-500 text-white"
+                                : "bg-primary text-white"
                               }`}
                           >
                             {booking.status === "completed"
@@ -176,7 +176,8 @@ export default function BookingManagement() {
                         </div>
                       )}
                     </div>
-                    <div className="flex items-start gap-3 mb-4">
+
+                    <div className={`flex px-4 py-3 w-full items-start gap-3 ${booking.status === "cancelled" ? "" : "border-b"}`}>
                       <img
                         src={booking.image || "/placeholder.svg"}
                         alt="Salon"
@@ -190,7 +191,7 @@ export default function BookingManagement() {
                         <p className="text-xs text-gray-500 mt-1">{booking.description}</p>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex px-4 py-2 w-full gap-2">
                       {booking.status === "upcoming" && (
                         <>
                           <Button
