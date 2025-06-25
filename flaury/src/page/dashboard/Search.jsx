@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import NearbySalon from "../../components/shared/NearbySalon";
+import SideNav from "@/components/dashboard/navbar/SideNav";
+import NearbySalon from "@/components/shared/NearbySalon";
 import { Link } from "react-router-dom";
-import Recommended from "../../components/search/Recommended";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import Recommended from "@/components/search/Recommended";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const SMALL_VIEWPORT_WIDTH = 900;
 
@@ -107,7 +107,7 @@ export default Search;
 
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
-// import SideNav from "../../components/dashboard/SideNav";
+// import SideNav from "@/components/dashboard/SideNav";
 
 // const SMALL_VIEWPORT_WIDTH = 900;
 

@@ -4,7 +4,7 @@ import { useState } from "react"
 import star from "/star.svg"
 import locationIcon from "/location.svg"
 import deleteIcon from "/delete.svg"
-import { Button } from "../../components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../components/ui/dialog"
+} from "@/components/ui/dialog"
 import { CheckCircle, Trash2 } from "lucide-react"
 
 

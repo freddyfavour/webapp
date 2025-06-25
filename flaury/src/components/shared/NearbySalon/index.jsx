@@ -1,10 +1,11 @@
 import { Star, MapPin } from "lucide-react"
-import { Badge } from "../../ui/badge"
-import { Button } from "../../ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import hairstyling from "/hairstyling.png";
 import haircut from "/haircut.png";
 import massage from "/massage.png";
 import perfume from "/perfume.png";
+import { Link } from "react-router-dom";
 
 // Simulated backend data
 const nearbySalons = [
@@ -139,9 +140,11 @@ export default function NearbySalon() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-primary hover:secondary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
-                  Book Now
-                </Button>
+                <Link to={`/bookings/${salon.id}`} className="block w-full">
+                  <Button className="w-full bg-primary hover:secondary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
+                    Book Now
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}

@@ -3,11 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import AuthEnv from "../../components/AuthEnv";
-import AuthTitle from "../../components/AuthTitle";
-import authAPI from "../../api/user/auth";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import AuthEnv from "@/components/AuthEnv";
+import AuthTitle from "@/components/AuthTitle";
+import authAPI from "@/api/user/auth";
 
 const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);

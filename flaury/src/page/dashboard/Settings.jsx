@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
-import SettingsComponent from "../../components/profile/SettingsComponent";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import SettingsComponent from "@/components/profile/SettingsComponent";
 
 const Settings = () => {
 

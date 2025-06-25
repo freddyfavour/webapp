@@ -3,7 +3,7 @@
 import React, { forwardRef } from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
-import { cn } from '../../context/lib/utils'
+import { cn } from '@/context/lib/utils'
 
 const Avatar = forwardRef(({ className, ...props }, ref) => (
   <AvatarPrimitive.Root

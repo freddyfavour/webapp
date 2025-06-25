@@ -27,7 +27,7 @@ const Hero = () => {
                 name="search"
                 id="search"
                 placeholder="Search for a service"
-                className="w-full px-4 py-2 text-sm text-lightprimary placeholder-lightprimary"
+                className="w-full px-4 py-2 text-sm text-primary placeholder-primary"
               />
               <div className="px-3">
                 <img src={search} alt="search" className="w-4 h-4" />

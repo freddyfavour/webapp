@@ -48,10 +48,10 @@ const Nav = () => {
               <Link to="/blog" className="text-sm font-medium hover:underline">Blog</Link>
               <div></div>
               <Link to="/choose-role" onClick={() => setShowNav(false)}>
-                <button className="w-full hover:border hover:border-lightprimary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
+                <button className="w-full hover:border hover:border-primary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
               </Link>
               <Link to="/login">
-                <button className="border border-lightprimary text-primary text-sm px-6 py-2 rounded-lg font-medium hover:bg-lightprimary/10">
+                <button className="border border-primary text-primary text-sm px-6 py-2 rounded-lg font-medium hover:bg-primary/10">
                   Login
                 </button>
               </Link>
@@ -116,10 +116,10 @@ const Nav = () => {
                     </ul>
                     <div className="flex flex-col space-y-4 mt-10">
                       <Link to="/choose-role" onClick={() => setShowNav(false)}>
-                        <button className="w-full hover:border hover:border-lightprimary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
+                        <button className="w-full hover:border hover:border-primary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
                       </Link>
                       <Link to="/login" onClick={() => setShowNav(false)}>
-                        <button className="w-full border border-lightprimary text-primary text-base px-4 py-2 rounded-lg hover:bg-lightprimary/10">
+                        <button className="w-full border border-primary text-primary text-base px-4 py-2 rounded-lg hover:bg-primary/10">
                           Login
                         </button>
                       </Link>

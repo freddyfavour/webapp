@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Bell, Search, Settings, Heart } from "lucide-react"
-import { Input } from "../../../components/ui/input"
+import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form";
 import { Link, useLocation } from "react-router-dom";
 
@@ -120,21 +120,21 @@ const MainNav = () => {
 
               {/* Min-Max Price */}
               <div>
-              <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-                Price Range
-              </label>
-              <div className="flex w-full items-center justify-between gap-4">
-                <input
-                  type="number"
-                  placeholder="Min"
-                  className="flex- w-[45%] text-center bg-none border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <div className="border-t border-dashed border-gray-300 h-3 w-8"></div>
-                <input
-                  type="number"
-                  placeholder="Max"
-                  className="flex- w-[45%] text-center border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-                />
+                <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
+                  Price Range
+                </label>
+                <div className="flex w-full items-center justify-between gap-4">
+                  <input
+                    type="number"
+                    placeholder="Min"
+                    className="flex- w-[45%] text-center bg-none border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                  />
+                  <div className="border-t border-dashed border-gray-300 h-3 w-8"></div>
+                  <input
+                    type="number"
+                    placeholder="Max"
+                    className="flex- w-[45%] text-center border border-gray-300 rounded-md py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                  />
                 </div>
               </div>
             </div>

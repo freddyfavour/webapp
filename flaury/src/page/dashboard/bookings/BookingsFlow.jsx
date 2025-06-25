@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import Button from "../../../components/Button";
-import Card from "../../../components/Card";
-import ProgressBar from "../../../components/ProgressBar";
-import DashboardLayout from "../../../components/dashboard/DashboardLayout";
+import Button from "@/components/Button";
+import Card from "@/components/Card";
+import ProgressBar from "@/components/ProgressBar";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const BookingsFlow = ({ onDateChange }) => {
   const [page, setPage] = useState("");

@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "../../components/Button";
+import Button from "@/components/Button";
 import { useForm } from "react-hook-form";
-import Input from "../../components/Input";
-import AuthEnv from "../../components/AuthEnv";
-import OTPVerification from "../../components/registration/otpverification";
-import AuthTitle from "../../components/AuthTitle";
-import authAPI from "../../api/user/auth";
-import ShowHidePassword from "../../components/shared/ShowHidePassword";
+import Input from "@/components/Input";
+import AuthEnv from "@/components/AuthEnv";
+import OTPVerification from "@/components/registration/otpverification";
+import AuthTitle from "@/components/AuthTitle";
+import authAPI from "@/api/user/auth";
+import ShowHidePassword from "@/components/shared/ShowHidePassword";
 
 const SignUp = () => {
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -147,14 +147,14 @@ const SignUp = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          
+
           <div className="space-y-2">
             <label className="block mb-2">
               Password<span className="text-red-500"></span>
             </label>
             <div className="relative">
               <input
-                className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-transparent transition-all duration-200 placeholder-gray-400"
                 type={showPasswordToggle ? "text" : "password"}
                 name="Password"
                 placeholder="********"

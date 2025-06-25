@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import FavoritesItem from "../../components/favorites/FavoritesItem";
+import SideNav from "@/components/dashboard/navbar/SideNav";
+import FavoritesItem from "@/components/favorites/FavoritesItem";
 import { Link } from "react-router-dom";
 import backarrow from "/backarrow.svg";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const Favorites = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(

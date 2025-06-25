@@ -121,8 +121,8 @@ const ProfileComponent = () => {
                 <button
                   key={label}
                   className={`border text-xs px-4 py-1 rounded-full ${label === "All"
-                      ? "bg-primary text-white border-primary"
-                      : "text-primary border-primary"
+                    ? "bg-primary text-white border-primary"
+                    : "text-primary border-primary"
                     }`}
                 >
                   {label}
@@ -224,7 +224,7 @@ const ProfileComponent = () => {
               Yes, log me out
             </button>
             <button
-              className="transition bg-lightprimary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
               onClick={() => setShowPopup(false)}
             >
               Login with another account

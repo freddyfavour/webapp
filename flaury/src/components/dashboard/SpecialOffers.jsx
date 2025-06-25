@@ -5,6 +5,7 @@ import hairbarbing from "/hairbarbing.png";
 import pedicure from "/pedicure.png";
 import verified from "/verified.svg";
 import tag from "/tag.svg";
+import { Link } from "react-router-dom";
 
 // Simulated backend data
 const specialOffers = [
@@ -111,9 +112,12 @@ const SpecialOffers = () => {
                     <img src={tag} alt="" />
                     SAVE UP TO 20%
                   </span>
-                  <button className="transition bg-primary text-white border text-xs px-6 py-2 rounded-lg font-semibold">
-                    Book now
-                  </button>
+
+                  <Link to={`/bookings/${offer.id}`} className="block w-full">
+                    <button className="transition bg-primary text-white border text-xs px-6 py-2 rounded-lg font-semibold">
+                      Book now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import ChatNav from "../../components/dashboard/ChatNav";
-import ChatComponent from "../../components/chat/ChatComponent";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import ChatNav from "@/components/dashboard/ChatNav";
+import ChatComponent from "@/components/chat/ChatComponent";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const Chat = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(

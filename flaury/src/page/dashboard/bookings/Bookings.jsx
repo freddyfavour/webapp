@@ -1,13 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "../../../components/ui/button"
-import { Card, CardContent } from "../../../components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { X, ThumbsUp, AlertTriangle } from "lucide-react"
-import DashboardLayout from "../../../components/dashboard/DashboardLayout"
+import DashboardLayout from "@/components/dashboard/DashboardLayout"
 import haircut from "/haircut.png"
 import massage from "/massage.png"
 import perfume from "/perfume.png"
+import { Switch } from "@/components/ui/switch"
 
 const bookings = [
   {
@@ -153,7 +154,7 @@ export default function BookingManagement() {
                       {booking.status === "upcoming" && (
                         <div className="flex items-center gap-2">
                           <span className="text-sm">Remind me</span>
-                          {/* <input type="switch"checked={booking.remindMe} /> */}
+                          <Switch />
                         </div>
                       )}
 

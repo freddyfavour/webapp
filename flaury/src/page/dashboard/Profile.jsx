@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import ProfileComponent from "../../components/profile/ProfileComponent";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import SideNav from "@/components/dashboard/navbar/SideNav";
+import ProfileComponent from "@/components/profile/ProfileComponent";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const Profile = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
