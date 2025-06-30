@@ -33,7 +33,7 @@ const ChooseRole = () => {
           className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primary cursor-pointer"
           onClick={businessRole}
         >
-          <img src="/roleb.jpeg" alt="Business Role" className="rounded-t-md" />
+          <img src="/roleb.jpeg" alt="Business Role" className="h-[150px] w-full rounded-t-sm" />
           <h3 className="font-bold text-xl text-primary pt-10 pb-2">
             Beautician
           </h3>
@@ -46,7 +46,7 @@ const ChooseRole = () => {
           className="w-full md:w-1/3 border-2 rounded-md pb-10 border-primary cursor-pointer"
           onClick={customerRole}
         >
-          <img src="/rolec.jpeg" alt="Business Role" className="rounded-t-md" />
+          <img src="/rolec.jpeg" alt="Business Role" className="h-[150px] w-full rounded-t-sm" />
           <h3 className="font-bold text-xl text-primary pt-10 pb-2">
             Customer
           </h3>

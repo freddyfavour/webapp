@@ -147,7 +147,7 @@ export default function BookingManagement() {
           <div className="flex-1 py-6 overflow-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
               {getFilteredBookings().map((booking, index) => (
-                <Card key={`${booking.id}-${index}`} className="border border-primary py-2 rounded-md overflow-hidden">
+                <Card key={`${booking.id}-${index}`} className="bg-white py-2 rounded-md overflow-hidden">
                   <CardContent className="">
                     <div className="flex px-4 py-2 w-full border-b pb-2 items-center justify-between">
                       <span className="text-sm text-gray-500">{booking.date}</span>

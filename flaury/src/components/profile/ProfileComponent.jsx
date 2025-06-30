@@ -130,37 +130,13 @@ const ProfileComponent = () => {
               ))}
             </div>
           </>
-        ) : page === "settings" ? (
-          <>
-            {roleData !== "Business" ? (
-              <img
-                src="/timelessrecommended.png"
-                alt=""
-                className="w-full h-32 object-cover"
-              />
-            ) : (
-              <>
-                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
-                <h3 className="text-xl font-bold">{profileData.name}</h3>
-                <p className="text-xs">{profileData.email}</p>
-              </>
-            )}
-          </>
         ) : (
-          <>
-            {roleData !== "Business" ? (
-              <img
-                src="/timelessrecommended.png"
-                alt=""
-                className="w-full h-32 object-cover"
-              />
-            ) : (
-              <>
-                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+            <>
+              <div className="flex flex-col gap-4 items-center space-x-2">
+                <img src={profileData.profileimg || "/placeholder.svg"} alt="" className="h-14 w-14 rounded-full border border-[#8B4513]/20" />
                 <h3 className="text-xl font-bold">{profileData.name}</h3>
                 <p className="text-xs">{profileData.email}</p>
-              </>
-            )}
+              </div>
             {page === "help" ? (
               <p className="font-bold">How can we help you?</p>
             ) : (
