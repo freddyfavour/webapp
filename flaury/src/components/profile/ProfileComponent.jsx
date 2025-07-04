@@ -35,15 +35,9 @@ const ProfileComponent = () => {
     const simulatedProfileDetails = [
       {
         id: 1,
-        name: "Settings",
+        name: "Profile",
         details: "Edit profile, change phone number...",
         icon: "/profilesettings.svg",
-      },
-      {
-        id: 2,
-        name: "About",
-        details: "FAQs, Privacy policy, Terms and conditions",
-        icon: "/about.svg",
       },
       {
         id: 3,
@@ -56,6 +50,12 @@ const ProfileComponent = () => {
         name: "Promotions",
         details: "Get promo code and enjoy discount on your bookings",
         icon: "/promotion.svg",
+      },
+      {
+        id: 2,
+        name: "About",
+        details: "FAQs, Privacy policy, Terms and conditions",
+        icon: "/about.svg",
       },
       {
         id: 5,
@@ -77,6 +77,10 @@ const ProfileComponent = () => {
 
   const logout = () => {
     setShowPopup(true);
+  };
+
+  const handleProfileClick = () => {
+    setPage("profile");
   };
 
   const handleAboutClick = () => {
@@ -131,12 +135,14 @@ const ProfileComponent = () => {
             </div>
           </>
         ) : (
-            <>
-              <div className="flex flex-col gap-4 items-center space-x-2">
-                <img src={profileData.profileimg || "/placeholder.svg"} alt="" className="h-14 w-14 rounded-full border border-[#8B4513]/20" />
+          <>
+            <div className="flex flex-col gap-3 items-center space-x-2">
+              <img src={profileData.profileimg || "/placeholder.svg"} alt="" className="h-14 w-14 rounded-full border border-[#8B4513]/20" />
+              <div className="text-center">
                 <h3 className="text-xl font-bold">{profileData.name}</h3>
                 <p className="text-xs">{profileData.email}</p>
               </div>
+            </div>
             {page === "help" ? (
               <p className="font-bold">How can we help you?</p>
             ) : (
@@ -151,8 +157,10 @@ const ProfileComponent = () => {
           </>
         )}
       </div>
-      <hr className="border-primary" />
-      {page === "help" ? (
+      <hr className="border-primary mb-5" />
+      {page === "profile" ? (
+        <HelpComponent />
+      ) : page === "help" ? (
         <HelpComponent />
       ) : page === "faqs" ? (
         <FaqsComponent />
@@ -169,15 +177,17 @@ const ProfileComponent = () => {
             icon={profileDetail.icon}
             logout={logout}
             onClick={
-              profileDetail.name === "About"
-                ? handleAboutClick
-                : profileDetail.name === "Help"
-                  ? handleHelpClick
-                  : profileDetail.name === "Settings"
-                    ? handleSettingsClick
-                    : profileDetail.name === "Payment"
-                      ? handlePaymentClick
-                      : null
+              profileDetail.name === "Profile"
+                ? handleProfileClick
+                : profileDetail.name === "About"
+                  ? handleAboutClick
+                  : profileDetail.name === "Help"
+                    ? handleHelpClick
+                    : profileDetail.name === "Settings"
+                      ? handleSettingsClick
+                      : profileDetail.name === "Payment"
+                        ? handlePaymentClick
+                        : null
             }
           />
         ))
