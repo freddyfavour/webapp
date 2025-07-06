@@ -16,7 +16,7 @@ const ProfileComponent = () => {
     name: "",
     email: "",
   });
-  const [showPopup, setShowPopup] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
   const [page, setPage] = useState("");
   const [profileDetails, setProfileDetails] = useState([]);
 
@@ -75,10 +75,6 @@ const ProfileComponent = () => {
     setProfileDetails(simulatedProfileDetails);
   }, []);
 
-  const logout = () => {
-    setShowPopup(true);
-  };
-
   const handleProfileClick = () => {
     setPage("profile");
   };
@@ -99,6 +95,9 @@ const ProfileComponent = () => {
     setPage("payment");
   };
 
+  const handleLogout = () => {
+    setShowLogout(true);
+  };
   const onLogout = () => {
     navigate("/");
     localStorage.removeItem("userData");
@@ -112,7 +111,7 @@ const ProfileComponent = () => {
         onClick={() => setPage("")}
         className="flex gap-2 text-primary font-bold text-left"
       >
-        <img src="/backarrow.svg" alt="" onClick={logout} />
+        <img src="/backarrow.svg" alt="" />
         Back
       </Link>
       <div className="relative w-full flex flex-col items-center text-center text-black py-4">
@@ -159,13 +158,11 @@ const ProfileComponent = () => {
       </div>
       <hr className="border-primary mb-5" />
       {page === "profile" ? (
-        <HelpComponent />
+        <SettingsComponent />
       ) : page === "help" ? (
         <HelpComponent />
       ) : page === "faqs" ? (
         <FaqsComponent />
-      ) : page === "settings" ? (
-        <SettingsComponent />
       ) : page === "payment" ? (
         <PaymentComponent />
       ) : (
@@ -175,7 +172,7 @@ const ProfileComponent = () => {
             name={profileDetail.name}
             details={profileDetail.details}
             icon={profileDetail.icon}
-            logout={logout}
+            setShowLogout={setShowLogout}
             onClick={
               profileDetail.name === "Profile"
                 ? handleProfileClick
@@ -187,14 +184,14 @@ const ProfileComponent = () => {
                       ? handleSettingsClick
                       : profileDetail.name === "Payment"
                         ? handlePaymentClick
-                        : null
+                        : handleLogout
             }
           />
         ))
       )}
-      {showPopup && (
+      {showLogout && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="flex flex-col bg-secondary w-full md:w-[40%] mx-4 py-8 px-4 md:px-20 gap-3 rounded-lg shadow-lg text-center">
             <img
               src={forgotPassword}
               alt="Forgot password"
@@ -204,16 +201,16 @@ const ProfileComponent = () => {
               Are you sure you want to log-out?
             </h3>
             <button
-              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full"
               onClick={onLogout}
             >
               Yes, log me out
             </button>
             <button
               className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
-              onClick={() => setShowPopup(false)}
+              onClick={() => setShowLogout(false)}
             >
-              Login with another account
+              Cancel
             </button>
           </div>
         </div>

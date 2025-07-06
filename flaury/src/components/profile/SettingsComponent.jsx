@@ -11,7 +11,7 @@ const SettingsComponent = () => {
           {roleData !== "Business" ? (
             <>
               <div
-                className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+                className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-4"
                 onClick={() => setPage("business-details")}
               >
                 <div className="flex items-center gap-4">
@@ -24,7 +24,7 @@ const SettingsComponent = () => {
                 <img src={forwardarrow} alt="" />
               </div>
               <div
-                className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+                className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-4"
                 onClick={() => setPage("faqs")}
               >
                 <div className="flex items-center gap-4">
@@ -145,7 +145,7 @@ const SettingsComponent = () => {
       ) : (
         <>
           <div
-            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-6"
+            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-6"
             onClick={() => setPage("edit-profile")}
           >
             <div className="flex items-center gap-4">
@@ -157,7 +157,7 @@ const SettingsComponent = () => {
             <img src={forwardarrow} alt="" />
           </div>
           <div
-            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-6"
+            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-6"
             onClick={() => setPage("change-password")}
           >
             <div className="flex items-center gap-4">
@@ -175,7 +175,7 @@ const SettingsComponent = () => {
             <img src={forwardarrow} alt="" />
           </div>
           <div
-            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-6"
+            className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-6"
             onClick={() => setPage("change-phone-number")}
           >
             <div className="flex items-center gap-4">
