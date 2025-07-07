@@ -1,4 +1,4 @@
-import vector from "/Vector.svg";
+import vector from "/vector.svg";
 import heroImg1 from "/hero-img1.png";
 import search from "/search.svg";
 
