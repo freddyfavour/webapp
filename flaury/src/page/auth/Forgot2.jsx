@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthEnv from "../../components/AuthEnv";
-import Button from "../../components/Button";
-import AuthTitle from "../../components/AuthTitle";
+import AuthEnv from "@/components/AuthEnv";
+import Button from "@/components/Button";
+import AuthTitle from "@/components/AuthTitle";
 
 const Forgot2 = () => {
   const [code1, setCode1] = useState("");

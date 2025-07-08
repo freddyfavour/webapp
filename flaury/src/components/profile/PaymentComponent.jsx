@@ -97,7 +97,7 @@ const PaymentComponent = () => {
                 />
               </div>
               <button
-                className="font-bold bg-lightprimary px-4 py-2 rounded-md w-full mt-6 text-white opacity-70"
+                className="font-bold bg-primary px-4 py-2 rounded-md w-full mt-6 text-white opacity-70"
                 onClick={() => setShowPopup(false)}
               >
                 Confirm

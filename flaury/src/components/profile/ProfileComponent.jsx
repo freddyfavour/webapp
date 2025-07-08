@@ -16,7 +16,7 @@ const ProfileComponent = () => {
     name: "",
     email: "",
   });
-  const [showPopup, setShowPopup] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
   const [page, setPage] = useState("");
   const [profileDetails, setProfileDetails] = useState([]);
 
@@ -35,15 +35,9 @@ const ProfileComponent = () => {
     const simulatedProfileDetails = [
       {
         id: 1,
-        name: "Settings",
+        name: "Profile",
         details: "Edit profile, change phone number...",
         icon: "/profilesettings.svg",
-      },
-      {
-        id: 2,
-        name: "About",
-        details: "FAQs, Privacy policy, Terms and conditions",
-        icon: "/about.svg",
       },
       {
         id: 3,
@@ -56,6 +50,12 @@ const ProfileComponent = () => {
         name: "Promotions",
         details: "Get promo code and enjoy discount on your bookings",
         icon: "/promotion.svg",
+      },
+      {
+        id: 2,
+        name: "About",
+        details: "FAQs, Privacy policy, Terms and conditions",
+        icon: "/about.svg",
       },
       {
         id: 5,
@@ -75,8 +75,8 @@ const ProfileComponent = () => {
     setProfileDetails(simulatedProfileDetails);
   }, []);
 
-  const logout = () => {
-    setShowPopup(true);
+  const handleProfileClick = () => {
+    setPage("profile");
   };
 
   const handleAboutClick = () => {
@@ -95,6 +95,9 @@ const ProfileComponent = () => {
     setPage("payment");
   };
 
+  const handleLogout = () => {
+    setShowLogout(true);
+  };
   const onLogout = () => {
     navigate("/");
     localStorage.removeItem("userData");
@@ -106,9 +109,9 @@ const ProfileComponent = () => {
     <div className="mb-10">
       <Link
         onClick={() => setPage("")}
-        className="flex gap-2 text-primary font-bold text-left mt-10"
+        className="flex gap-2 text-primary font-bold text-left"
       >
-        <img src="/backarrow.svg" alt="" onClick={logout} />
+        <img src="/backarrow.svg" alt="" />
         Back
       </Link>
       <div className="relative w-full flex flex-col items-center text-center text-black py-4">
@@ -121,8 +124,8 @@ const ProfileComponent = () => {
                 <button
                   key={label}
                   className={`border text-xs px-4 py-1 rounded-full ${label === "All"
-                      ? "bg-primary text-white border-primary"
-                      : "text-primary border-primary"
+                    ? "bg-primary text-white border-primary"
+                    : "text-primary border-primary"
                     }`}
                 >
                   {label}
@@ -130,37 +133,15 @@ const ProfileComponent = () => {
               ))}
             </div>
           </>
-        ) : page === "settings" ? (
-          <>
-            {roleData !== "Business" ? (
-              <img
-                src="/timelessrecommended.png"
-                alt=""
-                className="w-full h-32 object-cover"
-              />
-            ) : (
-              <>
-                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
-                <h3 className="text-xl font-bold">{profileData.name}</h3>
-                <p className="text-xs">{profileData.email}</p>
-              </>
-            )}
-          </>
         ) : (
           <>
-            {roleData !== "Business" ? (
-              <img
-                src="/timelessrecommended.png"
-                alt=""
-                className="w-full h-32 object-cover"
-              />
-            ) : (
-              <>
-                <img src={profileData.profileimg} alt="" className="w-[5rem]" />
+            <div className="flex flex-col gap-3 items-center space-x-2">
+              <img src={profileData.profileimg || "/placeholder.svg"} alt="" className="h-14 w-14 rounded-full border border-[#8B4513]/20" />
+              <div className="text-center">
                 <h3 className="text-xl font-bold">{profileData.name}</h3>
                 <p className="text-xs">{profileData.email}</p>
-              </>
-            )}
+              </div>
+            </div>
             {page === "help" ? (
               <p className="font-bold">How can we help you?</p>
             ) : (
@@ -175,13 +156,13 @@ const ProfileComponent = () => {
           </>
         )}
       </div>
-      <hr className="border-primary" />
-      {page === "help" ? (
+      <hr className="border-primary mb-5" />
+      {page === "profile" ? (
+        <SettingsComponent />
+      ) : page === "help" ? (
         <HelpComponent />
       ) : page === "faqs" ? (
         <FaqsComponent />
-      ) : page === "settings" ? (
-        <SettingsComponent />
       ) : page === "payment" ? (
         <PaymentComponent />
       ) : (
@@ -191,24 +172,26 @@ const ProfileComponent = () => {
             name={profileDetail.name}
             details={profileDetail.details}
             icon={profileDetail.icon}
-            logout={logout}
+            setShowLogout={setShowLogout}
             onClick={
-              profileDetail.name === "About"
-                ? handleAboutClick
-                : profileDetail.name === "Help"
-                  ? handleHelpClick
-                  : profileDetail.name === "Settings"
-                    ? handleSettingsClick
-                    : profileDetail.name === "Payment"
-                      ? handlePaymentClick
-                      : null
+              profileDetail.name === "Profile"
+                ? handleProfileClick
+                : profileDetail.name === "About"
+                  ? handleAboutClick
+                  : profileDetail.name === "Help"
+                    ? handleHelpClick
+                    : profileDetail.name === "Settings"
+                      ? handleSettingsClick
+                      : profileDetail.name === "Payment"
+                        ? handlePaymentClick
+                        : handleLogout
             }
           />
         ))
       )}
-      {showPopup && (
+      {showLogout && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[35%] py-8 px-20 rounded-lg shadow-lg text-center">
+          <div className="flex flex-col bg-secondary w-full md:w-[40%] mx-4 py-8 px-4 md:px-20 gap-3 rounded-lg shadow-lg text-center">
             <img
               src={forgotPassword}
               alt="Forgot password"
@@ -218,16 +201,16 @@ const ProfileComponent = () => {
               Are you sure you want to log-out?
             </h3>
             <button
-              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full mb-4"
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full"
               onClick={onLogout}
             >
               Yes, log me out
             </button>
             <button
-              className="transition bg-lightprimary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
-              onClick={() => setShowPopup(false)}
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold opacity-50 w-full"
+              onClick={() => setShowLogout(false)}
             >
-              Login with another account
+              Cancel
             </button>
           </div>
         </div>

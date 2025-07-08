@@ -26,11 +26,11 @@ const Whatyouget = () => {
   ];
 
   return (
-    <section className="mt-10 px-4 max-w-[1200px] mx-auto  py-10 text-center">
+    <section className="w-full mt-10 px-4 sm:px-8 lg:px-24 mx-auto  py-10 text-center">
       <h4 className="text-primary text-2xl">
         Have Beauty Needs?, Get It Here
       </h4>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 gap-4">
+      <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-4 gap-4">
         {itemsData.map((item, index) => (
           <div key={index}>
             <img src={item.image} alt="" className="w-4/5 mx-auto" />

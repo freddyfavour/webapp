@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuthStore } from "../../store/authstore";
+import { useAuthStore } from "@/store/authstore";
 
 import AuthEnv from "../AuthEnv";
 import AuthTitle from "../AuthTitle";

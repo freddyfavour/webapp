@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import Card from "../Card";
 import Button from "../Button";
-import authAPI from "../../api/user/auth";
+import authAPI from "@/api/user/auth";
 
 const OTPVerification = ({ email, complete }) => {
   const [code1, setCode1] = React.useState("");

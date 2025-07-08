@@ -18,7 +18,6 @@ const messages = [
     time: "5:00",
     isRead: true,
   },
-
   {
     id: 3,
     img: "/timelessrecommended.png",
@@ -31,54 +30,49 @@ const messages = [
 
 const ChatNav = ({ onSelectMessage }) => {
   return (
-    <nav className="w-full md:w-2/3 ml-4 h-screen text-white flex flex-col items-center">
-      {/* <div className="w-full md:w-fit fixed"> */}
-      <div className="bg-secondary p-4 mt-20 w-full">
-        <div className="flex gap-4 items-center bg-secondary my-2 border border-primary rounded-md">
-          <div className="px-2">
-            <img src="/search.svg" alt="Search icon" />
-          </div>
+    <nav className="w-full md:w-2/3 h-screen text-white flex flex-col items-center bg-secondary">
+      {/* Search bar */}
+      <div className="w-full px-4 py-3 border-b border-primary">
+        <div className="flex gap-3 items-center bg-secondary border border-primary rounded-md px-3 py-2">
+          <img src="/search.svg" alt="Search" className="w-4 h-4" />
           <input
             type="text"
-            name="search"
-            id="search"
             placeholder="Search chat"
-            className="w-full px-4 py-2 text-sm bg-secondary rounded-md text-primary placeholder-primary"
+            className="w-full bg-transparent text-primary placeholder-primary outline-none text-sm"
           />
         </div>
       </div>
-      <div className="bg-secondary w-full h-screen overflow-auto">
+
+      {/* Chat List */}
+      <div className="w-full flex-1 overflow-y-auto">
         {messages.map((message) => (
           <div
             key={message.id}
-            className="flex justify-between items-center p-4 border-b cursor-pointer hover:bg-gray-100"
+            className="flex justify-between items-center px-4 py-3 border-b border-primary cursor-pointer transition hover:bg-[#2a2a2a]"
             onClick={() => onSelectMessage(message)}
           >
-            <div className="flex gap-2 items-center">
+            <div className="flex items-center gap-3">
               <img
                 src={message.img}
-                alt={message.name}
-                className="w-12 h-12 rounded-full"
+                alt={`${message.name} profile`}
+                className="w-12 h-12 rounded-full object-cover"
               />
               <div className="text-primary">
-                <h3 className="font-bold">{message.name}</h3>
-                <p className="text-xs">{message.text}</p>
+                <h3 className="font-semibold text-base">{message.name}</h3>
+                <p className="text-sm text-gray-400 truncate max-w-[200px]">
+                  {message.text}
+                </p>
               </div>
             </div>
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-end justify-between gap-1">
               {message.isRead && (
-                <img
-                  src="/dot.svg"
-                  alt="Read indicator"
-                  className="w-2 h-2"
-                />
+                <span className="w-2 h-2 bg-green-400 rounded-full"></span>
               )}
-              <p className="text-sm text-gray-500">{message.time}</p>
+              <p className="text-xs text-gray-400">{message.time}</p>
             </div>
           </div>
         ))}
       </div>
-      {/* </div> */}
     </nav>
   );
 };

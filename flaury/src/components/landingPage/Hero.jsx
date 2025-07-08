@@ -1,57 +1,58 @@
-import vector from "/Vector.svg";
+import vector from "/vector.svg";
 import heroImg1 from "/hero-img1.png";
 import search from "/search.svg";
 
 const Hero = () => {
   return (
-    <div className="h-full w-full  hero-bg px-4 py-4 md:px-28 lg:px-32 md:pt-32">
-      <div className="max-w-[1200px] mx-auto flex justify-between items-center">
-        <div className="w-full md:w-1/2 mt-20 md:mt-0">
-          <h3 className="text-sm md:text-lg text-white p-2">
-            "GREAT LOOK IS NOT BY <br />
-            <span className="text-4xl md:text-6xl font-bold">
-              ACCIDENT
-            </span>{" "}
-            <br /> IT'S BY <br />
-            <span className="text-4xl md:text-6xl font-bold">APPOINTMENT"</span>
+    <div className="h-[612px] w-full m-auto hero-bg pt-[12rem] px-4 sm:px-8 lg:px-24 py-10">
+      <div className="max-w-full mx-auto flex flex-col-reverse md:flex-row justify-between items-center">
+        {/* Text & Search Section */}
+        <div className="w-full md:w-1/2 mt-10 md:mt-0 text-left">
+          <h3 className="text-sm md:text-lg text-white">
+            “GREAT LOOK IS NOT BY <br />
+            <span className="text-3xl md:text-6xl font-bold block">ACCIDENT</span>
+            IT’S BY <br />
+            <span className="text-3xl md:text-6xl font-bold block">APPOINTMENT”
+            </span>
           </h3>
-          <p className="hidden md:block text-sm md:text-lg font-semibold text-right text-white">
+          <p className="mt-2 md:mt-4 text-sm md:text-lg font-semibold text-white md:text-right">
             _FLAURY
           </p>
 
-          <form className="relative mt-4">
-            <div className="flex items-center border rounded-lg overflow-hidden bg-white">
+          {/* Search bar */}
+          <form className="relative mt-6">
+            <div className="flex items-center border rounded-lg overflow-hidden bg-white w-full max-w-md mx-auto md:mx-0">
               <input
                 type="text"
                 name="search"
                 id="search"
                 placeholder="Search for a service"
-                className="border-r border-r-lightprimary w-full px-4 py-2 text-sm text-lightprimary placeholder-lightprimary"
+                className="w-full px-4 py-2 text-sm text-primary placeholder-primary"
               />
               <div className="px-3">
-                <img src={search} alt="" />
+                <img src={search} alt="search" className="w-4 h-4" />
               </div>
             </div>
           </form>
 
-          <div className="flex gap-4 items-center mt-6">
+          {/* Popular Tags */}
+          <div className="flex items-center mt-6 flex-wrap gap-2">
             <h3 className="text-white text-sm">Popular:</h3>
-            <ul className="w-[20rem] overflow-x-auto flex gap-4">
-              <button className="border text-xs px-2 py-1 rounded-lg text-white">
-                Skin Retouch
-              </button>
-              <button className="border text-xs px-2 py-1 rounded-lg text-white">
-                Hair Treatment
-              </button>
-              <button className="border text-xs px-2 py-1 rounded-lg text-white">
-                Spa
-              </button>
-              <button className="border text-xs px-2 py-1 rounded-lg text-white">
-                Menicure
-              </button>
-            </ul>
+            <div className="flex gap-2 overflow-x-auto no-scrollbar">
+              {["Skin Retouch", "Hair Treatment", "Spa", "Menicure"].map((item, idx) => (
+                <button
+                  key={idx}
+                  className="border border-white text-xs px-3 py-1 rounded-full text-white whitespace-nowrap"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Image Section */}
+
         <div className="hidden lg:inline w-[20rem] h-[20rem]">
           <div className="relative h-full">
             <img
@@ -87,5 +88,6 @@ const Hero = () => {
     </div>
   );
 };
+
 
 export default Hero;

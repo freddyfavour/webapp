@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuthStore } from "../../store/authstore";
+import { useAuthStore } from "@/store/authstore";
 
 import AuthEnv from "../AuthEnv";
 import AuthTitle from "../AuthTitle";
@@ -91,8 +91,8 @@ const step4BusinessVerification = ({ onComplete }) => {
         <button
           type="submit"
           className={`w-full px-4 py-3 rounded-lg mt-6 text-sm ${!selectedCategory || !uploadedImage
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-primary text-white"
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-primary text-white"
             }`}
           disabled={!selectedCategory || !uploadedImage}
         >

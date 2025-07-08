@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useAuthStore } from "../../store/authstore";
+import { useAuthStore } from "@/store/authstore";
 
 // Step components
-import Step1BasicInfo from "../../components/registration/step1BasicInfo";
-import Step2BusinessInfo from "../../components/registration/step2BusinessDetails";
-import Step3ContactInfo from "../../components/registration/step3BusinessDetails";
-import Step4Confirmation from "../../components/registration/step4BusinessVerification";
-import AuthEnv from "../../components/AuthEnv";
+import Step1BasicInfo from "@/components/registration/step1BasicInfo";
+import Step2BusinessInfo from "@/components/registration/step2BusinessDetails";
+import Step3ContactInfo from "@/components/registration/step3BusinessDetails";
+import Step4Confirmation from "@/components/registration/step4BusinessVerification";
+import AuthEnv from "@/components/AuthEnv";
 
 const Registration = () => {
   const navigate = useNavigate();

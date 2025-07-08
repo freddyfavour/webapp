@@ -8,6 +8,15 @@ module.exports = {
         lightprimary: "#FF7701",
         secondary: "#F8F4D9",
       },
+      animation: {
+        'slide-in': 'slideIn 0.3s ease-out forwards',
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
     },
   },
 };

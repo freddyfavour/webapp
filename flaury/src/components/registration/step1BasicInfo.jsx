@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useAuthStore } from "../../store/authstore";
+import { useAuthStore } from "@/store/authstore";
 import { useForm } from "react-hook-form";
 
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import AuthEnv from "../../components/AuthEnv";
-import Popup from "../../components/Popup";
-import AuthTitle from "../../components/AuthTitle";
-import authAPI from "../../api/user/auth";
-import OTPVerification from "../../components/registration/otpverification";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import AuthEnv from "@/components/AuthEnv";
+import Popup from "@/components/Popup";
+import AuthTitle from "@/components/AuthTitle";
+import authAPI from "@/api/user/auth";
+import OTPVerification from "@/components/registration/otpverification";
 
 
 const Step1BasicInfo = ({ onComplete }) => {
@@ -162,8 +162,8 @@ const Step1BasicInfo = ({ onComplete }) => {
             value={gender}
             onChange={handleGenderChange}
             className={`block w-full mt-1 p-3 border border-[#ADADAD] rounded-[4px] text-sm ${gender === ""
-                ? "border-[#ADADAD]" // Unselected
-                : "border-[#A54900]" // Selected
+              ? "border-[#ADADAD]" // Unselected
+              : "border-[#A54900]" // Selected
               } ${genderError
                 ? "border-red-500 focus:border-red-500"
                 : "border-gray-300 focus:border-blue-500"

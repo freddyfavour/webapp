@@ -1,144 +1,146 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "/logo.svg";
 import { useState, useEffect } from "react";
-import menu from "/hamburger-menu.svg";
+import logo from "/logo.svg";
+import menuIcon from "/hamburger-menu.svg";
 import Button from "../Button";
 
 const Nav = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const [authNav, setAuthNav] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const [showCompanyMenu, setShowCompanyMenu] = useState(false);
-  const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
-    setAuthNav(
-      location.pathname === "/login" ||
-      location.pathname === "/choose-role" ||
-      location.pathname === "/signup" ||
-      location.pathname === "/forgot-password" ||
-      location.pathname === "/forgot2" ||
-      location.pathname === "/forgot3" ||
-      location.pathname === "/register"
-    );
-  }, [location]);
+    const authPages = [
+      "/login", "/choose-role", "/signup",
+      "/forgot-password", "/forgot2", "/forgot3", "/register",
+    ];
+    setAuthNav(authPages.includes(location.pathname));
+  }, [location.pathname]);
 
-  const toggleCompanyMenu = () => {
-    setShowCompanyMenu(!showCompanyMenu);
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const handleLinkClick = () => {
-    setShowCompanyMenu(false); // Close the dropdown menu after clicking a link
-    setShowNav(false); // Close the mobile menu after clicking a link
-  };
+  useEffect(() => {
+    document.body.style.overflow = showNav ? "hidden" : "auto";
+  }, [showNav]);
+
 
   return (
-    <>
-      {authNav ? (
-        <div className="w-full bg-[#FEFFF1] flex justify-center items-center z-[100] border border-b">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="h-10 md:h-14" />
-          </Link>
-        </div>
-      ) : (
-        <>
-          <div className=" w-full bg-[#FEFFF1] px-4 md:px-20 py-2 z-[100] border border-b">
-            <div className="max-w-[1200px] mx-auto flex justify-between items-center">
-              <Link to="/">
-                <img src={logo} alt="Logo" className="h-10 md:h-14" />
+    <header className={`fixed top-0 left-0 w-full z-50 bg-secondary transition-all duration-300`}>
+      <div className="mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-24 h-[60px] sm:h-[70px]">
+        {/* Logo */}
+        <Link to="/" className="z-50">
+          <img src={logo} alt="Logo" className="h-10 md:h-14" />
+        </Link>
+
+        {/* Desktop Navigation */}
+        {!authNav && (
+          <>
+            <nav className="hidden md:flex items-center gap-6">
+              <Link to="/" className="text-sm font-medium hover:underline">Home</Link>
+              <Link to="/about" className="text-sm font-medium hover:underline">About Us</Link>
+              <Link to="/blog" className="text-sm font-medium hover:underline">Blog</Link>
+              <div></div>
+              <Link to="/choose-role" onClick={() => setShowNav(false)}>
+                <button className="w-full hover:border hover:border-primary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
               </Link>
-              <nav className="hidden md:block">
-                <ul className="flex gap-4 items-center">
-                  <li>
-                    <Link className="text-sm font-semibold" to="/">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/about"
-                      className="block px-4 py-2 text-sm font-medium"
-                      onClick={handleLinkClick} // Close dropdown after link click
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/blog"
-                      className="block px-4 py-2 text-sm font-medium"
-                      onClick={handleLinkClick} // Close dropdown after link click
-                    >
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Button
-                      title="Sign Up"
-                      onClick={() => navigate("/choose-role")}
-                      customClasses="px-8 py-3"
-                    />
-                  </li>
-                  <li>
-                    <Link to="/login">
-                      <button className="transition border border-lightprimary text-primary text-xs px-8 py-3 rounded-lg font-semibold">
-                        Login
-                      </button>
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-              <div
-                className="block md:hidden cursor-pointer"
-                onClick={() => setShowNav(!showNav)}
-              >
-                <img src={menu} alt="" />
-              </div>
-            </div>
-          </div>
-          {showNav && (
-            <nav className="mt-14 md:mt-0 block md:hidden">
-              <hr />
-              <ul className="px-4 py-4">
-                <li className="text-normal pb-4">
-                  <Link to="/" onClick={() => setShowNav(false)}>
-                    Home
-                  </Link>
-                </li>
-                <li className="text-normal pb-4">
-                  <Link to="/about" onClick={() => setShowNav(false)}>
-                    About Us
-                  </Link>
-                </li>
-                <li className="text-normal pb-4">
-                  <Link to="/blog" onClick={() => setShowNav(false)}>
-                    Blog
-                  </Link>
-                </li>
-                <li className="text-normal pb-4">
-                  <Link to="#services" onClick={() => setShowNav(false)}>
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Button
-                    title="Sign Up"
-                    onClick={() => navigate("/choose-role")}
-                    customClasses="px-8 py-3"
-                  />
-                </li>
-                <li>
-                  <Link to="/login" onClick={() => setShowNav(false)}>
-                    <button className="transition border border-lightprimary text-primary text-sm px-4 py-2 rounded-lg">
-                      Login
-                    </button>
-                  </Link>
-                </li>
-              </ul>
+              <Link to="/login">
+                <button className="border border-primary text-primary text-sm px-6 py-2 rounded-lg font-medium hover:bg-primary/10">
+                  Login
+                </button>
+              </Link>
             </nav>
-          )}
-        </>
-      )}
-    </>
+
+            {/* Hamburger Menu (Mobile) */}
+            <button
+              className="md:hidden z-50"
+              onClick={() => setShowNav((prev) => !prev)}
+            >
+              <img src={menuIcon} alt="Menu" className="w-6 h-6" />
+            </button>
+
+            {/* Mobile Navigation Drawer */}
+            {showNav && (
+              <>
+                {/* Backdrop */}
+                <div
+                  className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                  onClick={() => setShowNav(false)}
+                />
+
+                {/* Drawer */}
+                <div
+                  className="fixed inset-y-0 right-0 w-3/4 sm:w-1/2 bg-secondary z-50 shadow-lg animate-slide-in overflow-y-auto"
+                  style={{ maxHeight: '100vh' }}
+                >
+                  {/* Close Button */}
+                  <div className="flex justify-end p-4">
+                    <button
+                      onClick={() => setShowNav(false)}
+                      className="text-primary text-2xl font-bold"
+                      aria-label="Close Menu"
+                    >
+                      &times;
+                    </button>
+                  </div>
+
+                  {/* Drawer Content */}
+                  <div className="px-6 pb-1 h-screen">
+                    <ul className="space-y-6 text-lg font-medium flex-1">
+                      <li>
+                        <Link to="/" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/about" onClick={() => setShowNav(false)} className="block hover:underline">
+                          About Us
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/blog" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Blog
+                        </Link>
+                      </li>
+                      <li>
+                        <a href="#services" onClick={() => setShowNav(false)} className="block hover:underline">
+                          Services
+                        </a>
+                      </li>
+                    </ul>
+                    <div className="flex flex-col space-y-4 mt-10">
+                      <Link to="/choose-role" onClick={() => setShowNav(false)}>
+                        <button className="w-full hover:border hover:border-primary text-white text-base px-4 py-2 rounded-lg bg-primary">Sign Up</button>
+                      </Link>
+                      <Link to="/login" onClick={() => setShowNav(false)}>
+                        <button className="w-full border border-primary text-primary text-base px-4 py-2 rounded-lg hover:bg-primary/10">
+                          Login
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {/* Auth Navigation (centered logo only) */}
+        {authNav && (
+          <div className="w-full flex justify-center items-center border-b py-2">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="h-10" />
+            </Link>
+          </div>
+        )}
+      </div>
+    </header>
   );
 };
 

@@ -1,21 +1,21 @@
-import backarrow from "/backarrow.svg";
+import React from "react";
 import forwardarrow from "/forwardarrow.svg";
 
-const ProfileDetailsItem = ({ name, details, icon, logout, onClick }) => {
+const ProfileDetailsItem = ({ name, details, icon, onClick }) => {
   return (
     <div
-      className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between p-4"
+      className="bg-white w-full rounded-md shadow-xl cursor-pointer mb-4 flex justify-between p-4"
       onClick={onClick}
     >
       <div className="flex items-center gap-4">
         <img src={icon} alt="" className="rounded-md" />
         <div>
-          <p className="text-black font-semibold text-sm">{name}</p>
-          <p className="text-black mt-2 text-xs">{details}</p>
+          <p className={`${name === "Logout" ? "text-[red]":"text-black"} font-semibold text-sm`}>{name}</p>
+          <p className="text-black text-xs">{details}</p>
         </div>
       </div>
       {name === "Logout" ? (
-        <img src={backarrow} alt="" onClick={logout} />
+        null
       ) : (
         <img src={forwardarrow} alt="" />
       )}

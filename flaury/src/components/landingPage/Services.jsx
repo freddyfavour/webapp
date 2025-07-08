@@ -31,37 +31,27 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section id="services" className="px-4 max-w-[1200px] mx-auto ">
-      {/* <div className="w-4/5 md:w-1/3 mx-auto flex justify-between items-center py-4">
-        <h3 className="text-lightprimary text-sm">Trusted By:</h3>
-        <ul className="flex gap-4">
-          <button className="border border-lightprimary text-xs px-4 py-1 rounded-lg text-lightprimary">
-            Wave
-          </button>
-          <button className="border border-lightprimary text-xs px-4 py-1 rounded-lg text-lightprimary">
-            HOE
-          </button>
-        </ul>
-      </div> */}
+    <section id="services" className="max-w-full mx-auto ">
       <div className="mt-10 relative">
-        <div className="w-[100%] mx-auto overflow-scroll md:overflow-hidden">
-          <div className="w-[150%] md:w-full grid grid-cols-4 gap-4">
-            {servicesData.map((service) => (
-              <div key={service.id} className="w-full">
-                <img
-                  src={service.image}
-                  alt=""
-                  className="bg-secondary w-full"
-                />
-                <h4 className="text-primary text-xl font-bold py-2">
-                  {service.title}
-                </h4>
-                <p className="text-primary text-sm">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-2xl font-bold text-gray-900">Popular Services</h3>
+        </div>
+        <div className="w-full mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {servicesData.map((service) => (
+            <div key={service.id} className="w-full">
+              <img
+                src={service.image}
+                alt=""
+                className="bg-secondary w-full"
+              />
+              <h4 className="text-primary text-xl font-bold py-2">
+                {service.title}
+              </h4>
+              <p className="text-primary text-sm">
+                {service.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

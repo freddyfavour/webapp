@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import ProfileComponent from "../../components/profile/ProfileComponent";
-import DashboardLayout from "../../components/dashboard/DashboardLayout";
+import SideNav from "@/components/dashboard/navbar/SideNav";
+import ProfileComponent from "@/components/profile/ProfileComponent";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
 
 const Profile = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(
@@ -22,10 +22,10 @@ const Profile = () => {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-8 text-primary lg:pr-8">
+      <div className="flex gap-8 text-primary">
         {/* {isSmallViewport ? null : <SideNav />} */}
-        <div className="w-full px-4 md:px-0">
-          <hr className="border-primary" />
+        <div className="w-full pt-4 md:pt-0  md:px-0">
+          {/* <hr className="border-primary" /> */}
           <ProfileComponent />
         </div>
       </div>

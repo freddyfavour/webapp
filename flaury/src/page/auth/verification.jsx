@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import success from "/success.svg";
-import Button from "../../components/Button";
+import Button from "@/components/Button";
 import { useForm } from "react-hook-form";
-import Input from "../../components/Input";
-import AuthEnv from "../../components/AuthEnv";
-import Popup from "../../components/Popup";
-import AuthTitle from "../../components/AuthTitle";
-import authAPI from "../../api/user/auth";
+import Input from "@/components/Input";
+import AuthEnv from "@/components/AuthEnv";
+import Popup from "@/components/Popup";
+import AuthTitle from "@/components/AuthTitle";
+import authAPI from "@/api/user/auth";
 
 const Verification = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);

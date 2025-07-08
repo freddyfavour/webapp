@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import arrowLeft from "/arrowLeft-brown.svg";
 import arrowRight from "/arrowRight-brown.svg";
 
@@ -14,64 +14,72 @@ const testimonialsData = [
     image: "/customer2.png",
     text: "FLAURY has simplified my booking process and allowed me to focus more on my clients. The automated reminders have reduced the number of missed appointments, and I love how easy it is to manage my schedule. It's been a great tool for growing my business and providing better service to my clients.",
   },
+  {
+    id: 3,
+    image: "/customer2.png",
+    text: "FLAURY has simplified my booking process and allowed me to focus more on my clients. The automated reminders have reduced the number of missed appointments, and I love how easy it is to manage my schedule. It's been a great tool for growing my business and providing better service to my clients.",
+  },
 ];
 
 const Testimonials = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const containerRef = useRef(null);
 
-  const scrollLeft = () => {
-    const container = document.getElementById("services-container");
-    if (container) {
-      const newPosition = scrollPosition - 300;
-      setScrollPosition(newPosition >= 0 ? newPosition : 0);
-      container.scrollTo({
-        left: newPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const scroll = (direction) => {
+    if (!containerRef.current) return;
+    const scrollAmount = 320;
+    const newScrollPosition =
+      direction === "left"
+        ? containerRef.current.scrollLeft - scrollAmount
+        : containerRef.current.scrollLeft + scrollAmount;
 
-  const scrollRight = () => {
-    const container = document.getElementById("services-container");
-    if (container) {
-      const newPosition = scrollPosition + 300;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      setScrollPosition(newPosition <= maxScroll ? newPosition : maxScroll);
-      container.scrollTo({
-        left: newPosition <= maxScroll ? newPosition : maxScroll,
-        behavior: "smooth",
-      });
-    }
+    containerRef.current.scrollTo({
+      left: newScrollPosition,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <section className="mt-10 px-4 max-w-[1200px] mx-auto">
-      <h3 className="text-primary font-semibold text-xl text-center py-4">
+    <section className="mt-16 px-4 sm:px-8 lg:px-24 w-full">
+      <h3 className="text-primary font-semibold text-xl sm:text-2xl text-center mb-6">
         What Our Customers Are Saying
       </h3>
-      <div className="relative flex gap-4">
-        {testimonialsData.map((testimonial) => (
-          <div
-            key={testimonial.id}
-            className="flex-1 lg:flex bg-secondary lg:bg-primary text-primary lg:text-white items-center"
-          >
-            <img src={testimonial.image} alt="" className="w-full" />
-            <div className="px-2 py-2 lg:py-0 lg:px-10 text-xs lg:text-normal">
-              <p>{testimonial.text}</p>
-            </div>
-          </div>
-        ))}
-        <button
-          onClick={scrollLeft}
-          className="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-secondary rounded-full px-4 py-[0.8rem] border border-primary"
+
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className="flex overflow-x-auto space-x-6 scroll-smooth snap-x snap-mandatory no-scrollbar py-4"
         >
-          <img src={arrowLeft} alt="" />
+          {testimonialsData.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="min-w-[300px] md:min-w-[450px] snap-start bg-primary text-white rounded-xl overflow-hidden flex flex-col md:flex-row shadow-md transition duration-300"
+            >
+              <img
+                src={testimonial.image}
+                alt={`Customer ${testimonial.id}`}
+                className="w-full md:w-1/3 h-40 md:h-auto object-cover"
+              />
+              <div className="p-4 text-sm md:text-base my-auto leading-relaxed">
+                <p>{testimonial.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Scroll buttons */}
+        <button
+          onClick={() => scroll("left")}
+          aria-label="Scroll Left"
+          className="hidden sm:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 bg-secondary border border-primary rounded-full p-3 shadow-md hover:bg-primary hover:text-white transition"
+        >
+          <img src={arrowLeft} alt="Scroll left" className="w-4 h-4" />
         </button>
         <button
-          onClick={scrollRight}
-          className="absolute -right-3 top-1/2 transform -translate-y-1/2 bg-secondary rounded-full px-4 py-[0.8rem] border border-primary"
+          onClick={() => scroll("right")}
+          aria-label="Scroll Right"
+          className="hidden sm:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 bg-secondary border border-primary rounded-full p-3 shadow-md hover:bg-primary hover:text-white transition"
         >
-          <img src={arrowRight} alt="" />
+          <img src={arrowRight} alt="Scroll right" className="w-4 h-4" />
         </button>
       </div>
     </section>

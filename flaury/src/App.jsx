@@ -11,14 +11,15 @@ import Notifications from "./page/dashboard/Notifications";
 import Settings from "./page/dashboard/Settings";
 import Favorites from "./page/dashboard/Favorites";
 import Profile from "./page/dashboard/Profile";
-import Bookings from "./page/dashboard/Bookings";
+import Bookings from "./page/dashboard/bookings/Bookings";
+import BookingsFlow from "./page/dashboard/bookings/BookingsFlow";
+import Booking_Details from "./page/dashboard/bookings/Booking_Details";
 import Chat from "./page/dashboard/Chat";
 import Search from "./page/dashboard/Search";
 import SalonProfile from "./page/dashboard/SalonProfile";
 import About from "./page/About";
 import Blog from "./page/Blog";
 import ChooseRole from "./page/auth/ChooseRole";
-import BookingsFlow from "./page/dashboard/BookingsFlow";
 import { useAuthStore } from "./store/authstore";
 import { ToastContainer } from "react-toastify";
 import Registration from "./page/auth/registration";
@@ -65,10 +66,11 @@ const App = () => {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/bookings/:id" element={<Booking_Details />} />
+        <Route path="/bookings-flow" element={<BookingsFlow />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/search" element={<Search />} />
         <Route path="/salon/:id" element={<SalonProfile />} />
-        <Route path="/bookings-flow" element={<BookingsFlow />} />
       </Routes>
     </>
   );

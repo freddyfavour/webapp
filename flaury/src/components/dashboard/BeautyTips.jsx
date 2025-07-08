@@ -2,7 +2,6 @@ import React from "react";
 import selfcare from "/selfcare.png";
 import lashesandbrows from "/lashesandbrows.png";
 import makeup from "/makeup.png";
-import arrow from "/arrow.svg";
 
 // Simulated backend data
 const beautyTipsData = [
@@ -19,7 +18,7 @@ const BeautyTips = () => {
         <h3 className="font-bold text-lg">Beauty tips with Flaury</h3>
         <p>Get updated on the latest beauty trends</p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 mt-4 gap-4">
         {beautyTipsData.map((tip) => (
           <div key={tip.id}>
             <img src={tip.image} alt="" className="w-full" />

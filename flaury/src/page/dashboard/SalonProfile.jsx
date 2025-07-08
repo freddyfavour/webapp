@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import SideNav from "../../components/dashboard/navbar/SideNav";
-import Overview from "../../components/salonProfile/Overview";
-import Reviews from "../../components/salonProfile/Reviews";
-import Service from "../../components/salonProfile/Service";
-import Gallery from "../../components/salonProfile/Gallery";
-import Button from "../../components/Button";
+import SideNav from "@/components/dashboard/navbar/SideNav";
+import Overview from "@/components/salonProfile/Overview";
+import Reviews from "@/components/salonProfile/Reviews";
+import Service from "@/components/salonProfile/Service";
+import Gallery from "@/components/salonProfile/Gallery";
+import Button from "@/components/Button";
 const SalonProfile = () => {
   const [tab, setTab] = useState("overview");
   const navigate = useNavigate();

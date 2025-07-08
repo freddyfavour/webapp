@@ -4,7 +4,7 @@ const ChatBubble = ({ message, type }) => {
   const bubbleClass =
     type === "primary"
       ? "bg-yellow-100 self-end"
-      : "bg-lightprimary self-start";
+      : "bg-primary self-start";
 
   return (
     <div className={`${bubbleClass} w-[10rem] shadow-md p-4 rounded-md`}>

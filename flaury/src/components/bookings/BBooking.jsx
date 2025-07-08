@@ -282,7 +282,7 @@ const BBooking = () => {
   };
 
   return (
-    <div className="md:mt-20 w-full px-4 md:px-0">
+    <div className="mt-10 md:mt-0 w-full">
       <h3 className="font-bold text-2xl py-8">Bookings</h3>
       <div className="w-2/3 mx-auto flex justify-between items-center">
         <p
