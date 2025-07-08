@@ -120,7 +120,7 @@ const ProfileComponent = () => {
             <h3 className="font-bold">FAQs</h3>
             <p className="font-bold">Top questions can we help you today?</p>
             <div className="flex gap-3 mt-10">
-              {["Payment", "Coupons", "Bookings"].map((label) => (
+              {/* {["Payment", "Coupons", "Bookings"].map((label) => (
                 <button
                   key={label}
                   className={`border text-xs px-4 py-1 rounded-full ${label === "All"
@@ -130,7 +130,7 @@ const ProfileComponent = () => {
                 >
                   {label}
                 </button>
-              ))}
+              ))} */}
             </div>
           </>
         ) : (
