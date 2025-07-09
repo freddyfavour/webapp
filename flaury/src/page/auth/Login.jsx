@@ -8,12 +8,15 @@ import Button from "@/components/Button";
 import AuthEnv from "@/components/AuthEnv";
 import AuthTitle from "@/components/AuthTitle";
 import authAPI from "@/api/user/auth";
+import OTPVerification from "@/components/registration/otpverification";
 
 const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { control, handleSubmit } = useForm();
+  const [showPopup, setShowPopup] = useState(false);
+  const [unverifiedEmail, setUnverifiedEmail] = useState(""); // ✅ state to track email for OTP
 
+  const { control, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const handleCheckboxChange = (e) => {
@@ -32,21 +35,18 @@ const Login = () => {
       const result = await authAPI.authAPI.login(userData);
 
       if (result.success) {
-        // Login was successful
         const response = result.data;
 
-        // Store user data and token
-        if (response && response.user) {
+        if (response?.user) {
           localStorage.setItem("savedUser", JSON.stringify(response.user));
         }
 
-        if (response && response.token) {
-          localStorage.setItem("authToken", response.token);
-        }
-
-        // Set auth
-        if (response && response.user) {
+        if (response?.user) {
           localStorage.setItem("isAuth", true);
+        }
+        // Store token if provided
+        if (response.token) {
+          localStorage.setItem("FLYtoken", response.token)
         }
 
         toast.success("Login successful!");
@@ -55,11 +55,12 @@ const Login = () => {
           navigate("/dashboard");
         }, 3000);
       } else {
-        // Handle errors based on status code
         const error = result.error;
 
         if (error.status === 403) {
           toast.error("Email is not verified.");
+          setUnverifiedEmail(formData.email); // ✅ Save email for OTP component
+          setShowPopup(true);
         } else if (error.status === 401) {
           toast.error("Invalid email or password. Please try again.");
         } else if (error.status === 400) {
@@ -71,7 +72,6 @@ const Login = () => {
         console.error("Login error:", error);
       }
     } catch (unexpectedError) {
-      // This would only happen if there's an error in our login function itself
       console.error("Unexpected error:", unexpectedError);
       toast.error("An unexpected error occurred. Please try again.");
     } finally {
@@ -113,7 +113,9 @@ const Login = () => {
                 onChange={handleCheckboxChange}
                 className="w-4 h-4"
               />
-              <label htmlFor="rememberMe" className="text-sm">Remember me</label>
+              <label htmlFor="rememberMe" className="text-sm">
+                Remember me
+              </label>
             </div>
             <Link
               to="/forgot-password"
@@ -130,12 +132,18 @@ const Login = () => {
           />
         </form>
         <p className="text-primary text-sm mt-8">
-          Don't have an account?{" "}
+          Don’t have an account?{" "}
           <Link to="/signup" className="font-bold">
             Sign up
           </Link>
         </p>
       </AuthEnv>
+
+      {showPopup && unverifiedEmail && (
+        <div className="absolute top-0 left-0">
+          <OTPVerification email={unverifiedEmail} />
+        </div>
+      )}
     </>
   );
 };

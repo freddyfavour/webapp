@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 import Card from "../Card";
 import Button from "../Button";
 import authAPI from "@/api/user/auth";
-import { useLocation, useRoute } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Popup from "../Popup";
 
 const OTPVerification = ({ email, complete }) => {
   const [code1, setCode1] = React.useState("");
@@ -18,8 +19,7 @@ const OTPVerification = ({ email, complete }) => {
   const [showPopup, setShowPopup] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { search } = useLocation();
-  const navigate = useRoute();
-  const role = new URLSearchParams(search).get("role");
+  const navigate = useNavigate();
 
   // Create refs for all input fields
   const input1Ref = useRef(null);
@@ -71,17 +71,14 @@ const OTPVerification = ({ email, complete }) => {
 
       const result = await authAPI.authAPI.verifyEmail(userData);
 
-      if (result.success && role === "service_provider") {
+      if (result.success) {
         toast.success("Verification successful");
 
         setShowPopup(true);
 
         setTimeout(() => {
-          navigate("/dashboard");
+          window.location.href = ("/login");
         }, 3000);
-      } else if (result.success && role === "client") {
-        toast.success("Verification successful");
-        complete();
       } else {
         const error = result.error;
 
@@ -97,7 +94,6 @@ const OTPVerification = ({ email, complete }) => {
       }
     } catch (error) {
       console.error("Unexpected error: ", error);
-      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -245,9 +241,8 @@ const OTPVerification = ({ email, complete }) => {
         <div className="absolute top-0 left-0">
           <Popup
             title="Congratulations"
-            subtitle="Your account is now ready to use. You will be redirected to
-        your homepage shortly."
-            image={success}
+            subtitle="Your account is now ready to use. You will be redirected to your homepage shortly."
+            image={"success.svg"}
           />
         </div>
       )}
