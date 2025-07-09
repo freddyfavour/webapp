@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Card from "../Card";
 import Button from "../Button";
 import authAPI from "@/api/user/auth";
+import { useLocation, useRoute } from "react-router-dom";
 
 const OTPVerification = ({ email, complete }) => {
   const [code1, setCode1] = React.useState("");
@@ -17,6 +18,7 @@ const OTPVerification = ({ email, complete }) => {
   const [showPopup, setShowPopup] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { search } = useLocation();
+  const navigate = useRoute();
   const role = new URLSearchParams(search).get("role");
 
   // Create refs for all input fields
@@ -69,15 +71,15 @@ const OTPVerification = ({ email, complete }) => {
 
       const result = await authAPI.authAPI.verifyEmail(userData);
 
-      if (result.success && role === "business") {
+      if (result.success && role === "service_provider") {
         toast.success("Verification successful");
 
         setShowPopup(true);
 
         setTimeout(() => {
-          Navigate("/dashboard");
+          navigate("/dashboard");
         }, 3000);
-      } else if (result.success && role === "customer") {
+      } else if (result.success && role === "client") {
         toast.success("Verification successful");
         complete();
       } else {

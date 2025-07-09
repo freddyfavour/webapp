@@ -25,7 +25,7 @@ const Registration = () => {
 
   // Initialize registation based on URL parameter
   useEffect(() => {
-    const type = searchParams.get("role") || "customer";
+    const type = searchParams.get("role") || "client";
 
     // Only initialize if not already initialized or if type changed
     if (!registrationType || registrationType !== type) {

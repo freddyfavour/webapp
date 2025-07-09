@@ -16,7 +16,7 @@ const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [role, setRole] = useState("customer");
+  const [role, setRole] = useState("client");
   const [password, setPassword,] = useState()
 
   const { control, handleSubmit, register } = useForm();
