@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./page/auth/Login";
 import SignUp from "./page/auth/SignUp";
@@ -25,7 +25,7 @@ import { ToastContainer } from "react-toastify";
 import Registration from "./page/auth/registration";
 
 const App = () => {
-  const { isAuth, isSmallViewport, checkViewport } = useAuthStore();
+  const { checkViewport } = useAuthStore();
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,6 +38,8 @@ const App = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [checkViewport]);
+
+  
 
   return (
     <>

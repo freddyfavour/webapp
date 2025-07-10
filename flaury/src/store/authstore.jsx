@@ -61,7 +61,7 @@ export const useAuthStore = create(
 
     // Registration Process actions
     initRegistration: (type) => {
-      const totalSteps = type === "customer" ? 1 : 4;
+      const totalSteps = type === "client" ? 1 : 4;
       set({
         registrationType: type,
         currentStep: 1,

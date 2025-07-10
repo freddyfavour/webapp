@@ -44,13 +44,10 @@ const Login = () => {
         if (response?.user) {
           localStorage.setItem("isAuth", true);
         }
-        // Store token if provided
-        if (response.token) {
-          localStorage.setItem("FLYtoken", response.token)
-        }
 
         toast.success("Login successful!");
 
+        localStorage.setItem("accessToken", response["response data"].access_token);
         setTimeout(() => {
           navigate("/dashboard");
         }, 3000);
