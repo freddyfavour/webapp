@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import authAPI from "@/api/user/user";
+import userAPI from "@/api/user/user";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
@@ -16,20 +16,39 @@ const AuthContextProvider = ({ children }) => {
   // =====================================================
 
   const fetchUserDetails = async () => {
+    setIsLoading(true);
+
     try {
-      const result = await authAPI.authAPI.getLoggedUser(); // ✅ using authAPI
-      if (result.success) {
-        const data = result.data;
-        setUser(data.user);
-        localStorage.setItem("FLYuserData", JSON.stringify(data.user));
-        setIsLoading(true);
-      } else {
-        console.warn("Failed to fetch user details:", result.error);
+      const res = await fetch(userAPI.userAPI.getLoggedUser(), {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(`${localStorage.getItem("accessToken")}`);
+      
+
+      if (!res.ok) {
+        throw new Error(`Server responded ${res.status}: ${res.statusText}`);
       }
-    } catch (error) {
-      console.error("Error fetching user details:", error);
+      const json = await res.json();
+
+      // optional: validate the shape first
+      if (!json?.data?.user) {
+        throw new Error("Malformed response: missing `data.user`");
+      }
+
+      const user = json.data.user;
+      setUser(user);
+      localStorage.setItem("FLYuserData", JSON.stringify(user));
+    } catch (err) {
+      console.log("Error fetching user details:", err);
+    } finally {
+      setIsLoading(false);            // stop spinner
     }
   };
+
 
   //  =====================================================
   // ==================[ Fetch All Users ]=================
@@ -37,11 +56,11 @@ const AuthContextProvider = ({ children }) => {
 
   const fetchAllUsers = async () => {
     try {
-      const result = await authAPI.authAPI.getAllUsers(); // ✅ using authAPI
+      const result = await userAPI.userAPI.getAllUsers(); // ✅ using authAPI
       if (result.success) {
         setFetchAllUsers(result.data.users);
       } else {
-        console.warn("Failed to fetch all users:", result.error);
+        console.log("Failed to fetch all users:", result.error);
       }
     } catch (error) {
       console.error("Error fetching all users:", error);

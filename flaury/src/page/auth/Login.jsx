@@ -9,8 +9,9 @@ import AuthEnv from "@/components/AuthEnv";
 import AuthTitle from "@/components/AuthTitle";
 import authAPI from "@/api/user/auth";
 import OTPVerification from "@/components/registration/otpverification";
+import PropTypes from "prop-types";
 
-const Login = () => {
+const Login = ({ fetchUserDetails }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -48,8 +49,10 @@ const Login = () => {
         toast.success("Login successful!");
 
         localStorage.setItem("accessToken", response["response data"].access_token);
+        localStorage.setItem("roleData", response["response data"].role);
         setTimeout(() => {
           navigate("/dashboard");
+          fetchUserDetails()
         }, 3000);
       } else {
         const error = result.error;
@@ -146,3 +149,7 @@ const Login = () => {
 };
 
 export default Login;
+
+Login.propTypes = {
+  fetchUserDetails: PropTypes.node.isRequired,
+};

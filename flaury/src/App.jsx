@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./page/auth/Login";
 import SignUp from "./page/auth/SignUp";
@@ -23,8 +23,10 @@ import ChooseRole from "./page/auth/ChooseRole";
 import { useAuthStore } from "./store/authstore";
 import { ToastContainer } from "react-toastify";
 import Registration from "./page/auth/registration";
+import { useAuth } from "./context/AuthContext";
 
 const App = () => {
+  const { fetchUserDetails } = useAuth();
   const { checkViewport } = useAuthStore();
 
   useEffect(() => {
@@ -39,7 +41,9 @@ const App = () => {
     };
   }, [checkViewport]);
 
-  
+  useEffect(() => {
+    fetchUserDetails()
+  }, []);
 
   return (
     <>
@@ -52,7 +56,7 @@ const App = () => {
         <Route path="/blog" element={<Blog />} />
 
         <Route path="/choose-role" element={<ChooseRole />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login fetchUserDetails={fetchUserDetails} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/register" element={<Registration />} />
 

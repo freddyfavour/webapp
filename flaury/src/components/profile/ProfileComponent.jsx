@@ -101,9 +101,11 @@ const ProfileComponent = () => {
   const onLogout = () => {
     navigate("/");
     localStorage.removeItem("userData");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("roleData");
   };
 
-  const roleData = localStorage.getItem("userData");
+  const roleData = localStorage.getItem("roleData");
 
   return (
     <div className="mb-10">

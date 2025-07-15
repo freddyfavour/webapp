@@ -4,12 +4,12 @@ import BusinessInfoForm from "./BusinessInfoForm";
 
 const SettingsComponent = () => {
   const [page, setPage] = useState("");
-  const roleData = localStorage.getItem("userData")
+  const roleData = localStorage.getItem("roleData")
   return (
     <div>
       {page === "edit-profile" ? (
         <div>
-          {roleData !== "Business" ? (
+          {roleData === "service_provider" ? (
             <>
               <div
                 className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-4"
