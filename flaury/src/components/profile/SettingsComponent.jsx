@@ -1,14 +1,15 @@
 import { useState } from "react";
 import forwardarrow from "/forwardarrow.svg";
+import BusinessInfoForm from "./BusinessInfoForm";
 
 const SettingsComponent = () => {
   const [page, setPage] = useState("");
-  const roleData = localStorage.getItem("userData")
+  const roleData = localStorage.getItem("roleData")
   return (
     <div>
       {page === "edit-profile" ? (
         <div>
-          {roleData !== "Business" ? (
+          {roleData === "service_provider" ? (
             <>
               <div
                 className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-4"
@@ -25,7 +26,7 @@ const SettingsComponent = () => {
               </div>
               <div
                 className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between cursor-pointer p-4"
-                onClick={() => setPage("faqs")}
+                onClick={() => setPage("team")}
               >
                 <div className="flex items-center gap-4">
                   <img src="/team.svg" alt="" className="rounded-md" />
@@ -74,7 +75,16 @@ const SettingsComponent = () => {
         </div>
       ) : page === "business-details" ? (
         <>
-          <h3 className="font-semibold text-black">Business details</h3>
+            <h3 className="font-semibold text-black">Business details</h3>
+            <BusinessInfoForm />
+        </>
+      ) : page === "team" ? (
+        <>
+          <h3 className="font-semibold text-black">Team</h3>
+          <div className="flex flex-col mx-auto justify-center items-center gap-4 mt-12">
+            <img src="/team.png" alt="" className="rounded-md" />
+            <span className="text-black/80 font-semibold text-md">This feature is coming soon!</span>
+          </div>
         </>
       ) : page === "change-password" ? (
         <div>

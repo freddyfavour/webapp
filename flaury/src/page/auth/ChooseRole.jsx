@@ -6,11 +6,11 @@ const ChooseRole = () => {
   const navigate = useNavigate();
 
   const businessRole = () => {
-    navigate("/signup?role=business");
+    navigate("/signup?role=service_provider");
   };
 
   const customerRole = () => {
-    navigate("/signup?role=customer");
+    navigate("/signup?role=client");
   };
 
   return (

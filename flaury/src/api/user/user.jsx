@@ -1,4 +1,3 @@
-import { buildErrorMessage } from "vite";
 import { createApiRequest } from "../helper";
 
 const userAPI = {
@@ -8,7 +7,7 @@ const userAPI = {
 
     getLoggedUser: createApiRequest('get', '/users/profile', {
         errorMessage: 'An error occured fetching user.'
-    }), 
+    }),
 
     updateLoggedUser: createApiRequest('patch', '/users/update', {
         errorMessage: 'An error occured updating user.'

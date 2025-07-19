@@ -1,34 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import ProfileDetailsItem from "./ProfileDetailsItem";
 
 const PaymentComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [page, setPage] = useState("");
+  const [profileDetails, setProfileDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const roleData = localStorage.getItem("roleData")
 
   const deletePopup = () => {
     setShowDeletePopup(true);
   };
+
+  useEffect(() => {
+    const simulatedProfileDetails = [
+      {
+        id: 1,
+        name: "Wallet",
+        icon: "/Wallet.svg",
+      },
+      {
+        id: 2,
+        name: "Transaction",
+        icon: "/Transaction.svg",
+      },
+      {
+        id: 3,
+        name: "Pay-out",
+        icon: "/Pay-out.svg",
+      },
+    ];
+
+    setProfileDetails(simulatedProfileDetails);
+  }, []);
+
+  const handleProfileClick = () => {
+    setPage("profile");
+  };
+
   return (
     <>
-      <div className="w-[200px] mx-auto mt-8">
-        <button
-          className="border border-dashed mx-auto w-full py-2 rounded-md text-black text-xs font-semibold"
-          onClick={() => setShowPopup(true)}
-        >
-          Add payment card
-        </button>
-      </div>
-      <div className="bg-white w-full rounded-md shadow-xl mb-4 flex justify-between items-center p-4">
-        <div className="flex gap-8">
-          <img src="/settings.svg" alt="" />
-          <h2>**** **** **** 2765</h2>
-        </div>
-        <img
-          src="/delete.svg"
-          alt=""
-          className="cursor-pointer"
-          onClick={deletePopup}
-        />
-      </div>
+      {roleData === "service_provider" ? (
+        <>
+          {profileDetails.map((profileDetail) => (
+            <ProfileDetailsItem
+              key={profileDetail.id}
+              name={profileDetail.name}
+              // details={profileDetail.details}
+              icon={profileDetail.icon}
+              onClick={
+                profileDetail.name === "Profile"
+                  ? handleProfileClick
+                  : profileDetail.name === "About"
+              }
+            />
+          ))}
+        </>
+      ) : (
+        <>
+          <div className="w-[200px] mx-auto mt-8">
+            <button
+              className="border border-dashed mx-auto w-full py-2 rounded-md text-black text-xs font-semibold"
+              onClick={() => setShowPopup(true)}
+            >
+              Add payment card
+            </button>
+          </div>
+          <div className="bg-white w-full rounded-md shadow-xl my-4 flex justify-between items-center p-4">
+            <div className="flex gap-8">
+              <img src="/settings.svg" alt="" />
+              <h2>**** **** **** 2765</h2>
+            </div>
+            <img
+              src="/delete.svg"
+              alt=""
+              className="cursor-pointer"
+              onClick={deletePopup}
+            />
+          </div>
+        </>
+      )}
+
       {showDeletePopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
           <div className="bg-white w-4/5 md:w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
