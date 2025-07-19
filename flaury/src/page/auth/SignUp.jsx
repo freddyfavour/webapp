@@ -17,14 +17,14 @@ const SignUp = () => {
   const [submittedEmail, setSubmittedEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [role, setRole] = useState("client");
-  const [password, setPassword,] = useState()
-
-  const { control, handleSubmit, register } = useForm();
+  const [password, setPassword] = useState("");
+  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
   const location = useLocation();
 
-  const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+  const { control, handleSubmit, register, setValue } = useForm();
 
-  const showPassword = () => {
+  const showPassword = (e) => {
+    e.preventDefault();
     setShowPasswordToggle(!showPasswordToggle);
   };
 
@@ -64,11 +64,11 @@ const SignUp = () => {
       if (result.success) {
         const response = result.data;
 
-        if (response && response.token) {
+        if (response?.token) {
           localStorage.setItem("authToken", response.token);
         }
 
-        if (response && response.user) {
+        if (response?.user) {
           localStorage.setItem("savedUser", JSON.stringify(response.user));
         }
 
@@ -104,9 +104,8 @@ const SignUp = () => {
     <>
       <AuthEnv>
         <AuthTitle title="Sign Up" />
-        <p className="text-primary text-sm pb-2">
-          Register using your correct details
-        </p>
+        <p className="text-primary text-sm pb-2">Register using your correct details</p>
+
         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           <Input
             control={control}
@@ -116,6 +115,7 @@ const SignUp = () => {
             validateType="min"
             minValue={2}
           />
+
           <Input
             control={control}
             name="email"
@@ -123,43 +123,54 @@ const SignUp = () => {
             placeholder="Enter your email"
             validateType="email"
           />
-          <Input
-            control={control}
-            name="phoneNumber"
-            label="Phone Number"
-            placeholder="Enter your Nigerian phone number"
-            validateType="phoneNumber"
-            errorMessage="Phone number is required."
-          />
+
+          {/* Phone Number Field - limited to 11 digits only */}
+          <div className="mb-4">
+            <label htmlFor="phoneNumber" className="block text-sm mb-1">Phone Number</label>
+            <input
+              id="phoneNumber"
+              name="phoneNumber"
+              type="text"
+              inputMode="numeric"
+              maxLength={11}
+              placeholder="Enter your Nigerian phone number"
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-transparent"
+              onInput={(e) => {
+                const input = e.target;
+                input.value = input.value.replace(/[^0-9]/g, "").slice(0, 11);
+                setValue("phoneNumber", input.value);
+              }}
+              required
+            />
+          </div>
 
           {/* Gender Field */}
-          <div className="my-4">
-            <label htmlFor="gender" className="block mb-2">
-              Gender
-            </label>
+          <div className="mb-4">
+            <label htmlFor="gender" className="block text-sm mb-1">Gender</label>
             <select
               {...register("gender", { required: "Gender is required" })}
-              className="w-full bg-transparent border border-gray-300 rounded-md p-3 text-sm"
+              className="w-full bg-transparent border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
+              defaultValue=""
             >
-              <option value="">Select your gender</option>
+              <option value="" disabled>Select your gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
           </div>
 
-          <div className="space-y-2">
-            <label className="block mb-2">
-              Password<span className="text-red-500"></span>
-            </label>
+          {/* Password Field */}
+          <div className="space-y-2 mb-4">
+            <label className="block text-sm mb-1">Password</label>
             <div className="relative">
               <input
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-primary transition-all duration-200 placeholder-gray-400"
                 type={showPasswordToggle ? "text" : "password"}
-                name="Password"
+                name="password"
                 placeholder="********"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                required
               />
               <button
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors"
@@ -170,31 +181,36 @@ const SignUp = () => {
             </div>
           </div>
 
+          {/* Terms & Conditions */}
+          <div className="flex items-start gap-2 mt-4 mb-4">
+            <input
+              type="checkbox"
+              id="tc"
+              checked={checkboxChecked}
+              onChange={handleCheckboxChange}
+              className="mt-1 w-4 h-4"
+            />
+            <label htmlFor="tc" className="text-sm text-primary leading-snug">
+              Clicking the <strong>&quot;Continue&quot;</strong> button means I agree to the terms and conditions of <strong>FLAURY</strong>
+            </label>
+          </div>
+
           <Button
             title={isSubmitting ? "Loading..." : "Continue"}
             type="submit"
-            customClasses="w-full px-4 py-3 mt-4"
+            customClasses="w-full px-4 py-3"
           />
         </form>
+
         <p className="text-primary text-sm mt-4 text-left">
-          Already have an account? <Link to="/login" className="font-bold">Login</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="font-bold">Login</Link>
         </p>
-        <div className="flex w-full gap-4 items-center justify-center mt-4">
-          <input
-            type="checkbox"
-            id="tc"
-            checked={checkboxChecked}
-            onChange={handleCheckboxChange}
-            className="w-[1rem] h-[1rem]"
-          />
-          <p className="text-primary text-sm w-full">
-            Clicking the &quot;continue&quot; button means I agree to the terms and
-            conditions of <b>FLAURY</b>
-          </p>
-        </div>
       </AuthEnv>
+
+      {/* OTP Modal */}
       {showPopup && (
-        <div className="absolute top-0 left-0">
+        <div className="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-40 flex items-center justify-center">
           <OTPVerification email={submittedEmail} />
         </div>
       )}
