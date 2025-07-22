@@ -140,7 +140,7 @@ const OTPVerification = ({ email, complete }) => {
     <>
       {!showPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-20">
-          <Card className="md:max-w-[574px]">
+          <Card className="md:max-w-[574px] h-[20rem]">
             <h3 className="font-bold mb-4 text-primary">
               OTP Verification
             </h3>
@@ -157,7 +157,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code1}
                   onChange={(e) => handleInputChange(e, setCode1, input2Ref)}
                   onKeyDown={(e) => handleKeyDown(e, null)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center border focus:bg-[#FFD6B3] `}
                 />
                 <input
                   ref={input2Ref}
@@ -167,7 +167,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code2}
                   onChange={(e) => handleInputChange(e, setCode2, input3Ref)}
                   onKeyDown={(e) => handleKeyDown(e, input1Ref)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center border focus:bg-[#FFD6B3] `}
                 />
                 <input
                   ref={input3Ref}
@@ -177,7 +177,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code3}
                   onChange={(e) => handleInputChange(e, setCode3, input4Ref)}
                   onKeyDown={(e) => handleKeyDown(e, input2Ref)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center border focus:bg-[#FFD6B3] `}
                 />
                 <input
                   ref={input4Ref}
@@ -187,7 +187,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code4}
                   onChange={(e) => handleInputChange(e, setCode4, input5Ref)}
                   onKeyDown={(e) => handleKeyDown(e, input3Ref)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center border focus:bg-[#FFD6B3] `}
                 />
                 <input
                   ref={input5Ref}
@@ -197,7 +197,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code5}
                   onChange={(e) => handleInputChange(e, setCode5, input6Ref)}
                   onKeyDown={(e) => handleKeyDown(e, input4Ref)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 mr-2 text-center border focus:bg-[#FFD6B3] `}
                 />
                 <input
                   ref={input6Ref}
@@ -207,7 +207,7 @@ const OTPVerification = ({ email, complete }) => {
                   value={code6}
                   onChange={(e) => handleInputChange(e, setCode6, null)}
                   onKeyDown={(e) => handleKeyDown(e, input5Ref)}
-                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 text-center focus:bg-[#FFD6B3] `}
+                  className={`outline-none w-16 h-16 px-4 py-2 rounded-lg mt-1 mb-2 text-center border focus:bg-[#FFD6B3] `}
                 />
               </div>
               <div className="flex items-center justify-center">

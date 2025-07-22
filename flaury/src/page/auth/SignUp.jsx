@@ -19,6 +19,9 @@ const SignUp = () => {
   const [role, setRole] = useState("client");
   const [password, setPassword] = useState("");
   const [showPasswordToggle, setShowPasswordToggle] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneFocused, setPhoneFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
   const location = useLocation();
 
   const { control, handleSubmit, register, setValue } = useForm();
@@ -80,8 +83,8 @@ const SignUp = () => {
         }, 4000);
       } else {
         const error = result.error;
-        if (error.status === 403) {
-          toast.error("Access denied. You don't have permission to sign up.");
+        if (error.status) {
+          toast.error(["error details"]);
         } else if (error.status === 401) {
           toast.error("Invalid credentials. Please try again.");
         } else if (error.status === 400) {
@@ -119,6 +122,7 @@ const SignUp = () => {
           <Input
             control={control}
             name="email"
+            type="email"
             label="Email Address"
             placeholder="Enter your email"
             validateType="email"
@@ -134,12 +138,16 @@ const SignUp = () => {
               inputMode="numeric"
               maxLength={11}
               placeholder="Enter your Nigerian phone number"
-              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-transparent"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all bg-transparent ${phoneFocused || phoneNumber ? "border-primary ring-0.5 ring-primary" : "border-gray-300"}`}
+              onFocus={() => setPhoneFocused(true)}
+              onBlur={() => setPhoneFocused(false)}
               onInput={(e) => {
                 const input = e.target;
                 input.value = input.value.replace(/[^0-9]/g, "").slice(0, 11);
+                setPhoneNumber(input.value);
                 setValue("phoneNumber", input.value);
               }}
+              value={phoneNumber}
               required
             />
           </div>
@@ -164,10 +172,12 @@ const SignUp = () => {
             <label className="block text-sm mb-1">Password</label>
             <div className="relative">
               <input
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary bg-transparent focus:border-primary transition-all duration-200 placeholder-gray-400"
+                className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 placeholder-gray-400 bg-transparent focus:outline-none ${passwordFocused || password ? "border-primary ring-0.5 ring-primary" : "border-gray-300"}`}
                 type={showPasswordToggle ? "text" : "password"}
                 name="password"
                 placeholder="********"
+                onFocus={() => setPasswordFocused(true)}
+                onBlur={() => setPasswordFocused(false)}
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 required

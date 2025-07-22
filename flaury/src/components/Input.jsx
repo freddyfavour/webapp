@@ -69,13 +69,14 @@ const Input = ({
               type={type === "password" ? (showPassword ? "text" : "password") : type}
               placeholder={placeholder}
               value={field.value || ""}
-              className={`custom-input focus:ring-2 focus:ring-primary focus:border-primary ${type === "password" ?
-                "w-full px-4 py-3 border border-gray-600 rounded-lg bg-transparent transition-all duration-200 placeholder-gray-400"
-                : "p-3 w-full"}`}
-              style={{
-                borderRadius: "4px",
-                border: `1px solid ${error ? "red" : "#ccc"}`,
-              }}
+              className={`custom-input px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary border border-gray-300 rounded-lg ${type === "password" ?
+                "w-full bg-transparent transition-all duration-200 placeholder-gray-400"
+                : "w-full"}`}
+              style={
+                error
+                  ? { borderColor: "red", borderWidth: 1, borderStyle: "solid", borderRadius: "4px" }
+                  : undefined
+              }
               maxLength={validateType === "code" ? 6 : undefined}
             />
             {type === "password" && (
