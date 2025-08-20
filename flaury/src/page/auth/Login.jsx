@@ -48,11 +48,14 @@ const Login = ({ fetchUserDetails }) => {
 
         toast.success("Login successful!");
 
-        localStorage.setItem("accessToken", response["response data"].access_token);
+        localStorage.setItem(
+          "accessToken",
+          response["response data"].access_token
+        );
         localStorage.setItem("roleData", response["response data"].role);
         setTimeout(() => {
           navigate("/dashboard");
-          fetchUserDetails()
+          fetchUserDetails();
         }, 3000);
       } else {
         const error = result.error;
@@ -151,5 +154,5 @@ const Login = ({ fetchUserDetails }) => {
 export default Login;
 
 Login.propTypes = {
-  fetchUserDetails: PropTypes.node.isRequired,
+  fetchUserDetails: PropTypes.func.isRequired,
 };
