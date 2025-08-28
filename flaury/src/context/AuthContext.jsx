@@ -6,98 +6,86 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState("");
-  const [allUser, setFetchAllUsers] = useState("");
+  // user starts null, not empty string
+  const [user, setUser] = useState(null);
+  // allUser should be array, not string
+  const [allUser, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // loading spinner for fetch
 
-  // =====================================================
-  // ==================[ UserDetails ]====================
-  // =====================================================
-
+  // fetch user only if token exists
   const fetchUserDetails = async () => {
-    setIsLoading(true);
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      setUser(null); // no token → user is out
+      setIsLoading(false);
+      return;
+    }
 
+    setIsLoading(true);
     try {
       const res = await fetch(userAPI.userAPI.getLoggedUser(), {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${token}`, // only send valid token
           "Content-Type": "application/json",
         },
       });
-      console.log(`${localStorage.getItem("accessToken")}`);
-      
 
-      if (!res.ok) {
-        throw new Error(`Server responded ${res.status}: ${res.statusText}`);
-      }
+      if (!res.ok) throw new Error(`Server responded ${res.status}`);
+
       const json = await res.json();
 
-      // optional: validate the shape first
-      if (!json?.data?.user) {
-        throw new Error("Malformed response: missing `data.user`");
-      }
+      if (!json?.data?.user) throw new Error("Malformed response");
 
-      const user = json.data.user;
-      setUser(user);
-      localStorage.setItem("FLYuserData", JSON.stringify(user));
+      setUser(json.data.user);
+      localStorage.setItem("FLYuserData", JSON.stringify(json.data.user));
     } catch (err) {
       console.log("Error fetching user details:", err);
+      setUser(null);
+      localStorage.removeItem("FLYuserData"); // clear invalid data
     } finally {
-      setIsLoading(false);            // stop spinner
+      setIsLoading(false);
     }
   };
 
-
-  //  =====================================================
-  // ==================[ Fetch All Users ]=================
-  // =====================================================
-
+  // fetch all users, cleaned variable name
   const fetchAllUsers = async () => {
     try {
-      const result = await userAPI.userAPI.getAllUsers(); // ✅ using authAPI
-      if (result.success) {
-        setFetchAllUsers(result.data.users);
-      } else {
-        console.log("Failed to fetch all users:", result.error);
-      }
-    } catch (error) {
-      console.error("Error fetching all users:", error);
+      const result = await userAPI.userAPI.getAllUsers();
+      if (result.success) setAllUsers(result.data.users);
+      else console.log("Failed to fetch all users:", result.error);
+    } catch (err) {
+      console.error("Error fetching all users:", err);
     }
   };
 
-  // ===================[ Sync with Storage ]====================
-
+  // listen to storage changes, only refetch if token exists
   useEffect(() => {
     fetchUserDetails();
 
-    const onStorageChange = (event) => {
-      if (event.key === "FLYuserData") {
+    const handleStorageChange = (event) => {
+      if (event.key === "FLYuserData" && localStorage.getItem("accessToken")) {
         fetchUserDetails();
       }
     };
 
-    window.addEventListener("storage", onStorageChange);
-    return () => window.removeEventListener("storage", onStorageChange);
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // ===================[ Load from localStorage ]====================
-
+  // load user from storage on mount
   useEffect(() => {
-    const storedUserDetails = localStorage.getItem("FLYuserData");
-    if (storedUserDetails) {
-      setUser(JSON.parse(storedUserDetails));
-      setIsLoading(true);
-    }
+    const storedUser = localStorage.getItem("FLYuserData");
+    if (storedUser) setUser(JSON.parse(storedUser));
+    setIsLoading(false);
   }, []);
 
-  // ===================[ Log Out ]====================
-
+  // logout clears everything and resets states
   const logOut = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("FLYuserData");
-    setUser("");
+    setUser(null);
     setIsLoading(false);
     window.location.href = "/login";
   };
@@ -121,7 +109,6 @@ const AuthContextProvider = ({ children }) => {
 };
 
 export default AuthContextProvider;
-
 
 AuthContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
