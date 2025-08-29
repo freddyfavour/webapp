@@ -11,8 +11,9 @@ const createApiRequest = (method, endpoint, options = {}) => {
         case "get":
           response = await apiClient.get(endpoint, {
             ...config,
-            params: data,
+            params: data && typeof data === "object" ? data : {},
           });
+          console.log(await response.data);
           break;
 
         case "post":

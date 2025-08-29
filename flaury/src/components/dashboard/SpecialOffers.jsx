@@ -87,38 +87,50 @@ const SpecialOffers = () => {
           }}
         >
           {specialOffers.map((offer) => (
-            <div key={offer.id}
+            <div
+              key={offer.id}
               className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200 flex-none w-72 snap-start"
             >
               <div className="relative overflow-hidden">
-                <img src={offer.image} alt="" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-                <div className="flex flex-col gap-2 p-3">
-                  <span className="bg-[#fff] absolute top-3 left-3 text-primary flex gap-2 text-[8px] rounded-lg px-4 py-1">
-                    <img src={tag} alt="" />
-                    SAVE UP TO 20%
-                  </span>
-                </div>
+                <img
+                  src={offer.image}
+                  alt={offer.name}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
 
-                <div className="flex justify-between mt-2">
+                <span className="bg-white absolute top-3 left-3 text-primary flex gap-2 text-[8px] rounded-lg px-4 py-1 shadow-sm">
+                  <img src={tag} alt="" className="w-3 h-3" />
+                  SAVE UP TO 20%
+                </span>
+              </div>
+
+              <div className="p-5">
+                <div className="flex justify-between items-center">
                   <h4 className="font-semibold">{offer.name}</h4>
-                  <div className="bg-[#1b771b] h-6 flex gap-2 text-xs text-[#fff] rounded-lg px-3 py-1">
-                    <img src={verified} alt="" className="w-4 h-4" /> Verified
+                  <div className="bg-[#1b771b] h-6 flex items-center gap-1 text-xs text-white rounded-lg px-3 py-1">
+                    <img src={verified} alt="" className="w-4 h-4" />
+                    Verified
                   </div>
                 </div>
-                <span>{offer.salon}</span>
-                <p className="flex text-xs text-[#000]">
-                  {offer.services.join(", ")}{" "}
-                  <img src={dot} alt="" className="mx-2" />
-                  <img src={star} alt="" />
+
+                <span className="text-sm text-gray-600">{offer.salon}</span>
+
+                <p className="flex items-center text-xs text-gray-700 mt-1">
+                  {offer.services.join(", ")}
+                  <img src={dot} alt="" className="mx-2 w-2 h-2" />
+                  <img src={star} alt="" className="w-3 h-3 mr-1" />
                   {offer.rating}
                 </p>
-                <p className="flex text-xs text-[#000]">
-                  {offer.location} <img src={dot} alt="" className="mx-2" />
+
+                <p className="flex items-center text-xs mt-1 text-gray-700">
+                  {offer.location}
+                  <img src={dot} alt="" className="mx-2 w-2 h-2" />
                   {offer.distance}
                 </p>
-                <div className="flex justify-between items-center mt-2">
+
+                <div className="mt-3">
                   <Link to={`/bookings/${offer.id}`} className="block w-full">
-                    <Button className="w-full bg-primary hover:secondary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
+                    <Button className="w-full bg-primary hover:bg-secondary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
                       Book now
                     </Button>
                   </Link>
