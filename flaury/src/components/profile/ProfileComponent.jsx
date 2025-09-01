@@ -35,7 +35,7 @@ const ProfileComponent = () => {
     const simulatedProfileDetails = [
       {
         id: 1,
-        name: "Profile",
+        name: "Settings",
         details: "Edit profile, change phone number...",
         icon: "/profilesettings.svg",
       },
@@ -138,7 +138,11 @@ const ProfileComponent = () => {
         ) : (
           <>
             <div className="flex flex-col gap-3 items-center space-x-2">
-              <img src={profileData.profileimg || "/placeholder.svg"} alt="" className="h-14 w-14 rounded-full border border-[#8B4513]/20" />
+              <img
+                src={profileData.profileimg || "/placeholder.svg"}
+                alt=""
+                className="h-14 w-14 rounded-full border border-[#8B4513]/20"
+              />
               <div className="text-center">
                 <h3 className="text-xl font-bold">{profileData.name}</h3>
                 <p className="text-xs">{profileData.email}</p>
@@ -179,14 +183,14 @@ const ProfileComponent = () => {
               profileDetail.name === "Profile"
                 ? handleProfileClick
                 : profileDetail.name === "About"
-                  ? handleAboutClick
-                  : profileDetail.name === "Help"
-                    ? handleHelpClick
-                    : profileDetail.name === "Settings"
-                      ? handleSettingsClick
-                      : profileDetail.name === "Payment"
-                        ? handlePaymentClick
-                        : handleLogout
+                ? handleAboutClick
+                : profileDetail.name === "Help"
+                ? handleHelpClick
+                : profileDetail.name === "Settings"
+                ? handleSettingsClick
+                : profileDetail.name === "Payment"
+                ? handlePaymentClick
+                : handleLogout
             }
           />
         ))
