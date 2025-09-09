@@ -6,7 +6,7 @@ const PaymentComponent = () => {
   const [page, setPage] = useState("");
   const [profileDetails, setProfileDetails] = useState([]);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const roleData = localStorage.getItem("roleData")
+  const roleData = localStorage.getItem("roleData");
 
   const deletePopup = () => {
     setShowDeletePopup(true);
@@ -58,12 +58,18 @@ const PaymentComponent = () => {
         </>
       ) : (
         <>
-          <div className="w-[200px] mx-auto mt-8">
+          <div className="w-full flex justify-center mt-8">
             <button
-              className="border border-dashed mx-auto w-full py-2 rounded-md text-black text-xs font-semibold"
+              className="transition-transform duration-200 shadow-lg bg-primary text-white text-base font-bold px-8 py-3 rounded-xl border-2 border-primary flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-primary/30 group hover:scale-105"
               onClick={() => setShowPopup(true)}
             >
-              Add payment card
+              <img
+                src="/payment.svg"
+                alt="Add"
+                className="h-5 w-5"
+                style={{ filter: "invert(1)" }}
+              />
+              <span className="text-white transition">Add Payment Card</span>
             </button>
           </div>
           <div className="bg-white w-full rounded-md shadow-xl my-4 flex justify-between items-center p-4">
@@ -82,23 +88,37 @@ const PaymentComponent = () => {
       )}
 
       {showDeletePopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[45%] py-8 px-20 rounded-lg shadow-lg text-center">
-            <h3 className="font-bold mb-4 text-black">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50"
+          onClick={() => setShowDeletePopup(false)}
+        >
+          <div
+            className="bg-white w-11/12 max-w-md py-8 px-6 md:px-10 rounded-2xl shadow-2xl text-center relative animate-fadeIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-primary text-2xl font-bold focus:outline-none"
+              onClick={() => setShowDeletePopup(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h3 className="font-extrabold mb-3 text-black text-lg">
               Delete Payment Method?
             </h3>
-            <p className="font-semibold text-xs text-black">
-              It will no longer be available for payments. <br /> Are you sure
-              you want to delete?
+            <p className="font-medium text-sm text-black mb-6">
+              It will no longer be available for payments.
+              <br />
+              Are you sure you want to delete?
             </p>
             <button
-              className="font-bold border border-primary px-4 py-2 rounded-md w-full mt-6 text-[#ff0000] text-xs"
+              className="font-bold border border-[#ff0000] text-[#ff0000] px-4 py-2 rounded-lg w-full mb-3 hover:bg-[#ff0000] hover:text-white transition"
               onClick={() => setShowDeletePopup(false)}
             >
               Delete
             </button>
             <button
-              className="font-bold bg-primary px-4 py-2 rounded-md w-full mt-6 text-white text-xs"
+              className="font-bold bg-primary px-4 py-2 rounded-lg w-full text-white hover:bg-[#a05a1c] transition"
               onClick={() => setShowDeletePopup(false)}
             >
               Cancel
@@ -107,49 +127,68 @@ const PaymentComponent = () => {
         </div>
       )}
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
-          <div className="bg-white w-4/5 md:w-[45%] py-8 px-10 md:px-20 rounded-lg shadow-lg text-center">
-            <h3 className="font-semibold mb-4 text-black">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50"
+          onClick={() => setShowPopup(false)}
+        >
+          <div
+            className="bg-white w-11/12 max-w-md py-8 px-6 md:px-10 rounded-2xl shadow-2xl text-center relative animate-fadeIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-primary text-2xl font-bold focus:outline-none"
+              onClick={() => setShowPopup(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h3 className="font-extrabold mb-3 text-black text-lg">
               Add Payment Option
             </h3>
             <form>
-              <label>Card Number</label>
+              <label className="block text-left font-semibold mb-1">
+                Card Number
+              </label>
               <input
                 type="number"
                 name="card-number"
                 placeholder="Please enter your card number"
-                className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
+                className="border border-primary w-full block px-4 py-2 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
-              <div className="grid grid-cols-3 gap-4 mt-6">
-                <div className="grid col-span-1">
-                  <label>Expiry date</label>
+              <div className="grid grid-cols-3 gap-4 mt-2">
+                <div className="col-span-1">
+                  <label className="block text-left font-semibold mb-1">
+                    Expiry date
+                  </label>
                   <input
                     type="number"
                     name="expiry-date"
-                    className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
+                    className="border border-primary w-full block px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                 </div>
-                <div className="grid col-span-2">
-                  <label>CVV</label>
+                <div className="col-span-2">
+                  <label className="block text-left font-semibold mb-1">
+                    CVV
+                  </label>
                   <input
                     type="number"
                     name="cvv"
                     placeholder="Enter your cvv"
-                    className="border border-1 border-primary w-full block px-4 py-1 rounded-md"
+                    className="border border-primary w-full block px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                 </div>
               </div>
-              <div className="text-left mt-6">
-                <label>PIN</label>
+              <div className="text-left mt-4">
+                <label className="block font-semibold mb-1">PIN</label>
                 <input
                   type="number"
                   name="pin"
                   placeholder="Enter your PIN"
-                  className="border border-1 border-primary block px-4 py-1 rounded-md"
+                  className="border border-primary block px-4 py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
               <button
-                className="font-bold bg-primary px-4 py-2 rounded-md w-full mt-6 text-white opacity-70"
+                className="font-bold bg-primary px-4 py-2 rounded-lg w-full mt-6 text-white hover:bg-[#a05a1c] transition text-base shadow-md"
                 onClick={() => setShowPopup(false)}
               >
                 Confirm

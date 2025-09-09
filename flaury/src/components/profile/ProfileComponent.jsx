@@ -19,6 +19,7 @@ const ProfileComponent = () => {
   const [showLogout, setShowLogout] = useState(false);
   const [page, setPage] = useState("");
   const [profileDetails, setProfileDetails] = useState([]);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   useEffect(() => {
     const fetchProfileData = () => {
@@ -97,6 +98,10 @@ const ProfileComponent = () => {
 
   const handleLogout = () => {
     setShowLogout(true);
+  };
+
+  const handleComingSoon = () => {
+    setShowComingSoon(true);
   };
   const onLogout = () => {
     navigate("/");
@@ -180,7 +185,7 @@ const ProfileComponent = () => {
             icon={profileDetail.icon}
             setShowLogout={setShowLogout}
             onClick={
-              profileDetail.name === "Profile"
+              profileDetail.name === "Settings"
                 ? handleProfileClick
                 : profileDetail.name === "About"
                 ? handleAboutClick
@@ -190,13 +195,16 @@ const ProfileComponent = () => {
                 ? handleSettingsClick
                 : profileDetail.name === "Payment"
                 ? handlePaymentClick
+                : profileDetail.name === "Blogs" ||
+                  profileDetail.name === "Promotions"
+                ? handleComingSoon
                 : handleLogout
             }
           />
         ))
       )}
       {showLogout && (
-        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-50">
           <div className="flex flex-col bg-secondary w-full md:w-[40%] mx-4 py-8 px-4 md:px-20 gap-3 rounded-lg shadow-lg text-center">
             <img
               src={forgotPassword}
@@ -217,6 +225,21 @@ const ProfileComponent = () => {
               onClick={() => setShowLogout(false)}
             >
               Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showComingSoon && (
+        <div className="fixed inset-0 flex items-center justify-center bg-[#db8335] bg-opacity-50 z-50">
+          <div className="flex flex-col bg-secondary w-full md:w-[30%] mx-4 py-8 px-4 md:px-10 gap-3 rounded-lg shadow-lg text-center">
+            <h3 className="font-bold text-black mb-4">Coming Soon</h3>
+            <p className="mb-6">This feature will be available soon.</p>
+            <button
+              className="transition bg-primary text-white border text-xs px-8 py-2 rounded-lg font-semibold w-full"
+              onClick={() => setShowComingSoon(false)}
+            >
+              Close
             </button>
           </div>
         </div>
