@@ -130,7 +130,7 @@ const SpecialOffers = () => {
 
                 <div className="mt-3">
                   <Link to={`/bookings/${offer.id}`} className="block w-full">
-                    <Button className="w-full bg-primary hover:bg-secondary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
+                    <Button className="w-full bg-primary text-white font-medium py-2.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
                       Book now
                     </Button>
                   </Link>
