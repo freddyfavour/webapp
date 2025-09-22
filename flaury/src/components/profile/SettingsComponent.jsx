@@ -68,7 +68,7 @@ const SettingsComponent = () => {
                 className="transition bg-primary text-white border text-xs w-full mt-10 py-3 rounded-lg font-semibold"
                 onClick={() => setPage("")}
               >
-                Select
+                Save
               </button>
             </form>
           )}
@@ -121,7 +121,6 @@ const SettingsComponent = () => {
               Save
             </button>
           </form>
-          <button onClick={() => setPage("")}>Back</button>
         </div>
       ) : page === "change-phone-number" ? (
         <div>
