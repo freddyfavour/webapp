@@ -68,7 +68,6 @@ const Step1BasicInfo = ({ onComplete }) => {
         gender: gender, // Include gender in the data
         role: registrationType,
         type_of_service: "basic",
-        username: formData.name,
       };
 
       const result = await authAPI.authAPI.register(userData);
