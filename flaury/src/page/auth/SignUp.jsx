@@ -24,7 +24,13 @@ const SignUp = () => {
   const [passwordFocused, setPasswordFocused] = useState(false);
   const location = useLocation();
 
-  const { control, handleSubmit, register, setValue } = useForm();
+  const {
+    control,
+    handleSubmit,
+    register,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   const showPassword = (e) => {
     e.preventDefault();
@@ -41,6 +47,25 @@ const SignUp = () => {
     setCheckboxChecked(!checkboxChecked);
   };
 
+  // Utility: normalize Nigerian phone number
+  const formatPhoneNumber = (number) => {
+    let cleaned = number.replace(/\D/g, ""); // only digits
+
+    if (number.startsWith("+234")) {
+      return number; // already correct
+    }
+
+    if (cleaned.length === 11 && cleaned.startsWith("0")) {
+      return `+234${cleaned.slice(1)}`; // 080... → +23480...
+    }
+
+    if (cleaned.length === 13 && cleaned.startsWith("234")) {
+      return `+${cleaned}`; // 23480... → +23480...
+    }
+
+    return number; // fallback
+  };
+
   const onSubmit = async (formData) => {
     setIsSubmitting(true);
 
@@ -51,15 +76,16 @@ const SignUp = () => {
     }
 
     try {
+      const formattedPhone = formatPhoneNumber(formData.phoneNumber);
+
       const userData = {
         email: formData.email,
         name: formData.name,
-        password: password,
-        phone_number: formData.phoneNumber,
+        password,
+        phone_number: formattedPhone,
         gender: formData.gender,
         role,
         type_of_service: "basic",
-        username: formData.name,
       };
 
       const result = await authAPI.authAPI.register(userData);
@@ -80,19 +106,15 @@ const SignUp = () => {
 
         setTimeout(() => {
           setShowPopup(true);
-        }, 4000);
+        }, 2000);
       } else {
         const error = result.error;
-        if (error.status) {
-          toast.error(["error details"]);
-        } else if (error.status === 401) {
-          toast.error("Invalid credentials. Please try again.");
-        } else if (error.status === 400) {
-          toast.error("Password must be at least 6 characters, include upper & lower case, a number, and a special character");
-        } else if (error.status === 429) {
-          toast.error("Too many attempts. Please try again later.");
+        console.error("API ERROR DETAILS:", error);
+
+        if (error.status === 500) {
+          toast.error("Internal server error.");
         } else {
-          toast.error(error.message || "Sign up failed. Please try again.");
+          toast.error(error.originalError.response.data["error details"]);
         }
       }
     } catch (error) {
@@ -107,9 +129,12 @@ const SignUp = () => {
     <>
       <AuthEnv>
         <AuthTitle title="Sign Up" />
-        <p className="text-primary text-sm pb-2">Register using your correct details</p>
+        <p className="text-primary text-sm pb-2">
+          Register using your correct details
+        </p>
 
         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+          {/* Name */}
           <Input
             control={control}
             name="name"
@@ -119,6 +144,7 @@ const SignUp = () => {
             minValue={2}
           />
 
+          {/* Email */}
           <Input
             control={control}
             name="email"
@@ -128,51 +154,79 @@ const SignUp = () => {
             validateType="email"
           />
 
-          {/* Phone Number Field - limited to 11 digits only */}
+          {/* Phone Number */}
           <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block text-sm mb-1">Phone Number</label>
+            <label htmlFor="phoneNumber" className="block text-sm mb-1">
+              Phone Number
+            </label>
             <input
               id="phoneNumber"
-              name="phoneNumber"
+              {...register("phoneNumber", {
+                required: "Phone number is required",
+                pattern: {
+                  value: /^(\+234[0-9]{10}|0[0-9]{10}|234[0-9]{10})$/,
+                  message: "Enter a valid Nigerian phone number",
+                },
+              })}
               type="text"
               inputMode="numeric"
-              maxLength={11}
               placeholder="Enter your Nigerian phone number"
-              className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all bg-transparent ${phoneFocused || phoneNumber ? "border-primary ring-0.5 ring-primary" : "border-gray-300"}`}
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all bg-transparent ${
+                phoneFocused || phoneNumber
+                  ? "border-primary ring-0.5 ring-primary"
+                  : "border-gray-300"
+              }`}
               onFocus={() => setPhoneFocused(true)}
               onBlur={() => setPhoneFocused(false)}
-              onInput={(e) => {
-                const input = e.target;
-                input.value = input.value.replace(/[^0-9]/g, "").slice(0, 11);
-                setPhoneNumber(input.value);
-                setValue("phoneNumber", input.value);
+              onChange={(e) => {
+                const value = e.target.value.trim();
+                setPhoneNumber(value);
+                setValue("phoneNumber", value);
               }}
               value={phoneNumber}
               required
             />
+            {errors.phoneNumber && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.phoneNumber.message}
+              </p>
+            )}
           </div>
 
-          {/* Gender Field */}
+          {/* Gender */}
           <div className="mb-4">
-            <label htmlFor="gender" className="block text-sm mb-1">Gender</label>
+            <label htmlFor="gender" className="block text-sm mb-1">
+              Gender
+            </label>
             <select
               {...register("gender", { required: "Gender is required" })}
               className="w-full bg-transparent border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary focus:border-primary transition-all"
               defaultValue=""
             >
-              <option value="" disabled>Select your gender</option>
+              <option value="" disabled>
+                Select your gender
+              </option>
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+            {errors.gender && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.gender.message}
+              </p>
+            )}
           </div>
 
-          {/* Password Field */}
+          {/* Password */}
           <div className="space-y-2 mb-4">
             <label className="block text-sm mb-1">Password</label>
             <div className="relative">
               <input
-                className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 placeholder-gray-400 bg-transparent focus:outline-none ${passwordFocused || password ? "border-primary ring-0.5 ring-primary" : "border-gray-300"}`}
+                className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 placeholder-gray-400 bg-transparent focus:outline-none ${
+                  passwordFocused || password
+                    ? "border-primary ring-0.5 ring-primary"
+                    : "border-gray-300"
+                }`}
                 type={showPasswordToggle ? "text" : "password"}
                 name="password"
                 placeholder="********"
@@ -191,7 +245,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Terms & Conditions */}
+          {/* Terms */}
           <div className="flex items-start gap-2 mt-4 mb-4">
             <input
               type="checkbox"
@@ -201,10 +255,12 @@ const SignUp = () => {
               className="mt-1 w-4 h-4"
             />
             <label htmlFor="tc" className="text-sm text-primary leading-snug">
-              Clicking the <strong>&quot;Continue&quot;</strong> button means I agree to the terms and conditions of <strong>FLAURY</strong>
+              Clicking the <strong>&quot;Continue&quot;</strong> button means I
+              agree to the terms and conditions of <strong>FLAURY</strong>
             </label>
           </div>
 
+          {/* Submit */}
           <Button
             title={isSubmitting ? "Loading..." : "Continue"}
             type="submit"
@@ -214,7 +270,9 @@ const SignUp = () => {
 
         <p className="text-primary text-sm mt-4 text-left">
           Already have an account?{" "}
-          <Link to="/login" className="font-bold">Login</Link>
+          <Link to="/login" className="font-bold">
+            Login
+          </Link>
         </p>
       </AuthEnv>
 
