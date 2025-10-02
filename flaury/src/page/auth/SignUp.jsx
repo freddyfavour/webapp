@@ -75,6 +75,12 @@ const SignUp = () => {
       return;
     }
 
+    if (!password || password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const formattedPhone = formatPhoneNumber(formData.phoneNumber);
 
@@ -88,13 +94,16 @@ const SignUp = () => {
         type_of_service: "basic",
       };
 
+      console.log("Sending user data:", userData);
+
       const result = await authAPI.authAPI.register(userData);
+      console.log("Registration result:", result);
 
       if (result.success) {
         const response = result.data;
 
         if (response?.token) {
-          localStorage.setItem("authToken", response.token);
+          localStorage.setItem("token", response.token);
         }
 
         if (response?.user) {
@@ -112,9 +121,22 @@ const SignUp = () => {
         console.error("API ERROR DETAILS:", error);
 
         if (error.status === 500) {
-          toast.error("Internal server error.");
+          toast.error("Internal server error. Please try again.");
+        } else if (error.status === 400) {
+          // Handle bad request (user already exists, etc.)
+          const errorMessage =
+            error.originalError?.response?.data?.message ||
+            error.originalError?.response?.data?.["error details"] ||
+            error.message ||
+            "Registration failed. Please check your details.";
+          toast.error(errorMessage);
         } else {
-          toast.error(error.originalError.response.data["error details"]);
+          const errorMessage =
+            error.originalError?.response?.data?.message ||
+            error.originalError?.response?.data?.["error details"] ||
+            error.message ||
+            "Registration failed. Please try again.";
+          toast.error(errorMessage);
         }
       }
     } catch (error) {
@@ -131,6 +153,11 @@ const SignUp = () => {
         <AuthTitle title="Sign Up" />
         <p className="text-primary text-sm pb-2">
           Register using your correct details
+          {role && (
+            <span className="ml-2 px-2 py-1 bg-primary text-white text-xs rounded">
+              {role === "service_provider" ? "Service Provider" : "Customer"}
+            </span>
+          )}
         </p>
 
         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -163,9 +190,12 @@ const SignUp = () => {
               id="phoneNumber"
               {...register("phoneNumber", {
                 required: "Phone number is required",
-                pattern: {
-                  value: /^(\+234[0-9]{10}|0[0-9]{10}|234[0-9]{10})$/,
-                  message: "Enter a valid Nigerian phone number",
+                validate: (value) => {
+                  const formatted = formatPhoneNumber(value);
+                  if (!formatted.match(/^\+234[0-9]{10}$/)) {
+                    return "Enter a valid Nigerian phone number";
+                  }
+                  return true;
                 },
               })}
               type="text"

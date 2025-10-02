@@ -18,6 +18,7 @@ const createApiRequest = (method, endpoint, options = {}) => {
 
         case "post":
           response = await apiClient.post(endpoint, data, config);
+          console.log("POST response:", response.data);
           break;
 
         case "put":
@@ -50,7 +51,12 @@ const createApiRequest = (method, endpoint, options = {}) => {
         error.message ||
         `${errorMessage} failed`;
 
-      // console.error(`API Error (${endpoint}):`, error);
+      console.error(`API Error (${endpoint}):`, {
+        status,
+        message,
+        responseData: error.response?.data,
+        error: error,
+      });
 
       return {
         success: false,
