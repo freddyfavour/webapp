@@ -2,19 +2,15 @@ import BQuickLink from "./BQuickLink";
 import BRecentTransactions from "./BRecentTransactions";
 import DashboardLayout from "./DashboardLayout";
 
-const Overview = () => {
+const BusinessOverview = () => {
   return (
-    // <div className="mt-0 lg:mt-20 w-full md:px-8 lg:px-0 px-4">
     <DashboardLayout>
-      <hr className="w-full my-4 bg-primary" />
-
-      <div className="mt-16" />
-      <BQuickLink />
-      <BRecentTransactions />
-      {/* </div>   */}
+      <div className="flex flex-col gap-8 px-4 py-6 lg:px-8 lg:py-10 bg-[#FEFFF1] min-h-full">
+        <BQuickLink />
+        <BRecentTransactions />
+      </div>
     </DashboardLayout>
-
   );
 };
 
-export default Overview;
+export default BusinessOverview;

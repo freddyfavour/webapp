@@ -1,150 +1,127 @@
-import React from "react";
+import { useMemo } from "react";
+import { useAuth } from "@/context/AuthContext";
 
-const transactionData = [
+const sampleTransactions = [
   {
-    id: 1,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
+    id: "tx-1",
+    label: "Transfer to wallet",
+    customer: "Pella Sophia",
+    timestamp: "Nov 28, 16:34",
+    amount: 20000,
+    status: "Successful",
+    direction: "credit",
   },
   {
-    id: 2,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
+    id: "tx-2",
+    label: "Transfer to wallet",
+    customer: "Pella Sophia",
+    timestamp: "Nov 28, 16:34",
+    amount: 20000,
+    status: "Successful",
+    direction: "credit",
   },
   {
-    id: 3,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
+    id: "tx-3",
+    label: "Withdrawal to bank",
+    customer: "Becca Barauch",
+    timestamp: "Nov 28, 16:34",
+    amount: 40000,
+    status: "Successful",
+    direction: "debit",
   },
   {
-    id: 4,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
+    id: "tx-4",
+    label: "Withdrawal to bank",
+    customer: "Becca Barauch",
+    timestamp: "Nov 28, 16:34",
+    amount: 40000,
+    status: "Successful",
+    direction: "debit",
   },
   {
-    id: 5,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
-  },
-  {
-    id: 6,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
-  },
-  {
-    id: 7,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
-  },
-  {
-    id: 8,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
-  },
-  {
-    id: 9,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
-  },
-  {
-    id: 10,
-    amount: "7,000.00",
-    customer: "Pella",
-    reference: "t73j994y3kshf",
-    channel: "Bank transfer",
-    paid_on: "Friday, Jan",
+    id: "tx-5",
+    label: "Transfer to wallet",
+    customer: "Pella Sophia",
+    timestamp: "Nov 28, 16:34",
+    amount: 20000,
+    status: "Successful",
+    direction: "credit",
   },
 ];
+
 const BRecentTransactions = () => {
+  const { user } = useAuth();
+
+  const transactions = useMemo(() => {
+    if (user?.recentTransactions?.length) {
+      return user.recentTransactions;
+    }
+    return sampleTransactions;
+  }, [user]);
+
+  const formatAmount = (amount) => {
+    if (typeof amount !== "number") {
+      return amount;
+    }
+    return new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: "NGN",
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
   return (
-    <div className="text-black">
-      <div className="w-full flex justify-between items-center">
-        <h3 className="font-bold text-2xl pt-6 pb-4 text-primary">Transactions</h3>
-        <a href="" className="text-sm text-primary">View all</a>
+    <section className="rounded-2xl border border-[#F2CFA1] bg-white p-6 text-[#2F1B00] shadow-sm">
+      <header className="flex items-center justify-between">
+        <div>
+          <h3 className="text-2xl font-semibold text-[#7A3E10]">Transactions</h3>
+          <p className="text-xs text-[#A87440]">Keep track of wallet inflows and payouts</p>
+        </div>
+        <button className="text-sm font-semibold text-[#C17A1E] transition hover:text-[#A35C00]">
+          View all
+        </button>
+      </header>
+
+      <div className="mt-6 space-y-4">
+        {transactions.map((transaction) => {
+          const isCredit = transaction.direction === "credit";
+          return (
+            <article
+              key={transaction.id}
+              className="flex flex-col gap-1 border-b border-[#F5E3C5] pb-4 last:border-b-0 last:pb-0"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm font-semibold">
+                  <span
+                    className={`text-lg ${isCredit ? "text-[#2F9E44]" : "text-[#D64545]"}`}
+                  >
+                    {isCredit ? "⬆️" : "⬇️"}
+                  </span>
+                  <span>{transaction.label}</span>
+                </div>
+                <span
+                  className={`text-sm font-bold ${isCredit ? "text-[#2F9E44]" : "text-[#D64545]"}`}
+                >
+                  {isCredit ? "+" : "-"}
+                  {typeof transaction.amount === "number"
+                    ? formatAmount(transaction.amount)
+                    : transaction.amount}
+                </span>
+              </div>
+              <div className="flex flex-wrap items-center justify-between text-xs text-[#7A3E10]">
+                <p>
+                  {transaction.customer} <span className="mx-1">|</span>
+                  {transaction.timestamp}
+                </p>
+                <p className={`font-semibold ${transaction.status === "Successful" ? "text-[#2F9E44]" : "text-[#D64545]"}`}>
+                  {transaction.status}
+                </p>
+              </div>
+            </article>
+          );
+        })}
       </div>
-      <div>
-        <div className="flex justify-between items-center">
-          <p>⬆️ Transfer to wallet</p>
-          <b>+#20,000</b>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-          <p className="text-xs text-[green]">Successful</p>
-        </div>
-      </div>
-      <hr className="my-4" />
-      <div>
-        <div className="flex justify-between items-center">
-          <p>⬆️ Transfer to wallet</p>
-          <b>+#20,000</b>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-          <p className="text-xs text-[green]">Successful</p>
-        </div>
-      </div>
-      <hr className="my-4" />
-      <div>
-        <div className="flex justify-between items-center">
-          <p>⬇️ Withdrawal to bank</p>
-          <b>+#40,000</b>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
-          <p className="text-xs text-[green]">Successful</p>
-        </div>
-      </div>
-      <hr className="my-4" />
-      <div>
-        <div className="flex justify-between items-center">
-          <p>⬇️ Withdrawal to bank</p>
-          <b>+#40,000</b>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <p className="text-xs">Becca Baruach | Nov 28, 16:34</p>
-          <p className="text-xs text-[green]">Successful</p>
-        </div>
-      </div>
-      <hr className="my-4" />
-      <div>
-        <div className="flex justify-between items-center">
-          <p>⬆️ Transfer to wallet</p>
-          <b>+#20,000</b>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <p className="text-xs">Pella Sophia | Nov 28, 16:34</p>
-          <p className="text-xs text-[green]">Successful</p>
-        </div>
-      </div>
-      <hr className="my-4" />
-    </div>
+    </section>
   );
 };
 
